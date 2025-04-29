@@ -12,6 +12,7 @@ class Tarea private constructor(
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
     ) : Actividad(descripcion){
+
     // Companion object
     companion object {
         fun crearInstancia(descripcion: String): Tarea {
@@ -21,7 +22,7 @@ class Tarea private constructor(
 
    fun cerrarPorSubtareasFinalizadas() {
        if(subTareas.all { it.estado == Status.CERRADA }){
-           this.estado = Status.CERRADA // Tarea madre cerrada por completar todas las subtareas.
+           this.estado = Status.CERRADA
        }
    }
 

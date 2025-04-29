@@ -22,14 +22,10 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     }
 
     override fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean {
-        // Llamar al repositorio para recuperar la tarea
         val tarea = repositorio.recuperarPorId(id)
 
-        // Verificar si la tarea existe
         return if (tarea is Tarea) {
-            // Actualizar el estado de la tarea
             tarea.estado = nuevoEstado
-            // Actualizar la tarea en el repositorio
             repositorio.actualizarActividad(tarea)
             true
         } else {
@@ -42,14 +38,12 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
         if (tarea is Tarea) {
             if (nuevoEstado == Status.CERRADA && !tarea.puedeFinalizar()) {
-                println("❌ No se puede cerrar esta tarea porque tiene subtareas abiertas.")
+                println("No se puede cerrar esta tarea porque tiene subtareas abiertas.")
                 return false
             }
-            // Si pasa la validación, actualizamos el estado de las subtareas
             tarea.estado = nuevoEstado
             repositorio.actualizarActividad(tarea)
 
-            // Cerramos la tarea madre si todas las subtareas están finalizadas
             tarea.tareaMadre?.cerrarPorSubtareasFinalizadas()
             return true
         }

@@ -10,7 +10,7 @@ class UI {
         private const val CREAR_TAREA = "1"
         private const val CREAR_EVENTO = "2"
         private const val LISTAR_ACTIVIDADES = "3"
-        private const val CAMBIAR_ESTADO_TAREA = "5"  // Nueva opción para cambiar el estado
+        private const val CAMBIAR_ESTADO_TAREA = "5"
         private const val SALIR = "4"
     }
 
@@ -22,7 +22,7 @@ class UI {
             println("1 | Agregar Tarea")
             println("2 | Agregar Evento")
             println("3 | Listar Actividades")
-            println("5 | Cambiar Estado de Tarea")  // Nueva opción en el menú
+            println("5 | Cambiar Estado de Tarea")
             println("4 | Salir")
             print("Selecciona una opción: ")
 
@@ -30,7 +30,7 @@ class UI {
                 CREAR_TAREA -> agregarTarea(servicio)
                 CREAR_EVENTO -> agregarEvento(servicio)
                 LISTAR_ACTIVIDADES -> listarActividades(servicio)
-                CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)  // Llamamos a la función para cambiar el estado
+                CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)
                 SALIR -> {
                     println("Saliendo...")
                     seguir = false
@@ -70,13 +70,11 @@ class UI {
         }
     }
 
-    // Función para cambiar el estado de la tarea
     private fun cambiarEstadoTarea(servicio: ActividadService) {
         println("\n=== Cambiar Estado de Tarea ===")
         print("Ingrese el ID de la tarea que desea actualizar: ")
         val id = readln().toInt()
 
-        // Mostrar las opciones de estado
         println("Seleccione el nuevo estado para la tarea:")
         println("1. ABIERTA")
         println("2. EN PROGRESO")
