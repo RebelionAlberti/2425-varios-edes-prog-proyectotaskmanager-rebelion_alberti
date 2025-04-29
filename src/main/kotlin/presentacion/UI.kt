@@ -62,9 +62,11 @@ class UI {
         println("\n=== Agregar Tarea ===")
         print("Descripción: ")
         val descripcion = readln()
-        servicio.crearTarea(descripcion)
+        val etiquetas = agregarEtiquetas()
+        servicio.crearTarea(descripcion, etiquetas)
         println("Tarea agregada correctamente.")
     }
+
 
     private fun agregarEvento(servicio: ActividadService) {
         println("\n=== Agregar Evento ===")
@@ -72,9 +74,12 @@ class UI {
         val descripcion = readln()
         print("Fecha de realización, formato -> (dd/MM/yyyy): ")
         val fechaRealizacion = readln()
+
+        val etiquetas = agregarEtiquetas()
+
         print("Ubicación: ")
         val ubicacion = readln()
-        servicio.crearEvento(descripcion, fechaRealizacion, ubicacion)
+        servicio.crearEvento(descripcion, fechaRealizacion, ubicacion, etiquetas)
         println("Evento agregado correctamente.")
     }
 
@@ -189,6 +194,14 @@ class UI {
         }
     }
 
+    private fun agregarEtiquetas(): List<String>{
+
+        println("Ingrese las etiquetas para la tarea o evento (separadas por ; ):   ")
+        val etiquetas = readln()
+        return etiquetas.split(";")
+
+    }
+
     private fun verTareasPorUsuario(servicio: IActividadService) {
         println("\n=== Ver Tareas por Usuario ===")
         print("ID del usuario: ")
@@ -206,3 +219,4 @@ class UI {
         }
     }
 }
+

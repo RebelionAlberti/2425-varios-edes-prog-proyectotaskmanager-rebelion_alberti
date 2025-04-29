@@ -6,9 +6,9 @@ import dominio.Usuario
 import dominio.Tarea
 
 interface IActividadService {
-    fun crearTarea(descripcion: String)
+    fun crearTarea(descripcion: String, etiquetas: List<String>)
 
-    fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String)
+    fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String, etiquetas: List<String>)
 
     fun obtenerActividades(): List<Actividad>
 
