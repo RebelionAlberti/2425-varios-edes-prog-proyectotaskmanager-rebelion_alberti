@@ -2,15 +2,31 @@ package dominio
 
 enum class Status(val descripcion: String) {
     ABIERTA("Abierta"),
+    EN_PROGRESO("En progreso"),
     CERRADA("Cerrada")
 }
 
-class Tarea private constructor(descripcion: String, var estado: Status = Status.ABIERTA) : Actividad(descripcion){
+class Tarea private constructor(
+    descripcion: String,
+    var estado: Status = Status.ABIERTA,
+    var subTareas: MutableList<Tarea> = mutableListOf(),
+    var tareaMadre: Tarea? = null,
+    ) : Actividad(descripcion){
     // Companion object
     companion object {
         fun crearInstancia(descripcion: String): Tarea {
             return Tarea(descripcion)
         }
+    }
+
+   fun cerrarPorSubtareasFinalizadas() {
+       if(subTareas.all { it.estado == Status.CERRADA }){
+           this.estado = Status.CERRADA // Tarea madre cerrada por completar todas las subtareas.
+       }
+   }
+
+    fun puedeFinalizar(): Boolean {
+        return subTareas.all { it.estado == Status.CERRADA }
     }
 
     override fun toString(): String {
