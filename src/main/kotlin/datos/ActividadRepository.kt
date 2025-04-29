@@ -1,0 +1,55 @@
+package datos
+
+import dominio.Actividad
+
+class ActividadRepository : IActividadRepository {
+
+    private val actividades = mutableListOf<Actividad>()
+
+    override fun agregarActividad(actividad: Actividad): Boolean {
+        var guardado = false
+        if (actividades.find { it.id == actividad.id } == null) {
+            actividades.add(actividad)
+            guardado = true
+        }
+        return guardado
+    }
+
+    override fun recuperarTodas(): List<Actividad> {
+        return actividades.toList()
+    }
+
+    override fun recuperarPorId(id: Int): Actividad? {
+        var actividad: Actividad? = null
+        val actividadesId = actividades.filter { it.id == id }
+        if (actividadesId.isNotEmpty()) {
+            actividad = actividadesId[0]
+        }
+        return actividad
+    }
+
+    override fun recuperarTareas(): List<Actividad> {
+        TODO("Not yet implemented")
+    }
+
+    override fun actualizarActividad(actividad: Actividad): Boolean {
+        val actualizado = false
+        val actual = actividades.find { it.id == actividad.id }
+        if (actual != null) {
+            actividades.remove(actual)
+            actividades.add(actividad)
+        }
+        return actualizado
+    }
+
+    override fun borrarPorId(id: Int): Actividad? {
+        val actividad = actividades.find { it.id == id }
+        return if (actividad != null) {
+            actividades.remove(actividad)
+            actividad
+        } else {
+            null
+        }
+    }
+
+}
