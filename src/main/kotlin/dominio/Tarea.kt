@@ -5,15 +5,15 @@ enum class Status(val descripcion: String) {
     CERRADA("Cerrada")
 }
 
-class Tarea private constructor(descripcion: String, var estado: Status = Status.ABIERTA) : Actividad(descripcion){
+class Tarea private constructor(descripcion: String, var estado: Status = Status.ABIERTA, var etiquetas: List<String> = listOf()) : Actividad(descripcion){
     // Companion object
     companion object {
-        fun crearInstancia(descripcion: String): Tarea {
-            return Tarea(descripcion)
+        fun crearInstancia(descripcion: String, etiquetas: List<String>): Tarea {
+            return Tarea(descripcion, etiquetas = etiquetas)
         }
     }
 
     override fun toString(): String {
-        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}]"
+        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}, Etiquetas: ${etiquetas.joinToString(", ")}]"
     }
 }
