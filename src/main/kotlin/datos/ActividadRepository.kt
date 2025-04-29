@@ -1,6 +1,8 @@
 package datos
 
 import dominio.Actividad
+import dominio.Tarea
+import dominio.Usuario
 
 class ActividadRepository : IActividadRepository {
 
@@ -52,4 +54,18 @@ class ActividadRepository : IActividadRepository {
         }
     }
 
+    override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
+        val actividad = actividades.find { it.id == idTarea }
+        if (actividad is Tarea) {
+            actividad.asignadoA = usuario
+            return true
+        }
+        return false
+    }
+
+    override fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea> {
+        return actividades
+            .filterIsInstance<Tarea>()
+            .filter { it.asignadoA?.id == idUsuario }
+    }
 }

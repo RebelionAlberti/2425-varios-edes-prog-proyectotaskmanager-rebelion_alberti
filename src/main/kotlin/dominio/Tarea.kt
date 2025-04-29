@@ -12,7 +12,7 @@ class Tarea private constructor(
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
     ) : Actividad(descripcion){
-
+    var asignadoA: Usuario? = null
     // Companion object
     companion object {
         fun crearInstancia(descripcion: String): Tarea {
@@ -31,6 +31,7 @@ class Tarea private constructor(
     }
 
     override fun toString(): String {
-        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}]"
+        val asignado = asignadoA?.nombre ?: "No asignado"
+        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}, Asignado a: $asignado]"
     }
 }

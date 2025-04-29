@@ -5,6 +5,7 @@ import dominio.Actividad
 import dominio.Tarea
 import dominio.Evento
 import dominio.Status
+import dominio.Usuario
 
 class ActividadService(private val repositorio: IActividadRepository) : IActividadService {
     override fun crearTarea(descripcion: String) {
@@ -50,4 +51,12 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         return false
     }
 
+
+    override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
+        return repositorio.asignarUsuarioATarea(idTarea, usuario)
+    }
+
+    override fun obtenerTareasPorUsuario(idUsuario: Int): List<Tarea> {
+        return repositorio.recuperarTareasPorUsuario(idUsuario)
+    }
 }
