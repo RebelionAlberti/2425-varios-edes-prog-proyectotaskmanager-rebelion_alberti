@@ -33,14 +33,16 @@ class ActividadRepository : IActividadRepository {
     }
 
     override fun actualizarActividad(actividad: Actividad): Boolean {
-        val actualizado = false
         val actual = actividades.find { it.id == actividad.id }
-        if (actual != null) {
+        return if (actual != null) {
             actividades.remove(actual)
             actividades.add(actividad)
+            true
+        } else {
+            false
         }
-        return actualizado
     }
+
 
     override fun borrarPorId(id: Int): Actividad? {
         val actividad = actividades.find { it.id == id }

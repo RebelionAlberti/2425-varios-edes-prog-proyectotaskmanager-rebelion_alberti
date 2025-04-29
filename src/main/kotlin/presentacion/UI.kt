@@ -1,14 +1,16 @@
 package org.practicatrim2.presentacion.presentacion
 
 import aplicacion.ActividadService
+import dominio.Tarea
 
 
 class UI {
     companion object {
         private const val CREAR_TAREA = "1"
         private const val CREAR_EVENTO = "2"
-        private const val LISTAR_ACTIVIDADES = "3"
-        private const val SALIR = "4"
+        private const val CREAR_SUBTAREA = "3"
+        private const val LISTAR_ACTIVIDADES = "4"
+        private const val SALIR = "5"
     }
 
     fun mostrarMenu(servicio: ActividadService) {
@@ -18,13 +20,15 @@ class UI {
             println("\n=== TaskManager ===")
             println("1 | Agregar Tarea")
             println("2 | Agregar Evento")
-            println("3 | Listar Actividades")
-            println("4 | Salir")
+            println("3 | Agregar Subtarea")
+            println("4 | Listar Actividades")
+            println("5 | Salir")
             print("Selecciona una opción: ")
 
             when (readln()) {
                 CREAR_TAREA -> agregarTarea(servicio)
                 CREAR_EVENTO -> agregarEvento(servicio)
+                CREAR_SUBTAREA -> agregarSubtarea(servicio)
                 LISTAR_ACTIVIDADES -> listarActividades(servicio)
                 SALIR -> {
                     println("Saliendo...")
@@ -55,13 +59,53 @@ class UI {
         println("Evento agregado correctamente.")
     }
 
+    private fun agregarSubtarea(servicio: ActividadService) {
+        println("\n=== Agregar Subtarea ===")
+        print("ID de la tarea principal: ")
+        val idTarea = readln().toIntOrNull()
+
+        if (idTarea == null) {
+            println("El ID de la tarea principal no es válido.")
+            return
+        }
+
+        print("Introduce la descripción de lasubtarea: ")
+        val descripcion = readln()
+
+        val fueAgregada = servicio.agregarSubtarea(idTarea, descripcion)
+
+        if (fueAgregada) {
+            println("Subtarea agregada correctamente.")
+        } else {
+            println("No se pudo agregar la subtarea.")
+        }
+    }
+
+
     private fun listarActividades(servicio: ActividadService) {
         println("\n=== Lista actividades ===")
         val actividades = servicio.obtenerActividades()
+
         if (actividades.isEmpty()) {
             println("No hay actividades.")
         } else {
-            actividades.forEach { println(it) }
+            val tareasAsignadasComoSubtareas = actividades
+                .filterIsInstance<Tarea>()
+                .flatMap { it.subtareas }
+
+            val actividadesPrincipales = actividades
+                .filter { it !in tareasAsignadasComoSubtareas }
+                .sortedBy { it.id }
+
+            actividadesPrincipales.forEach { actividad ->
+                if (actividad is Tarea) {
+                    println(actividad.formatoTareas())
+                } else {
+                    println(actividad)
+                }
+            }
         }
     }
+
+
 }

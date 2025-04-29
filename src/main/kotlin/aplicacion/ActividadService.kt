@@ -19,4 +19,29 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     override fun obtenerActividades(): List<Actividad> {
         return repositorio.recuperarTodas()
     }
+
+    override fun agregarSubtarea(idTareaPrincipal: Int, descripcionSubtarea: String): Boolean {
+        val tareaPrincipal = repositorio.recuperarPorId(idTareaPrincipal)
+
+        if (tareaPrincipal is Tarea) {
+            val esSubtarea = repositorio.recuperarTodas().any {
+                it is Tarea && (it as Tarea).subtareas.contains(tareaPrincipal)
+            }
+
+            if (esSubtarea) {
+                return false
+            }
+
+            val subtarea = Tarea.crearInstancia(descripcionSubtarea)
+
+            val fueGuardada = repositorio.agregarActividad(subtarea)
+
+            if (fueGuardada && tareaPrincipal.agregarSubtarea(subtarea)) {
+                return repositorio.actualizarActividad(tareaPrincipal)
+            }
+        }
+
+        return false
+    }
+
 }

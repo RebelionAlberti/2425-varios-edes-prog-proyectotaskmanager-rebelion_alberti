@@ -8,4 +8,7 @@ interface IActividadService {
     fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String)
 
     fun obtenerActividades(): List<Actividad>
+
+    fun agregarSubtarea(idTareaPrincipal: Int, descripcionSubtarea: String): Boolean
+
 }
