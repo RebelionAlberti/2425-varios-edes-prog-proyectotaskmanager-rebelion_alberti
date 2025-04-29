@@ -11,8 +11,8 @@ class Tarea private constructor(
     var estado: Status = Status.ABIERTA,
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
-    var etiquetas: List<String> = listOf()
-    ) : Actividad(descripcion){
+    override val etiquetas: List<String> = listOf())
+    : Actividad(descripcion){
     var asignadoA: Usuario? = null
     // Companion object
     companion object {

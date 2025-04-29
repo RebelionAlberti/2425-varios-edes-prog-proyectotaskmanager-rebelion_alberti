@@ -2,11 +2,14 @@ package org.practicatrim2.presentacion.presentacion
 
 import aplicacion.ActividadService
 import dominio.Status
-import datos.ActividadRepository
 import aplicacion.IActividadService
 import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
-
+import dominio.RangoFecha
+import dominio.Actividad
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Calendar
 
 class UI {
     companion object {
@@ -18,7 +21,9 @@ class UI {
         private const val LISTAR_USUARIOS = "6"
         private const val VER_TAREAS_POR_USUARIO = "7"
         private const val CAMBIAR_ESTADO_TAREA = "8"
-        private const val ELIMINAR_USUARIO = "9"
+        private const val FILTRAR_ACTIVIDADES = "9"
+        private const val ELIMINAR_ACTIVIDAD = "10"
+        private const val ELIMINAR_USUARIO = "11"
         private const val SALIR = "0"
     }
 
@@ -35,7 +40,9 @@ class UI {
             println("6 | Listar Usuarios")
             println("7 | Listar tareas por usuario")
             println("8 | Cambiar Estado de Tarea")
-            println("9 | Eliminar Usuario")
+            println("9 | Filtrar Actividades")
+            println("10| Eliminar Actividad")
+            println("11| Eliminar Usuario")
             println("0 | Salir")
             print("Selecciona una opción: ")
 
@@ -48,6 +55,8 @@ class UI {
                 LISTAR_USUARIOS -> listarUsuarios(usuarioService)
                 VER_TAREAS_POR_USUARIO -> verTareasPorUsuario(servicio)
                 CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)
+                FILTRAR_ACTIVIDADES -> filtrarActividades(servicio)
+                ELIMINAR_ACTIVIDAD -> eliminarActividad(servicio)
                 ELIMINAR_USUARIO -> eliminarUsuario(usuarioService)
                 SALIR -> {
                     println("Saliendo...")
@@ -218,5 +227,173 @@ class UI {
             tareas.forEach { println(it) }
         }
     }
-}
 
+    private fun filtrarActividades(servicio: ActividadService) {
+        println("\n=== Filtrar Actividades ===")
+        println("1 | Filtrar por Tipo (Tarea/Evento)")
+        println("2 | Filtrar por Estado (ABIERTA/EN PROGRESO/FINALIZADA)")
+        println("3 | Filtrar por Fecha (Hoy, Esta Semana, Este Mes)")
+        print("Selecciona una opción de filtrado: ")
+
+        when (readln()) {
+            "1" -> {
+                println("Selecciona el tipo de actividad:")
+                println("1 | Tarea")
+                println("2 | Evento")
+                print("Selecciona una opción: ")
+                val opcionTipo = readln().toIntOrNull()
+
+                val tipo = when(opcionTipo) {
+                    1 -> "TAREA"
+                    2 -> "EVENTO"
+                    else -> {
+                        println("Opción no válida.")
+                        return
+                    }
+                }
+
+                val actividadesFiltradas = servicio.filtrarPorTipo(tipo)
+                mostrarActividadesFiltradas(actividadesFiltradas)
+            }
+            "2" -> {
+                println("Selecciona el estado:")
+                println("1 | ABIERTA")
+                println("2 | EN PROGRESO")
+                println("3 | FINALIZADA")
+                print("Selecciona una opción: ")
+                val opcionEstado = readln().toIntOrNull()
+
+                val estado = when (opcionEstado) {
+                    1 -> Status.ABIERTA
+                    2 -> Status.EN_PROGRESO
+                    3 -> Status.CERRADA
+                    else -> {
+                        println("Opción no válida.")
+                        return
+                    }
+                }
+
+                val actividadesFiltradas = servicio.filtrarPorEstado(estado)
+                mostrarActividadesFiltradas(actividadesFiltradas)
+            }
+            "3" -> {
+                println("Introduce el rango de fechas (Hoy, Esta Semana, Este Mes): ")
+                val rango = seleccionarRangoDeFecha()
+                val actividadesFiltradas = servicio.filtrarPorFecha(rango)
+                mostrarActividadesFiltradas(actividadesFiltradas)
+            }
+            "4" -> {
+                println("Introduce las etiquetas a filtrar (separadas por ; ): ")
+                val etiquetas = readln().split(";").map { it.trim() }
+                val actividadesFiltradas = servicio.filtrarPorEtiquetas(etiquetas)
+                mostrarActividadesFiltradas(actividadesFiltradas)
+            }
+            else -> println("Opción no válida")
+        }
+    }
+
+    private fun mostrarActividadesFiltradas(actividades: List<Actividad>) {
+        if (actividades.isEmpty()) {
+            println("No hay actividades que coincidan con los filtros.")
+        } else {
+            println("\n=== Actividades Filtradas ===")
+            actividades.forEach {
+                println("${it.detalle} - Creada el: ${it.fechaCreacion}")
+            }
+        }
+    }
+
+    private fun seleccionarRangoDeFecha(): RangoFecha {
+        println("Selecciona un rango de fechas:")
+        println("1 | Hoy")
+        println("2 | Esta Semana")
+        println("3 | Este Mes")
+        print("Selecciona una opción: ")
+
+        val opcion = readln()
+        val hoy = Date()
+        val formato = SimpleDateFormat("dd/MM/yyyy")
+
+        return when (opcion) {
+            "1" -> {
+                val inicioHoy = formato.parse(formato.format(hoy))
+                RangoFecha(inicioHoy, inicioHoy)
+            }
+            "2" -> {
+                val inicioSemana = obtenerInicioDeLaSemana(hoy)
+                val finSemana = obtenerFinDeLaSemana(hoy)
+                RangoFecha(inicioSemana, finSemana)
+            }
+            "3" -> {
+                val inicioMes = obtenerInicioDelMes(hoy)
+                val finMes = obtenerFinDelMes(hoy)
+                RangoFecha(inicioMes, finMes)
+            }
+            else -> {
+                println("Opción no válida")
+                seleccionarRangoDeFecha()
+            }
+        }
+    }
+
+    private fun obtenerInicioDeLaSemana(fecha: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = fecha
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.time
+    }
+
+
+    private fun obtenerFinDeLaSemana(fecha: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = fecha
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        return calendar.time
+    }
+
+
+    private fun obtenerInicioDelMes(fecha: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = fecha
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.time
+    }
+
+    private fun obtenerFinDelMes(fecha: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = fecha
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        return calendar.time
+    }
+
+    private fun eliminarActividad(servicio: ActividadService) {
+        println("Introduce el ID de la actividad a eliminar: ")
+        val id = readln().toIntOrNull()
+        if (id != null) {
+            val actividadEliminada = servicio.eliminarActividadPorId(id)
+            if (actividadEliminada != null) {
+                println("Actividad eliminada: $actividadEliminada")
+            } else {
+                println("No se encontró una actividad con ese ID.")
+            }
+        } else {
+            println("ID inválido.")
+        }
+    }
+}
