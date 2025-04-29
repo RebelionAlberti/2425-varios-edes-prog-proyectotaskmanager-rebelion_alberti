@@ -8,12 +8,24 @@ enum class Status(val descripcion: String) {
 
 class Tarea private constructor(
     descripcion: String,
-    var estado: Status = Status.ABIERTA,
+    estadoInicial: Status = Status.ABIERTA,
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
     override val etiquetas: List<String> = listOf())
     : Actividad(descripcion){
     var asignadoA: Usuario? = null
+    val subtareas: MutableList<Tarea> = mutableListOf()
+    var estado: Status = estadoInicial
+        set(value) {
+            if (value == Status.CERRADA) {
+                val haySubtareasAbiertas = subtareas.any { it.estado == Status.ABIERTA }
+                if (haySubtareasAbiertas) {
+                    println("No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas.")
+                    return
+                }
+            }
+            field = value
+        }
     // Companion object
     companion object {
         fun crearInstancia(descripcion: String, etiquetas: List<String>): Tarea {
@@ -29,6 +41,25 @@ class Tarea private constructor(
 
     fun puedeFinalizar(): Boolean {
         return subTareas.all { it.estado == Status.CERRADA }
+    }
+
+    fun agregarSubtarea(subtarea: Tarea): Boolean {
+        if (subtareas.any { it.id == subtarea.id }) {
+            return false
+        }
+        subtareas.add(subtarea)
+        return true
+    }
+
+    fun formatoTareas(esSubtarea: Boolean = false): String {
+        val tipo = if (esSubtarea) "Subtarea" else "Tarea"
+        val subtareasTexto = if (subtareas.isEmpty()) {
+            ""
+        } else {
+            "\n" + subtareas.joinToString("\n") { it.formatoTareas(true).prependIndent("    ") }
+        }
+
+        return "$tipo=[ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}]$subtareasTexto"
     }
 
     override fun toString(): String {

@@ -30,4 +30,7 @@ interface IActividadService {
     fun filtrarPorEtiquetas(etiquetas: List<String>): List<Actividad>
 
     fun eliminarActividadPorId(id: Int): Actividad?
+
+    fun agregarSubtarea(idTareaPrincipal: Int, descripcionSubtarea: String): Boolean
+
 }
