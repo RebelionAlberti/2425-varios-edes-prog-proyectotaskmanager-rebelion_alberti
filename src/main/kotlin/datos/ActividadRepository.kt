@@ -45,7 +45,6 @@ class ActividadRepository : IActividadRepository {
         }
     }
 
-
     override fun borrarPorId(id: Int): Actividad? {
         val actividad = actividades.find { it.id == id }
         return if (actividad != null) {

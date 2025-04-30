@@ -28,6 +28,7 @@ class UI {
         private const val FILTRAR_ACTIVIDADES = "11"
         private const val ELIMINAR_ACTIVIDAD = "12"
         private const val ELIMINAR_USUARIO = "13"
+        private const val VER_HISTORIAL = "14"
         private const val SALIR = "0"
     }
 
@@ -49,6 +50,7 @@ class UI {
             println("11| Filtrar Actividades")
             println("12| Eliminar Actividad")
             println("13| Eliminar Usuario")
+            println("14 | Ver Historial de Tarea")
             println("0 | Salir")
             print("Selecciona una opción: ")
 
@@ -66,6 +68,7 @@ class UI {
                 FILTRAR_ACTIVIDADES -> filtrarActividades(servicio)
                 ELIMINAR_ACTIVIDAD -> eliminarActividad(servicio)
                 ELIMINAR_USUARIO -> eliminarUsuario(usuarioService)
+                VER_HISTORIAL -> verHistorial(servicio)
                 SALIR -> {
                     println("Saliendo...")
                     seguir = false
@@ -73,6 +76,31 @@ class UI {
                 else -> println("Opción no válida, prueba de nuevo")
             }
         } while (seguir)
+    }
+
+    private fun verHistorial(servicio: IActividadService) {
+        println("\n=== Ver Historial de Tarea ===")
+        print("ID de la tarea: ")
+        val idTarea = readln().toIntOrNull()
+
+        if (idTarea == null) {
+            println("ID inválido.")
+            return
+        }
+
+        val tarea = servicio.obtenerActividades().find { it.id == idTarea } as? Tarea
+
+        if (tarea != null) {
+            val historial = tarea.obtenerHistorial()
+            if (historial.isEmpty()) {
+                println("No hay historial para esta tarea.")
+            } else {
+                println("Historial de la Tarea ID: $idTarea")
+                historial.forEach { println("Fecha: ${it.fecha} - Descripción: ${it.descripcion}") }
+            }
+        } else {
+            println("Tarea no encontrada.")
+        }
     }
 
     private fun agregarTarea(servicio: ActividadService) {
@@ -121,7 +149,6 @@ class UI {
         }
     }
 
-
     private fun listarActividades(servicio: ActividadService) {
         println("\n=== Lista actividades ===")
         val actividades = servicio.obtenerActividades()
@@ -145,7 +172,6 @@ class UI {
             }
         }
     }
-
 
     private fun cambiarEstadoTarea(servicio: ActividadService) {
         println("\n=== Cambiar Estado de Tarea ===")

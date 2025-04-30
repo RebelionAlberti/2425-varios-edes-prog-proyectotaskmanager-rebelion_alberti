@@ -29,6 +29,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
         return if (tarea is Tarea) {
             tarea.estado = nuevoEstado
+            tarea.agregarRegistro("Estado cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
             true
         } else {
@@ -45,6 +46,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
                 return false
             }
             tarea.estado = nuevoEstado
+            tarea.agregarRegistro("Estado de subtarea cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
 
             tarea.tareaMadre?.cerrarPorSubtareasFinalizadas()
@@ -55,7 +57,16 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
-        return repositorio.asignarUsuarioATarea(idTarea, usuario)
+        val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
+
+        if (exito) {
+            val tarea = repositorio.recuperarPorId(idTarea)
+            if (tarea is Tarea) {
+                val nombreUsuario = usuario?.nombre ?: "Sin asignar"
+                tarea.agregarRegistro("Tarea asignada a: $nombreUsuario")
+            }
+        }
+        return exito
     }
 
     override fun obtenerTareasPorUsuario(idUsuario: Int): List<Tarea> {

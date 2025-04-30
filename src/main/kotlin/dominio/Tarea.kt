@@ -15,6 +15,7 @@ class Tarea private constructor(
     : Actividad(descripcion){
     var asignadoA: Usuario? = null
     val subtareas: MutableList<Tarea> = mutableListOf()
+    private val historial: MutableList<RegistroHistorial> = mutableListOf()
     var estado: Status = estadoInicial
         set(value) {
             if (value == Status.CERRADA) {
@@ -26,16 +27,26 @@ class Tarea private constructor(
             }
             field = value
         }
-    // Companion object
     companion object {
         fun crearInstancia(descripcion: String, etiquetas: List<String>): Tarea {
-            return Tarea(descripcion, etiquetas = etiquetas)
+            val tarea = Tarea(descripcion, etiquetas = etiquetas)
+            tarea.agregarRegistro("Tarea creada")
+            return tarea
         }
     }
 
-   fun cerrarPorSubtareasFinalizadas() {
+    fun agregarRegistro(descripcion: String) {
+        historial.add(RegistroHistorial.crearRegistro(descripcion))
+    }
+
+    fun obtenerHistorial(): List<RegistroHistorial> {
+        return historial.toList()
+    }
+
+    fun cerrarPorSubtareasFinalizadas() {
        if(subTareas.all { it.estado == Status.CERRADA }){
            this.estado = Status.CERRADA
+           agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
        }
    }
 
