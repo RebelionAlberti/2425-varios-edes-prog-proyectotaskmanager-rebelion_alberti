@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Calendar
 import dominio.Tarea
-
+import org.practicatrim2.presentacion.aplicacion.Dashboard
 
 class UI {
     companion object {
@@ -23,10 +23,11 @@ class UI {
         private const val LISTAR_ACTIVIDADES = "6"
         private const val LISTAR_USUARIOS = "7"
         private const val VER_TAREAS_POR_USUARIO = "8"
-        private const val CAMBIAR_ESTADO_TAREA = "9"
-        private const val FILTRAR_ACTIVIDADES = "10"
-        private const val ELIMINAR_ACTIVIDAD = "11"
-        private const val ELIMINAR_USUARIO = "12"
+        private const val VER_DASHBOARD = "9"
+        private const val CAMBIAR_ESTADO_TAREA = "10"
+        private const val FILTRAR_ACTIVIDADES = "11"
+        private const val ELIMINAR_ACTIVIDAD = "12"
+        private const val ELIMINAR_USUARIO = "13"
         private const val SALIR = "0"
     }
 
@@ -43,10 +44,11 @@ class UI {
             println("6 | Listar Actividades")
             println("7 | Listar Usuarios")
             println("8 | Listar tareas por usuario")
-            println("9 | Cambiar Estado de Tarea")
-            println("10 | Filtrar Actividades")
-            println("11| Eliminar Actividad")
-            println("12| Eliminar Usuario")
+            println("9 | Ver Dashboard")
+            println("10| Cambiar Estado de Tarea")
+            println("11| Filtrar Actividades")
+            println("12| Eliminar Actividad")
+            println("13| Eliminar Usuario")
             println("0 | Salir")
             print("Selecciona una opción: ")
 
@@ -59,6 +61,7 @@ class UI {
                 LISTAR_ACTIVIDADES -> listarActividades(servicio)
                 LISTAR_USUARIOS -> listarUsuarios(usuarioService)
                 VER_TAREAS_POR_USUARIO -> verTareasPorUsuario(servicio)
+                VER_DASHBOARD -> verDashboard(servicio)
                 CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)
                 FILTRAR_ACTIVIDADES -> filtrarActividades(servicio)
                 ELIMINAR_ACTIVIDAD -> eliminarActividad(servicio)
@@ -80,7 +83,6 @@ class UI {
         servicio.crearTarea(descripcion, etiquetas)
         println("Tarea agregada correctamente.")
     }
-
 
     private fun agregarEvento(servicio: ActividadService) {
         println("\n=== Agregar Evento ===")
@@ -441,4 +443,11 @@ class UI {
     }
 
 
+
+    private fun verDashboard(servicio: ActividadService) {
+        println("\n=== Dashboard ===")
+        val actividades = servicio.obtenerActividades()
+        val dashboard = Dashboard()
+        dashboard.mostrarResumen(actividades)
+    }
 }
