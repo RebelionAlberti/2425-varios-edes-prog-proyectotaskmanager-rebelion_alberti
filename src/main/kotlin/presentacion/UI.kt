@@ -442,8 +442,6 @@ class UI {
         }
     }
 
-
-
     private fun verDashboard(servicio: ActividadService) {
         println("\n=== Dashboard ===")
         val actividades = servicio.obtenerActividades()
