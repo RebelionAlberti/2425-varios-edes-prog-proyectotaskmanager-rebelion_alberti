@@ -53,14 +53,24 @@ class Tarea private constructor(
 
     fun formatoTareas(esSubtarea: Boolean = false): String {
         val tipo = if (esSubtarea) "Subtarea" else "Tarea"
+        val asignado = if (esSubtarea) "" else "Asignado a: ${asignadoA?.nombre ?: "No asignado"}"
+        val etiquetasTexto = if (esSubtarea) "" else "Etiquetas: ${etiquetas.joinToString(", ")}"
+
+        val detalles = StringBuilder("ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}")
+
+        if (asignado.isNotEmpty()) detalles.append(", $asignado")
+        if (etiquetasTexto.isNotEmpty()) detalles.append(", $etiquetasTexto")
+
         val subtareasTexto = if (subtareas.isEmpty()) {
             ""
         } else {
             "\n" + subtareas.joinToString("\n") { it.formatoTareas(true).prependIndent("    ") }
         }
 
-        return "$tipo=[ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}]$subtareasTexto"
+        return "$tipo=[$detalles]$subtareasTexto"
     }
+
+
 
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"

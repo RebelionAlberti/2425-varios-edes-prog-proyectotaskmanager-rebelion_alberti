@@ -112,7 +112,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
                 return false
             }
 
-            val subtarea = Tarea.crearInstancia(descripcionSubtarea)
+            val subtarea = Tarea.crearInstancia(descripcionSubtarea, listOf())
 
             val fueGuardada = repositorio.agregarActividad(subtarea)
 

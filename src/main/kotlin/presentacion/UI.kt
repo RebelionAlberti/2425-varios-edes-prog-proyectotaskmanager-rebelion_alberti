@@ -144,6 +144,7 @@ class UI {
         }
     }
 
+
     private fun cambiarEstadoTarea(servicio: ActividadService) {
         println("\n=== Cambiar Estado de Tarea ===")
         print("Ingrese el ID de la tarea que desea actualizar: ")
