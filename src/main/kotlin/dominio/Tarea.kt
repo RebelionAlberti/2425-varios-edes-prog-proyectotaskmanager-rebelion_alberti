@@ -6,12 +6,12 @@ enum class Status(val descripcion: String) {
     CERRADA("Cerrada")
 }
 
-class Tarea private constructor(
+class Tarea(
     descripcion: String,
     estadoInicial: Status = Status.ABIERTA,
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
-    override val etiquetas: List<String> = listOf())
+    override val etiquetas: List<String> = emptyList())
     : Actividad(descripcion){
     var asignadoA: Usuario? = null
     val subtareas: MutableList<Tarea> = mutableListOf()

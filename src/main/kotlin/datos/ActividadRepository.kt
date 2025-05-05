@@ -30,10 +30,6 @@ class ActividadRepository : IActividadRepository {
         return actividad
     }
 
-    override fun recuperarTareas(): List<Actividad> {
-        TODO("Not yet implemented")
-    }
-
     override fun actualizarActividad(actividad: Actividad): Boolean {
         val actual = actividades.find { it.id == actividad.id }
         return if (actual != null) {
@@ -69,4 +65,5 @@ class ActividadRepository : IActividadRepository {
             .filterIsInstance<Tarea>()
             .filter { it.asignadoA?.id == idUsuario }
     }
+
 }

@@ -27,14 +27,18 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     override fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean {
         val tarea = repositorio.recuperarPorId(id)
 
-        return if (tarea is Tarea) {
+        if (tarea is Tarea) {
+            if (nuevoEstado == Status.CERRADA && tarea.subtareas.any { it.estado != Status.CERRADA }) {
+                println("No se puede cerrar la tarea principal porque tiene subtareas abiertas.")
+                return false
+            }
+
             tarea.estado = nuevoEstado
             tarea.agregarRegistro("Estado cambiado a $nuevoEstado")
-            repositorio.actualizarActividad(tarea)
-            true
-        } else {
-            false
+            return repositorio.actualizarActividad(tarea)
         }
+
+        return false
     }
 
     override fun actualizarEstadoSubtareas(idSubtarea: Int, nuevoEstado: Status): Boolean {
@@ -54,7 +58,6 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         }
         return false
     }
-
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
@@ -116,7 +119,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
         if (tareaPrincipal is Tarea) {
             val esSubtarea = repositorio.recuperarTodas().any {
-                it is Tarea && (it as Tarea).subtareas.contains(tareaPrincipal)
+                it is Tarea && it.subtareas.contains(tareaPrincipal)
             }
 
             if (esSubtarea) {
@@ -124,10 +127,12 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
             }
 
             val subtarea = Tarea.crearInstancia(descripcionSubtarea, listOf())
+            subtarea.tareaMadre = tareaPrincipal
 
             val fueGuardada = repositorio.agregarActividad(subtarea)
 
-            if (fueGuardada && tareaPrincipal.agregarSubtarea(subtarea)) {
+            if (fueGuardada) {
+                tareaPrincipal.agregarSubtarea(subtarea)
                 return repositorio.actualizarActividad(tareaPrincipal)
             }
         }
