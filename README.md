@@ -68,3 +68,25 @@ Para esta actividad, he utilizado el servicio UsuarioService.
 | `obtenerUsuariosFalse()`    | Caso de error (Sin usuarios)           | Ninguno                      | `repositorio.recuperarTodos()` devuelve una lista vacía            | Llamar a `obtenerUsuarios()`                   | Retorna una lista vacía                                        |
 | `buscarUsuarioPorIdTrue()`  | Caso nominal (ID existente)            | `1`                           | `repositorio.recuperarPorId(1)` devuelve un `Usuario`               | Llamar a `buscarUsuarioPorId(1)`               | Retorna el usuario con ID `1` encontrado                      |
 | `buscarUsuarioPorIdFalse()` | Caso de error (ID no existente)        | `1`                           | `repositorio.recuperarPorId(1)` devuelve `null`                    | Llamar a `buscarUsuarioPorId(1)`               | Retorna `null` si no se encuentra el usuario                  |
+
+### 4. Resultados
+
+![img1](assets/img1.png)
+
+### 5. Códigos de los test
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L21-L29
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L32-L40
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L48-L56
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L59-L67
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L75-L84
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L87-L95
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L102-L111
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L114-L122
