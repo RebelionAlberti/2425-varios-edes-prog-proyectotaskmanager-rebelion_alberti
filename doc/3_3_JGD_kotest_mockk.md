@@ -1,22 +1,25 @@
 #  3.3 Test unitarios y Mockk
 
+Para la entrega de esta actividad, cada integrante del grupo se ha creado una rama independiente al proyecto para
+poder entregarla. Enlace a mi rama [aquí](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/tree/3_3_JGD_kotest_mockk).
+
 En esta actividad he seleccionado el servicio Actividad (clase **ActividadService.kt**) para realizar tests unitarios con mockk a los métodos que la componen.
 
-- [Enlace a la clase seleccionada]()
+- [Enlace a la clase seleccionada](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/main/kotlin/aplicacion/ActividadService.kt#L12-L138)
 
 ## Métodos testeados:
 
 En total he realizado 9 tests, todos ellos probando el correcto funcionamiento de los métodos de dicha clase. Estos métodos son los siguientes:
 
-1. **crearTarea()** --> 2 tests ([link al código]())
+1. **crearTarea()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L18-L44))
 
-2. **obtenerActividades()** --> 1 test ([link al código]())
+2. **obtenerActividades()** --> 1 test ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L46-L55))
 
-3. **actualizarEstado()** --> 2 tests ([link al código]())
+3. **actualizarEstado()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L57-L87))
 
-4. **asignarUsuarioATarea()** --> 2 tests ([link al código]())
+4. **asignarUsuarioATarea()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L89-L120))
 
-5. **eliminarTareaPorId()** --> 2 tests ([link al código]())
+5. **eliminarTareaPorId()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L122-L146))
 
 
 ## Tabla de casos de prueba:
