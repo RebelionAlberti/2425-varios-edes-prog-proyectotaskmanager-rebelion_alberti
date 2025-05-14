@@ -23,7 +23,7 @@ En total he realizado 14 tests, todos ellos probando el correcto funcionamiento 
 
 6. **crearEvento()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/2c7d3a7596580be7dc43bddb8190477a502bdf10/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L159-L202))
 
-7. **actualizarEstadoSubtareas()** --> 2 tests ([link al código]())
+7. **actualizarEstadoSubtareas()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1a0d83bb080258d2a6ca3612e221870afb134ea2/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L205-L243))
 
 ## Tabla de casos de prueba:
 
