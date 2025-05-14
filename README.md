@@ -48,5 +48,22 @@ El servicio seleccionado es **ActividadService**, que depende de un repositorio 
 
 - Crear tarea:
 
+    https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/45a3734ca3e6824b344020fdfa6b53ea372d5970/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L18-L41
+
+- Obtener actividades:
+
+    https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/45a3734ca3e6824b344020fdfa6b53ea372d5970/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L43-L56
+
+- Crear evento:
+
+    https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/45a3734ca3e6824b344020fdfa6b53ea372d5970/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L58-L90
+
+- Filtrar por tipo:
+
+    https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/45a3734ca3e6824b344020fdfa6b53ea372d5970/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L92-L131
+
+- Filtrar por estado:
+
+    https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/45a3734ca3e6824b344020fdfa6b53ea372d5970/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L133-L185
 
 
