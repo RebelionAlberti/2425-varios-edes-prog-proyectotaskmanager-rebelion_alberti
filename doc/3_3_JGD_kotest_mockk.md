@@ -21,7 +21,7 @@ En total he realizado 12 tests, todos ellos probando el correcto funcionamiento 
 
 5. **eliminarTareaPorId()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L122-L146))
 
-6. **crearEvento()** --> 2 tests ([link al código]())
+6. **crearEvento()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/2c7d3a7596580be7dc43bddb8190477a502bdf10/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L159-L202))
 
 ## Tabla de casos de prueba:
 
