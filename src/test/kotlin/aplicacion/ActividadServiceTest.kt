@@ -25,6 +25,7 @@ class ActividadServiceTest : DescribeSpec({
             servicio.crearTarea(descripcion, etiquetas)
 
             verify { mockRepo.agregarActividad(match { it is Tarea && it.descripcion == descripcion }) }
+
         }
 
         it("debería crear una tarea incluso si la descripción está vacía.") {
@@ -200,5 +201,46 @@ class ActividadServiceTest : DescribeSpec({
             }
         }
     }
+
+    describe("actualizarEstadoSubtareas") {
+
+        it("debería actualizar el estado de una subtarea correctamente si puede finalizar") {
+            val idSubtarea = 1
+            val subtarea = mockk<Tarea>(relaxed = true)
+
+            every { subtarea.puedeFinalizar() } returns true
+            every { subtarea.estado = any() } just Runs
+            every { subtarea.agregarRegistro(any()) } just Runs
+            every { subtarea.tareaMadre } returns null
+            every { mockRepo.recuperarPorId(idSubtarea) } returns subtarea
+            every { mockRepo.actualizarActividad(subtarea) } returns true
+
+            val resultado = servicio.actualizarEstadoSubtareas(idSubtarea, Status.CERRADA)
+
+            resultado shouldBe true
+            verify {
+                subtarea.puedeFinalizar()
+                subtarea.estado = Status.CERRADA
+                subtarea.agregarRegistro("Estado de subtarea cambiado a CERRADA")
+                mockRepo.actualizarActividad(subtarea)
+            }
+        }
+
+        it("debería fallar al intentar cerrar una subtarea con subtareas abiertas") {
+            val idSubtarea = 2
+            val subtarea = mockk<Tarea>(relaxed = true)
+
+            every { subtarea.puedeFinalizar() } returns false
+            every { mockRepo.recuperarPorId(idSubtarea) } returns subtarea
+
+            val resultado = servicio.actualizarEstadoSubtareas(idSubtarea, Status.CERRADA)
+
+            resultado shouldBe false
+            verify(exactly = 1) { subtarea.puedeFinalizar() }
+            verify(exactly = 0) { subtarea.estado = any() }
+            verify(exactly = 0) { mockRepo.actualizarActividad(any()) }
+        }
+    }
+
 
 })
