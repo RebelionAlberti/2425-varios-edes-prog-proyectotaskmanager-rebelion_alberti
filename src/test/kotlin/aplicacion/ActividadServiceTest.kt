@@ -68,7 +68,7 @@ class ActividadServiceTest : DescribeSpec({
     describe("actualizarEstadoTarea()") {
         it("debería actualizar la tarea correctamente.") {
             val id = 1
-            val tareaMock = mockk<Tarea>()  // <- Mock no relajado
+            val tareaMock = mockk<Tarea>()
             every { tareaMock.estado = any() } just Runs
             every { tareaMock.agregarRegistro(any()) } just Runs
             every { mockRepo.recuperarPorId(id) } returns tareaMock
@@ -156,5 +156,49 @@ class ActividadServiceTest : DescribeSpec({
         }
     }
 
+    describe("crearEvento") {
+
+        it("debería crear un evento correctamente con todos los datos válidos") {
+            val descripcion = "Conferencia Kotlin"
+            val fechaRealizacion = "25/05/2025"
+            val ubicacion = "Barcelona"
+            val etiquetas = listOf("tech", "kotlin")
+
+            every { mockRepo.agregarActividad(any()) } returns true
+
+            servicio.crearEvento(descripcion, fechaRealizacion, ubicacion, etiquetas)
+
+            verify {
+                mockRepo.agregarActividad(match {
+                    it is Evento &&
+                            it.descripcion == descripcion &&
+                            it.fechaRealizacion == fechaRealizacion &&
+                            it.ubicacion == ubicacion &&
+                            it.etiquetas == etiquetas
+                })
+            }
+        }
+
+        it("debería permitir crear un evento con descripción vacía") {
+            val descripcion = ""
+            val fechaRealizacion = "01/06/2025"
+            val ubicacion = "Madrid"
+            val etiquetas = listOf("sinDescripción")
+
+            every { mockRepo.agregarActividad(any()) } returns true
+
+            servicio.crearEvento(descripcion, fechaRealizacion, ubicacion, etiquetas)
+
+            verify {
+                mockRepo.agregarActividad(match {
+                    it is Evento &&
+                            it.descripcion == descripcion &&
+                            it.fechaRealizacion == fechaRealizacion &&
+                            it.ubicacion == ubicacion &&
+                            it.etiquetas == etiquetas
+                })
+            }
+        }
+    }
 
 })
