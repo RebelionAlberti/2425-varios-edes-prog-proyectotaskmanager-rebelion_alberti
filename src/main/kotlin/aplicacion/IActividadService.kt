@@ -7,7 +7,7 @@ import dominio.Tarea
 import dominio.RangoFecha
 
 interface IActividadService {
-    fun crearTarea(descripcion: String, etiquetas: List<String>)
+    fun crearTarea(descripcion: String, etiquetas: List<String>) : Boolean
 
     fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String, etiquetas: List<String>)
 

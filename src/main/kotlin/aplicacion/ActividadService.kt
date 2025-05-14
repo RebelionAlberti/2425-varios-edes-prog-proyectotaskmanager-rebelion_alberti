@@ -10,9 +10,10 @@ import dominio.RangoFecha
 import java.text.SimpleDateFormat
 
 class ActividadService(private val repositorio: IActividadRepository) : IActividadService {
-    override fun crearTarea(descripcion: String, etiquetas: List<String>) {
+    override fun crearTarea(descripcion: String, etiquetas: List<String>): Boolean {
         val tarea = Tarea.crearInstancia(descripcion, etiquetas)
-        repositorio.agregarActividad(tarea)
+        val exito = repositorio.agregarActividad(tarea)
+        return exito
     }
 
     override fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String, etiquetas: List<String>) {
