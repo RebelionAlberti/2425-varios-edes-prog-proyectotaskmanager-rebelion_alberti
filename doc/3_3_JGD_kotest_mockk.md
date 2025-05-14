@@ -9,11 +9,11 @@ En esta actividad he seleccionado el servicio Actividad (clase **ActividadServic
 
 ## Métodos testeados:
 
-En total he realizado 9 tests, todos ellos probando el correcto funcionamiento de los métodos de dicha clase. Estos métodos son los siguientes:
+En total he realizado 10 tests, todos ellos probando el correcto funcionamiento de los métodos de dicha clase. Estos métodos son los siguientes:
 
 1. **crearTarea()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L18-L44))
 
-2. **obtenerActividades()** --> 1 test ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L46-L55))
+2. **obtenerActividades()** --> 2 test ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L46-L55))
 
 3. **actualizarEstado()** --> 2 tests ([link al código](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/38e0b08a4800f2fe95c74a36cf920a717b97a428/src/test/kotlin/aplicacion/ActividadServiceTest.kt#L57-L87))
 

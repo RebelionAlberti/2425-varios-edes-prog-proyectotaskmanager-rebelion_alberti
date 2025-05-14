@@ -52,6 +52,17 @@ class ActividadServiceTest : DescribeSpec({
             resultado shouldBe actividades
             verify { mockRepo.recuperarTodas() }
         }
+
+        it("debería devolver una lista vacía si no hay actividades") {
+            every { mockRepo.recuperarTodas() } returns emptyList()
+
+            val resultado = servicio.obtenerActividades()
+
+            resultado shouldBe emptyList()
+
+            verify(exactly = 1) { mockRepo.recuperarTodas() }
+        }
+
     }
 
     describe("actualizarEstadoTarea()") {
