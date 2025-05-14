@@ -4,8 +4,19 @@ import datos.IUsuarioRepository
 import dominio.Usuario
 
 class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioService {
-    override fun crearUsuario(nombre: String): Boolean {
-        val usuario = Usuario.crear(nombre)
+    override fun crearUsuario(id: Int, nombre: String): Boolean {
+        lateinit var usuario : Usuario
+
+        if (id<=0) {
+            usuario = Usuario.crear(nombre=nombre)
+        } else {
+            usuario = Usuario.crear(id, nombre)
+        }
+
+        if (nombre.isBlank()) {
+            throw IllegalArgumentException("El nombre del usuario no puede estar vacío")
+        }
+
         return repositorio.agregar(usuario)
     }
 

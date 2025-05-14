@@ -207,7 +207,7 @@ class UI {
         println("\n=== Crear Usuario ===")
         print("Nombre del usuario: ")
         val nombre = readln()
-        if (servicio.crearUsuario(nombre)) {
+        if (servicio.crearUsuario(nombre=nombre)) {
             println("Usuario creado correctamente.")
         } else {
             println("Error al crear el usuario.")
