@@ -14,6 +14,7 @@
 
 - Se realizan tests sobre UsuarioService usando Kotest y Mockk.
 - Los test pueden ser casos nominales que verifican el comportamiento esperado y casos de error.
+- Se puede ver la documentación de las pruebas aquí [3.3-AFG](3.3-AFG.md)
 
 ## Desarrollo de la Actividad
 
@@ -23,6 +24,7 @@
 - Se crean 3 test por cada método (4 métodos x 3 test = 12 tests).
 - Se muestran capturas de las pruebas exitosas y fragmentos del código de las pruebas.
 - Se crea una tabla donde se realiza un resumen del funcionamiento de todos los test y el comportamiento esperado.
+- Aquí está la documentación de las pruebas [3.3-AFG](3.3-AFG.md)
 
 ### Código Fuente
 
