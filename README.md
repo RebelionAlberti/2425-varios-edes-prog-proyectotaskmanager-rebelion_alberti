@@ -75,18 +75,33 @@ Para esta actividad, he utilizado el servicio UsuarioService.
 
 ### 5. Códigos de los test
 
+**·**```CrearUsuarioTrue()```
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L21-L29
+
+**·**```CrearUsuarioFalse()```
 
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L32-L40
 
+**·**```EliminarUsuarioTrue()```
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L48-L56
+
+**·**```EliminarUsuarioFalse()```
 
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L59-L67
 
+**·**```obtenerUsuariosTrue()```
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L75-L84
+
+**·**```obtenerUsuariosFalse()```
 
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L87-L95
 
+**·**```buscarUsuarioPorIdTrue()```
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L102-L111
 
+**·**```buscarUsuarioPorIdFalse()```
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/8b84bd0b269ea46f10d58a74f341f6bf8ad181ff/src/test/kotlin/aplicacion/UsuarioServiceTest.kt#L114-L122
