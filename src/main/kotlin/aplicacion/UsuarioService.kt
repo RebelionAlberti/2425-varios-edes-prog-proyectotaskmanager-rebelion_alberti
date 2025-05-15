@@ -1,9 +1,14 @@
 package aplicacion
 
-import datos.IUsuarioRepository
+import datos.UsuarioRepository
 import dominio.Usuario
 
-class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioService {
+class UsuarioService(private val repositorio: UsuarioRepository) : IUsuarioService {
+
+    init {
+        repositorio.cargarUsuarios()
+    }
+
     override fun crearUsuario(nombre: String): Boolean {
         val usuario = Usuario.crear(nombre)
         return repositorio.agregar(usuario)
