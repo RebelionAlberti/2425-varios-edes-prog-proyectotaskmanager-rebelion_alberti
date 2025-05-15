@@ -1,12 +1,18 @@
 package dominio
 
-class Usuario private constructor(val id: Int, val nombre: String) {
+class Usuario(val id: Int, val nombre: String) {
 
     companion object {
         private var contadorId = 1
 
         fun crear(nombre: String): Usuario {
             return Usuario(contadorId++, nombre)
+        }
+
+        fun configurarContador(inicio: Int) {
+            if (inicio >= contadorId) {
+                contadorId = inicio
+            }
         }
     }
 

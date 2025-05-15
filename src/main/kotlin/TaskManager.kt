@@ -7,11 +7,11 @@ import datos.UsuarioRepository
 import org.practicatrim2.presentacion.presentacion.UI
 
 fun main() {
-    val ui = UI()
-    val repositorio = ActividadRepository()
-    val servicio = ActividadService(repositorio)
-    val usuarioRepositorio = UsuarioRepository()
-    val usuarioService = UsuarioService(usuarioRepositorio)
+    val actividadRepo = ActividadRepository()
+    val actividadService = ActividadService(actividadRepo)
+    val usuarioRepo = UsuarioRepository()
+    val usuarioService = UsuarioService(usuarioRepo)
 
-    ui.mostrarMenu(servicio, usuarioService)
+    val ui = UI()
+    ui.mostrarMenu(actividadService, usuarioService)
 }
