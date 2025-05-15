@@ -9,7 +9,7 @@ enum class Status(val descripcion: String) {
 class Tarea private constructor(
     descripcion: String,
     estadoInicial: Status = Status.ABIERTA,
-    var subTareas: MutableList<Tarea> = mutableListOf(),
+    private var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
     override val etiquetas: List<String> = listOf())
     : Actividad(descripcion){

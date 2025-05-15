@@ -52,6 +52,7 @@ class UsuarioRepository : IUsuarioRepository {
         val usuario = usuarios.find { it.id == id }
         return if (usuario != null) {
             usuarios.remove(usuario)
+
             guardarUsuarios()
             true
         } else {

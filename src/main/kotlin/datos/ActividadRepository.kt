@@ -38,10 +38,6 @@ class ActividadRepository : IActividadRepository {
         return actividad
     }
 
-    override fun recuperarTareas(): List<Actividad> {
-        TODO("Not yet implemented")
-    }
-
     override fun actualizarActividad(actividad: Actividad): Boolean {
         val actual = actividades.find { it.id == actividad.id }
         return if (actual != null) {
@@ -49,7 +45,6 @@ class ActividadRepository : IActividadRepository {
             actividades.add(actividad)
 
             guardarActividadesCsv()
-
             true
         } else {
             false
@@ -84,7 +79,7 @@ class ActividadRepository : IActividadRepository {
             .filter { it.asignadoA?.id == idUsuario }
     }
 
-    fun cargarActividadesCsv() {
+    private fun cargarActividadesCsv() {
         val archivo = File("tareas.csv")
         if (!archivo.exists()) {
             archivo.writeText("id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre\n")
@@ -105,9 +100,6 @@ class ActividadRepository : IActividadRepository {
                 val estadoStr = partes[2]
                 val asignadoStr = partes[3]
                 val etiquetasStr = partes[4]
-                val fechaCreacion = partes[5]
-                val esSubtarea = partes[6].toBoolean()
-                val idTareaMadre = partes[7].takeIf { it.isNotBlank() }?.toInt()
 
                 if (id != null) {
                     val estado = when (estadoStr) {

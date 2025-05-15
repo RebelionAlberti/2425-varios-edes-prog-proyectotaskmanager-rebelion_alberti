@@ -64,6 +64,27 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
             if (tarea is Tarea) {
                 val nombreUsuario = usuario?.nombre ?: "Sin asignar"
                 tarea.agregarRegistro("Tarea asignada a: $nombreUsuario")
+
+                tarea.subtareas.forEach { subtarea ->
+                    repositorio.asignarUsuarioATarea(subtarea.id, usuario)
+                    subtarea.agregarRegistro("Usuario asignado automáticamente desde tarea madre ID ${tarea.id}")
+                    repositorio.actualizarActividad(subtarea)
+                }
+
+                tarea.tareaMadre?.let { madre ->
+                    if (usuario != null && madre.asignadoA == null) {
+                        val madreEnRepo = repositorio.recuperarPorId(madre.id)
+                        if (madreEnRepo is Tarea) {
+                            madreEnRepo.asignadoA = usuario
+                            madreEnRepo.agregarRegistro("Usuario asignado automáticamente desde subtarea ID ${tarea.id}")
+                            repositorio.actualizarActividad(madreEnRepo)
+                        }
+                    }
+                }
+
+                if (usuario != null) {
+                    (repositorio as? ActividadRepository)?.guardarActividadesCsv()
+                }
             }
         }
         return exito
@@ -89,7 +110,6 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
                 Status.ABIERTA -> it is Tarea && it.estado == Status.ABIERTA
                 Status.EN_PROGRESO -> it is Tarea && it.estado == Status.EN_PROGRESO
                 Status.CERRADA -> it is Tarea && it.estado == Status.CERRADA
-                else -> false
             }
         }
     }
@@ -116,7 +136,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
         if (tareaPrincipal is Tarea) {
             val esSubtarea = repositorio.recuperarTodas().any {
-                it is Tarea && (it as Tarea).subtareas.contains(tareaPrincipal)
+                it is Tarea && it.subtareas.contains(tareaPrincipal)
             }
 
             if (esSubtarea) {

@@ -10,7 +10,7 @@ data class RangoFecha(val inicio: Date, val fin: Date) {
         val fechaFin = formatoFecha.format(fin)
         val fechaActividad = formatoFecha.format(fecha)
 
-        return fechaActividad >= fechaInicio && fechaActividad <= fechaFin
+        return fechaActividad in fechaInicio..fechaFin
     }
 }
 

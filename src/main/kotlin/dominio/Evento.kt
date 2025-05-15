@@ -1,6 +1,6 @@
 package dominio
 
-class Evento private constructor(val fechaRealizacion: String, val ubicacion: String, descripcion: String, override val etiquetas: List<String> = listOf()) : Actividad(descripcion) {
+class Evento private constructor(private val fechaRealizacion: String, private val ubicacion: String, descripcion: String, override val etiquetas: List<String> = listOf()) : Actividad(descripcion) {
     // Companion object
     companion object {
         fun crearInstancia(fechaRealizacion: String, ubicacion: String, descripcion: String, etiquetas: List<String>): Evento {

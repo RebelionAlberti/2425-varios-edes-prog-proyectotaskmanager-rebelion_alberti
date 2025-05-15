@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Calendar
 import dominio.Tarea
-import org.practicatrim2.presentacion.aplicacion.Dashboard
+import dominio.Dashboard
 
 class UI {
     companion object {
