@@ -15,7 +15,7 @@ class UsuarioServiceTest : DescribeSpec({
     describe("crearUsuario") {
 
         it("Debe devolver true cuando se crea un usuario con nombre valido") {
-            val nombre = "Juan"
+            val nombre = "Jesus"
             val usuario = Usuario.crear(1, nombre)
 
             every { mockkRepositorio.agregar(usuario) } returns true
@@ -57,8 +57,8 @@ class UsuarioServiceTest : DescribeSpec({
 
         it("Debe devolver una lista de usuarios del repositorio") {
             val listaUsuarios = listOf(
-                Usuario.crear(1, "Juan"),
-                Usuario.crear(2, "Ana")
+                Usuario.crear(1, "Jesus"),
+                Usuario.crear(2, "Don Bogotá")
             )
 
             every { mockkRepositorio.recuperarTodos() } returns listaUsuarios
@@ -80,7 +80,7 @@ class UsuarioServiceTest : DescribeSpec({
     describe("buscarUsuarioPorId") {
 
         it("Debe devolver el usuario si existe") {
-            val usuario = Usuario.crear(1, "Juan")
+            val usuario = Usuario.crear(1, "yiisus")
 
             every { mockkRepositorio.recuperarPorId(1) } returns usuario
 
