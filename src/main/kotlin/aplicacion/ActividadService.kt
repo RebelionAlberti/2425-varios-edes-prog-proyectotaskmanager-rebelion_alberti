@@ -1,6 +1,7 @@
 package aplicacion
 
 import datos.IActividadRepository
+import datos.ActividadRepository
 import dominio.Actividad
 import dominio.Tarea
 import dominio.Evento
@@ -54,7 +55,6 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         }
         return false
     }
-
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
@@ -128,11 +128,18 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
             val fueGuardada = repositorio.agregarActividad(subtarea)
 
             if (fueGuardada && tareaPrincipal.agregarSubtarea(subtarea)) {
-                return repositorio.actualizarActividad(tareaPrincipal)
+                val exito = repositorio.actualizarActividad(tareaPrincipal)
+
+                if (repositorio is ActividadRepository) {
+                    repositorio.guardarActividadesCsv()
+                }
+
+                return exito
             }
         }
 
         return false
     }
+
 
 }
