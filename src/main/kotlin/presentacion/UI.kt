@@ -1,4 +1,4 @@
-package org.practicatrim2.presentacion.presentacion
+package presentacion
 
 import aplicacion.ActividadService
 import dominio.Status
@@ -7,76 +7,157 @@ import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
 import dominio.RangoFecha
 import dominio.Actividad
+import dominio.Evento
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Calendar
 import dominio.Tarea
-import org.practicatrim2.presentacion.aplicacion.Dashboard
+import dominio.Dashboard
 
 class UI {
     companion object {
-        private const val CREAR_TAREA = "1"
-        private const val CREAR_EVENTO = "2"
-        private const val CREAR_SUBTAREA = "3"
-        private const val CREAR_USUARIO = "4"
-        private const val ASIGNAR_USUARIO_A_TAREA = "5"
-        private const val LISTAR_ACTIVIDADES = "6"
-        private const val LISTAR_USUARIOS = "7"
-        private const val VER_TAREAS_POR_USUARIO = "8"
-        private const val VER_DASHBOARD = "9"
-        private const val CAMBIAR_ESTADO_TAREA = "10"
-        private const val FILTRAR_ACTIVIDADES = "11"
-        private const val ELIMINAR_ACTIVIDAD = "12"
-        private const val ELIMINAR_USUARIO = "13"
-        private const val VER_HISTORIAL = "14"
-        private const val SALIR = "0"
+        private const val OPCION_0 = "0"
+        private const val OPCION_1 = "1"
+        private const val OPCION_2 = "2"
+        private const val OPCION_3 = "3"
+        private const val OPCION_4 = "4"
+        private const val OPCION_5 = "5"
     }
 
     fun mostrarMenu(servicio: ActividadService, usuarioService: UsuarioService) {
         var seguir = true
 
-        do {
+        while (seguir) {
             println("\n=== TaskManager ===")
-            println("1 | Agregar Tarea")
-            println("2 | Agregar Evento")
-            println("3 | Agregar Subtarea")
-            println("4 | Agregar usuario")
-            println("5 | Asignar un usuario a una tarea")
-            println("6 | Listar Actividades")
-            println("7 | Listar Usuarios")
-            println("8 | Listar tareas por usuario")
-            println("9 | Ver Dashboard")
-            println("10| Cambiar Estado de Tarea")
-            println("11| Filtrar Actividades")
-            println("12| Eliminar Actividad")
-            println("13| Eliminar Usuario")
-            println("14 | Ver Historial de Tarea")
-            println("0 | Salir")
+            println("$OPCION_1 | Agregar")
+            println("$OPCION_2 | Listar")
+            println("$OPCION_3 | Eliminar")
+            println("$OPCION_4 | Otros")
+            println("$OPCION_0 | Salir")
             print("Selecciona una opción: ")
 
             when (readln()) {
-                CREAR_TAREA -> agregarTarea(servicio)
-                CREAR_EVENTO -> agregarEvento(servicio)
-                CREAR_SUBTAREA -> agregarSubtarea(servicio)
-                CREAR_USUARIO -> crearUsuario(usuarioService)
-                ASIGNAR_USUARIO_A_TAREA -> asignarUsuarioATarea(servicio, usuarioService)
-                LISTAR_ACTIVIDADES -> listarActividades(servicio)
-                LISTAR_USUARIOS -> listarUsuarios(usuarioService)
-                VER_TAREAS_POR_USUARIO -> verTareasPorUsuario(servicio)
-                VER_DASHBOARD -> verDashboard(servicio)
-                CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)
-                FILTRAR_ACTIVIDADES -> filtrarActividades(servicio)
-                ELIMINAR_ACTIVIDAD -> eliminarActividad(servicio)
-                ELIMINAR_USUARIO -> eliminarUsuario(usuarioService)
-                VER_HISTORIAL -> verHistorial(servicio)
-                SALIR -> {
+                OPCION_1 -> menuAgregar(servicio, usuarioService)
+                OPCION_2 -> menuListar(servicio, usuarioService)
+                OPCION_3 -> menuEliminar(servicio, usuarioService)
+                OPCION_4 -> menuOtros(servicio, usuarioService)
+                OPCION_0 -> {
                     println("Saliendo...")
                     seguir = false
                 }
                 else -> println("Opción no válida, prueba de nuevo")
             }
-        } while (seguir)
+        }
     }
+
+    fun menuAgregar(servicio: ActividadService, usuarioService: UsuarioService) {
+        var volver = false
+        while (!volver) {
+            println("\n--- Agregar ---")
+            println("$OPCION_1 | Agregar Tarea")
+            println("$OPCION_2 | Agregar Evento")
+            println("$OPCION_3 | Agregar Subtarea")
+            println("$OPCION_4 | Agregar Usuario")
+            println("$OPCION_0 | Volver")
+            print("Selecciona una opción: ")
+
+            when (readln()) {
+                OPCION_1 -> agregarTarea(servicio)
+                OPCION_2 -> agregarEvento(servicio)
+                OPCION_3 -> agregarSubtarea(servicio)
+                OPCION_4 -> crearUsuario(usuarioService)
+                OPCION_0 -> volver = true
+                else -> println("Opción no válida, prueba de nuevo")
+            }
+
+            if (!volver) {
+                println("Operación completada. Volviendo al menú principal...")
+                volver = true
+            }
+        }
+    }
+
+    fun menuListar(servicio: ActividadService, usuarioService: UsuarioService) {
+        var volver = false
+        while (!volver) {
+            println("\n--- Listar ---")
+            println("$OPCION_1 | Listar Todas las Actividades")
+            println("$OPCION_2 | Listar Tareas")
+            println("$OPCION_3 | Listar Eventos")
+            println("$OPCION_4 | Listar Usuarios")
+            println("$OPCION_5 | Listar Tareas por Usuario")
+            println("$OPCION_0 | Volver")
+            print("Selecciona una opción: ")
+
+            when (readln()) {
+                OPCION_1 -> listarActividades(servicio)
+                OPCION_2 -> listarTareas(servicio)
+                OPCION_3 -> listarEventos(servicio)
+                OPCION_4 -> listarUsuarios(usuarioService)
+                OPCION_5 -> verTareasPorUsuario(servicio)
+                OPCION_0 -> volver = true
+                else -> println("Opción no válida, prueba de nuevo")
+            }
+
+            if (!volver) {
+                println("Operación completada. Volviendo al menú principal...")
+                volver = true
+            }
+        }
+    }
+
+    fun menuEliminar(servicio: ActividadService, usuarioService: UsuarioService) {
+        var volver = false
+        while (!volver) {
+            println("\n--- Eliminar ---")
+            println("$OPCION_1 | Eliminar Actividad")
+            println("$OPCION_2 | Eliminar Usuario")
+            println("$OPCION_0 | Volver")
+            print("Selecciona una opción: ")
+
+            when (readln()) {
+                OPCION_1 -> eliminarActividad(servicio)
+                OPCION_2 -> eliminarUsuario(usuarioService)
+                OPCION_0 -> volver = true
+                else -> println("Opción no válida, prueba de nuevo")
+            }
+
+            if (!volver) {
+                println("Operación completada. Volviendo al menú principal...")
+                volver = true
+            }
+        }
+    }
+
+    fun menuOtros(servicio: ActividadService, usuarioService: UsuarioService) {
+        var volver = false
+        while (!volver) {
+            println("\n--- Otros ---")
+            println("$OPCION_1 | Asignar Usuario a Tarea")
+            println("$OPCION_2 | Cambiar Estado de Tarea")
+            println("$OPCION_3 | Filtrar Actividades")
+            println("$OPCION_4 | Ver Dashboard")
+            println("$OPCION_5 | Ver Historial de Tarea")
+            println("$OPCION_0 | Volver")
+            print("Selecciona una opción: ")
+
+            when (readln()) {
+                OPCION_1 -> asignarUsuarioATarea(servicio, usuarioService)
+                OPCION_2 -> cambiarEstadoTarea(servicio)
+                OPCION_3 -> filtrarActividades(servicio)
+                OPCION_4 -> verDashboard(servicio)
+                OPCION_5 -> verHistorial(servicio)
+                OPCION_0 -> volver = true
+                else -> println("Opción no válida, prueba de nuevo")
+            }
+
+            if (!volver) {
+                println("Operación completada. Volviendo al menú principal...")
+                volver = true
+            }
+        }
+    }
+
 
     private fun verHistorial(servicio: IActividadService) {
         println("\n=== Ver Historial de Tarea ===")
@@ -170,6 +251,32 @@ class UI {
                     println(actividad)
                 }
             }
+        }
+    }
+
+    private fun listarTareas(servicio: ActividadService) {
+        val tareas = servicio.obtenerActividades().filterIsInstance<Tarea>()
+        if (tareas.isEmpty()) {
+            println("No hay tareas registradas.")
+            return
+        }
+
+        val tareasPrincipales = tareas.filter { it.tareaMadre == null }
+
+        println("\n=== Listado de Tareas ===")
+        tareasPrincipales.forEach { tarea ->
+            println(tarea.formatoTareas())
+        }
+    }
+
+
+    private fun listarEventos(servicio: ActividadService) {
+        val eventos = servicio.obtenerActividades().filterIsInstance<Evento>()
+        if (eventos.isEmpty()) {
+            println("No hay eventos registrados.")
+        } else {
+            println("=== Listado de Eventos ===")
+            eventos.forEach { println(it) }
         }
     }
 

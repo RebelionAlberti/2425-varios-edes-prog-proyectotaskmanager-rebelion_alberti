@@ -1,4 +1,4 @@
-package org.practicatrim2.presentacion.aplicacion
+package dominio
 
 import dominio.Tarea
 import dominio.Status
