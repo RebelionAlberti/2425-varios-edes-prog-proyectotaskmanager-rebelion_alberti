@@ -59,6 +59,7 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
         return false
     }
 
+
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
 
@@ -142,6 +143,5 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
 
         return false
     }
-
 
 }

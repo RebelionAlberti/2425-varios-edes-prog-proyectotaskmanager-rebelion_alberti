@@ -4,7 +4,7 @@ import dominio.Usuario
 
 interface IUsuarioService {
     fun crearUsuario(nombre: String): Boolean
-    fun eliminarUsuario(id: Int): Boolean
+    fun eliminarUsuario(id: Int): Usuario?
     fun obtenerUsuarios(): List<Usuario>
     fun buscarUsuarioPorId(id: Int): Usuario?
 }

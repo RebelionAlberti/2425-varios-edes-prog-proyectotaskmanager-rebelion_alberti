@@ -21,6 +21,13 @@ interface IRepository {
     // Métodos específicos - Evento
     fun recuperarEventos() : List<Evento>
 
+    // Métodos Usuarios
+    fun agregarUsuario(usuario: Usuario): Boolean
+    fun recuperarUsuario(): List<Usuario>
+    fun recuperarUsuarioPorId(id: Int): Usuario?
+    fun actualizarUsuario(usuario: Usuario): Boolean
+    fun eliminarUsuario(id: Int): Usuario?
+
     // Métodos ficheros - CSV
     fun cargarCsv(tipo: String)
     fun guardarCsv(tipo: String)

@@ -326,7 +326,7 @@ class UI {
             return
         }
         val eliminado = servicio.eliminarUsuario(id)
-        if (eliminado) {
+        if (eliminado != null) {
             println("Usuario eliminado correctamente.")
         } else {
             println("No se encontró un usuario con ese ID.")
