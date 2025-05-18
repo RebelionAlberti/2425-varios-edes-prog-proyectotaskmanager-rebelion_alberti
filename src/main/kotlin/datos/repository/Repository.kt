@@ -65,14 +65,14 @@ class Repository(
     override fun cargarCsv(tipo: String) {
         when (tipo.lowercase()) {
             "tarea" -> tareaDAO.cargarTareasCsv()
-            else -> throw IllegalArgumentException("Tipo no soportado: $tipo")
+            else -> throw IllegalArgumentException("Error: $tipo")
         }
     }
 
     override fun guardarCsv(tipo: String) {
         when (tipo.lowercase()) {
             "tarea" -> tareaDAO.guardarTareasCsv()
-            else -> throw IllegalArgumentException("Tipo no soportado: $tipo")
+            else -> throw IllegalArgumentException("Error: $tipo")
         }
     }
 }
