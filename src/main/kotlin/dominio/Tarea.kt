@@ -38,11 +38,11 @@ class Tarea private constructor(
     }
 
     fun cerrarPorSubtareasFinalizadas() {
-       if(subTareas.all { it.estado == Status.CERRADA }){
-           this.estado = Status.CERRADA
-           agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
-       }
-   }
+        if(subTareas.all { it.estado == Status.CERRADA }){
+            this.estado = Status.CERRADA
+            agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
+        }
+    }
 
     fun puedeFinalizar(): Boolean {
         return subTareas.all { it.estado == Status.CERRADA }

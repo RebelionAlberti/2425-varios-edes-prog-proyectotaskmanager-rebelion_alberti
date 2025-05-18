@@ -1,6 +1,7 @@
 package aplicacion
 
 import dominio.Actividad
+import dominio.Evento
 import dominio.RangoFecha
 import dominio.Status
 import dominio.Tarea
@@ -14,6 +15,8 @@ interface IActividadService {
     fun obtenerActividades(): List<Actividad>
 
     fun obtenerTareas(): List<Tarea>
+
+    fun obtenerEventos(): List<Evento>
 
     fun actualizarEstadoTarea(id:Int, nuevoEstado: Status) : Boolean
 

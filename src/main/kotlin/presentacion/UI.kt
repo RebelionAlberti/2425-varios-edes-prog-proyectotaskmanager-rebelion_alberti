@@ -7,6 +7,7 @@ import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
 import dominio.RangoFecha
 import dominio.Actividad
+import dominio.Evento
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Calendar
@@ -81,16 +82,18 @@ class UI {
             println("\n--- Listar ---")
             println("$OPCION_1 | Listar Todas las Actividades")
             println("$OPCION_2 | Listar Tareas")
-            println("$OPCION_3 | Listar Usuarios")
-            println("$OPCION_4 | Listar Tareas por Usuario")
+            println("$OPCION_3 | Listar Eventos")
+            println("$OPCION_4 | Listar Usuarios")
+            println("$OPCION_5 | Listar Tareas por Usuario")
             println("$OPCION_0 | Volver")
             print("Selecciona una opción: ")
 
             when (readln()) {
                 OPCION_1 -> listarActividades(servicio)
                 OPCION_2 -> listarTareas(servicio)
-                OPCION_3 -> listarUsuarios(usuarioService)
-                OPCION_4 -> verTareasPorUsuario(servicio)
+                OPCION_3 -> listarEventos(servicio)
+                OPCION_4 -> listarUsuarios(usuarioService)
+                OPCION_5 -> verTareasPorUsuario(servicio)
                 OPCION_0 -> volver = true
                 else -> println("Opción no válida, prueba de nuevo")
             }
@@ -248,7 +251,7 @@ class UI {
     }
 
     private fun listarTareas(servicio: ActividadService) {
-        val tareas = servicio.obtenerTareas()
+        val tareas = servicio.obtenerActividades().filterIsInstance<Tarea>()
         if (tareas.isEmpty()) {
             println("No hay tareas registradas.")
             return
@@ -262,6 +265,16 @@ class UI {
         }
     }
 
+
+    private fun listarEventos(servicio: ActividadService) {
+        val eventos = servicio.obtenerActividades().filterIsInstance<Evento>()
+        if (eventos.isEmpty()) {
+            println("No hay eventos registrados.")
+        } else {
+            println("=== Listado de Eventos ===")
+            eventos.forEach { println(it) }
+        }
+    }
 
     private fun cambiarEstadoTarea(servicio: ActividadService) {
         println("\n=== Cambiar Estado de Tarea ===")

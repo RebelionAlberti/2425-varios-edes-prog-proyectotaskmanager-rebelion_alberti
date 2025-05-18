@@ -1,37 +1,46 @@
 package datos.repository
 
 import dominio.Actividad
+import dominio.Evento
 import dominio.Tarea
 import dominio.Usuario
+import datos.dao.EventoDAO
 import datos.dao.TareaDAO
 
 class Repository(
     private val tareaDAO: TareaDAO,
+    private val eventoDAO: EventoDAO
 ) : IRepository {
     init {
         cargarCsv("tarea")
+        cargarCsv("evento")
     }
 
     // Métodos Actividades
     override fun agregarActividad(actividad: Actividad): Boolean {
         return when (actividad) {
             is Tarea -> tareaDAO.create(actividad).let { true }
+            is Evento -> eventoDAO.create(actividad).let { true }
             else -> false
         }
     }
 
     override fun recuperarActividadPorID(id: Int): Actividad? {
-        return tareaDAO.readById(id)
+        return tareaDAO.readById(id) ?: eventoDAO.readById(id)
     }
 
     override fun recuperarActividades(): List<Actividad> {
-        return tareaDAO.read()
+        return tareaDAO.read() + eventoDAO.read()
     }
 
     override fun actualizarActividad(actividad: Actividad): Boolean {
         return when (actividad) {
             is Tarea -> {
                 tareaDAO.update(actividad)
+                true
+            }
+            is Evento -> {
+                eventoDAO.update(actividad)
                 true
             }
             else -> false
@@ -43,6 +52,11 @@ class Repository(
         if (tarea != null) {
             tareaDAO.delete(id)
             return tarea
+        }
+        val evento = eventoDAO.readById(id)
+        if (evento != null) {
+            eventoDAO.delete(id)
+            return evento
         }
         return null
     }
@@ -61,10 +75,16 @@ class Repository(
         return tareaDAO.read()
     }
 
+    // Métodos específicos - Evento
+    override fun recuperarEventos() : List<Evento> {
+        return eventoDAO.read()
+    }
+
     // Métodos ficheros - CSV
     override fun cargarCsv(tipo: String) {
         when (tipo.lowercase()) {
             "tarea" -> tareaDAO.cargarTareasCsv()
+            "evento" -> eventoDAO.cargarEventosCsv()
             else -> throw IllegalArgumentException("Error: $tipo")
         }
     }
@@ -72,6 +92,7 @@ class Repository(
     override fun guardarCsv(tipo: String) {
         when (tipo.lowercase()) {
             "tarea" -> tareaDAO.guardarTareasCsv()
+            "evento" -> eventoDAO.guardarEventosCsv()
             else -> throw IllegalArgumentException("Error: $tipo")
         }
     }

@@ -1,6 +1,7 @@
 package datos.repository
 
 import dominio.Actividad
+import dominio.Evento
 import dominio.Tarea
 import dominio.Usuario
 
@@ -17,6 +18,8 @@ interface IRepository {
     fun recuperarTareasPorUsuario(idUsuario: Int) : List<Tarea>
     fun recuperarTareas() : List<Tarea>
 
+    // Métodos específicos - Evento
+    fun recuperarEventos() : List<Evento>
 
     // Métodos ficheros - CSV
     fun cargarCsv(tipo: String)

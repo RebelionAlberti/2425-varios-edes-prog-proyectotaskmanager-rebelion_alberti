@@ -24,6 +24,9 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
         return repositorio.recuperarTareas()
     }
 
+    override fun obtenerEventos(): List<Evento> {
+        return repositorio.recuperarEventos()
+    }
 
     override fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean {
         val tarea = repositorio.recuperarActividadPorID(id)
