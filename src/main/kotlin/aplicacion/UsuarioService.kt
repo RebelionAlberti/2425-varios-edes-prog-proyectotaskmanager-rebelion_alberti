@@ -1,28 +1,24 @@
 package aplicacion
 
-import datos.UsuarioRepository
 import dominio.Usuario
+import org.practicatrim2.presentacion.datos.repository.IRepository
 
-class UsuarioService(private val repositorio: UsuarioRepository) : IUsuarioService {
-
-    init {
-        repositorio.cargarUsuarios()
-    }
+class UsuarioService(private val repositorio: IRepository) : IUsuarioService {
 
     override fun crearUsuario(nombre: String): Boolean {
         val usuario = Usuario.crear(nombre)
-        return repositorio.agregar(usuario)
+        return repositorio.agregarUsuario(usuario)
     }
 
-    override fun eliminarUsuario(id: Int): Boolean {
-        return repositorio.eliminar(id)
+    override fun eliminarUsuario(id: Int): Usuario? {
+        return repositorio.eliminarUsuario(id)
     }
 
     override fun obtenerUsuarios(): List<Usuario> {
-        return repositorio.recuperarTodos()
+        return repositorio.recuperarUsuario()
     }
 
     override fun buscarUsuarioPorId(id: Int): Usuario? {
-        return repositorio.recuperarPorId(id)
+        return repositorio.recuperarUsuarioPorId(id)
     }
 }

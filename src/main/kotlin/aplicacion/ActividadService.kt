@@ -1,6 +1,6 @@
 package aplicacion
 
-import datos.IActividadRepository
+import datos.repository.IActividadRepository
 import dominio.Actividad
 import dominio.Tarea
 import dominio.Evento
