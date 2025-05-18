@@ -1,10 +1,9 @@
 package aplicacion
 
 import dominio.Actividad
-import dominio.Status
-import dominio.Usuario
-import dominio.Tarea
+import dominio.Evento
 import dominio.RangoFecha
+import dominio.Status
 
 interface IActividadService {
     fun crearTarea(descripcion: String, etiquetas: List<String>)
@@ -13,13 +12,11 @@ interface IActividadService {
 
     fun obtenerActividades(): List<Actividad>
 
+    fun obtenerEventos(): List<Evento>
+
     fun actualizarEstadoTarea(id:Int, nuevoEstado: Status) : Boolean
 
     fun actualizarEstadoSubtareas(idSubtarea: Int, nuevoEstado: Status): Boolean
-
-    fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean
-
-    fun obtenerTareasPorUsuario(idUsuario: Int): List<Tarea>
 
     fun filtrarPorTipo(tipo: String): List<Actividad>
 

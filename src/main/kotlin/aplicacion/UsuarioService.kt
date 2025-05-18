@@ -1,6 +1,6 @@
 package aplicacion
 
-import datos.IUsuarioRepository
+import datos.repository.IUsuarioRepository
 import dominio.Usuario
 
 class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioService {

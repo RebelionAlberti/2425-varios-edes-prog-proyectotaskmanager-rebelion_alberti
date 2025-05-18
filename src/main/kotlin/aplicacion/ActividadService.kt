@@ -1,15 +1,11 @@
 package aplicacion
 
-import datos.IActividadRepository
-import dominio.Actividad
-import dominio.Tarea
-import dominio.Evento
-import dominio.Status
-import dominio.Usuario
-import dominio.RangoFecha
+import dominio.*
+import datos.repository.IRepository
+import datos.repository.Repository
 import java.text.SimpleDateFormat
 
-class ActividadService(private val repositorio: IActividadRepository) : IActividadService {
+class ActividadService(private val repositorio: IRepository) : IActividadService {
     override fun crearTarea(descripcion: String, etiquetas: List<String>) {
         val tarea = Tarea.crearInstancia(descripcion, etiquetas)
         repositorio.agregarActividad(tarea)
@@ -21,11 +17,15 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     }
 
     override fun obtenerActividades(): List<Actividad> {
-        return repositorio.recuperarTodas()
+        return repositorio.recuperarActividades()
+    }
+
+    override fun obtenerEventos(): List<Evento> {
+        return repositorio.recuperarEventos()
     }
 
     override fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean {
-        val tarea = repositorio.recuperarPorId(id)
+        val tarea = repositorio.recuperarActividadPorID(id)
 
         return if (tarea is Tarea) {
             tarea.estado = nuevoEstado
@@ -38,7 +38,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     }
 
     override fun actualizarEstadoSubtareas(idSubtarea: Int, nuevoEstado: Status): Boolean {
-        val tarea = repositorio.recuperarPorId(idSubtarea)
+        val tarea = repositorio.recuperarActividadPorID(idSubtarea)
 
         if (tarea is Tarea) {
             if (nuevoEstado == Status.CERRADA && !tarea.puedeFinalizar()) {
@@ -55,26 +55,8 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         return false
     }
 
-
-    override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
-        val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
-
-        if (exito) {
-            val tarea = repositorio.recuperarPorId(idTarea)
-            if (tarea is Tarea) {
-                val nombreUsuario = usuario?.nombre ?: "Sin asignar"
-                tarea.agregarRegistro("Tarea asignada a: $nombreUsuario")
-            }
-        }
-        return exito
-    }
-
-    override fun obtenerTareasPorUsuario(idUsuario: Int): List<Tarea> {
-        return repositorio.recuperarTareasPorUsuario(idUsuario)
-    }
-
     override fun filtrarPorTipo(tipo: String): List<Actividad> {
-        return repositorio.recuperarTodas().filter {
+        return repositorio.recuperarActividades().filter {
             when (tipo) {
                 "TAREA" -> it is Tarea
                 "EVENTO" -> it is Evento
@@ -84,39 +66,38 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     }
 
     override fun filtrarPorEstado(estado: Status): List<Actividad> {
-        return repositorio.recuperarTodas().filter {
+        return repositorio.recuperarActividades().filter {
             when (estado) {
                 Status.ABIERTA -> it is Tarea && it.estado == Status.ABIERTA
                 Status.EN_PROGRESO -> it is Tarea && it.estado == Status.EN_PROGRESO
                 Status.CERRADA -> it is Tarea && it.estado == Status.CERRADA
-                else -> false
             }
         }
     }
 
     override fun filtrarPorFecha(rango: RangoFecha): List<Actividad> {
-        return repositorio.recuperarTodas().filter {
+        return repositorio.recuperarActividades().filter {
             val fechaCreacion = SimpleDateFormat("dd/MM/yyyy").parse(it.fechaCreacion)
             rango.estaDentroDelRango(fechaCreacion)
         }
     }
 
     override fun filtrarPorEtiquetas(etiquetas: List<String>): List<Actividad> {
-        return repositorio.recuperarTodas().filter { actividad ->
+        return repositorio.recuperarActividades().filter { actividad ->
             etiquetas.any { etiqueta -> actividad.etiquetas.contains(etiqueta) }
         }
     }
 
     override fun eliminarActividadPorId(id: Int): Actividad? {
-        return repositorio.borrarPorId(id)
+        return repositorio.eliminarActividad(id)
     }
 
     override fun agregarSubtarea(idTareaPrincipal: Int, descripcionSubtarea: String): Boolean {
-        val tareaPrincipal = repositorio.recuperarPorId(idTareaPrincipal)
+        val tareaPrincipal = repositorio.recuperarActividadPorID(idTareaPrincipal)
 
         if (tareaPrincipal is Tarea) {
-            val esSubtarea = repositorio.recuperarTodas().any {
-                it is Tarea && (it as Tarea).subtareas.contains(tareaPrincipal)
+            val esSubtarea = repositorio.recuperarActividades().any {
+                it is Tarea && it.subtareas.contains(tareaPrincipal)
             }
 
             if (esSubtarea) {
@@ -128,11 +109,16 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
             val fueGuardada = repositorio.agregarActividad(subtarea)
 
             if (fueGuardada && tareaPrincipal.agregarSubtarea(subtarea)) {
-                return repositorio.actualizarActividad(tareaPrincipal)
+                val exito = repositorio.actualizarActividad(tareaPrincipal)
+
+                if (repositorio is Repository) {
+                    repositorio.guardarCsv("tarea")
+                }
+
+                return exito
             }
         }
 
         return false
     }
-
 }
