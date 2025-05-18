@@ -1,4 +1,0 @@
-id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre
-2,dfjdg,Abierta,,,18/05/2025,false,
-0,tarea1,Abierta,,hola;adios,18/05/2025,false,
-2,dfjdg,Abierta,,,18/05/2025,true,0
