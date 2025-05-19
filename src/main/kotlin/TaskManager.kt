@@ -3,9 +3,9 @@ package org.practicatrim2.presentacion
 import aplicacion.ActividadService
 import aplicacion.UsuarioService
 import datos.dao.EventoDAO
-import datos.repository.Repository
 import datos.dao.TareaDAO
 import datos.dao.UsuarioDAO
+import datos.repository.Repository
 import presentacion.UI
 
 fun main() {

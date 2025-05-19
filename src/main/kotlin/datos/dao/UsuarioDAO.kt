@@ -3,7 +3,7 @@ package datos.dao
 import dominio.Usuario
 import java.io.File
 
-class UsuarioDAO: IGenericoDAO<Usuario> {
+class UsuarioDAO : IGenericoDAO<Usuario> {
     private val carpeta = File("CsvFiles")
     private val archivo = File(carpeta, "usuarios.csv")
     private val usuario = mutableListOf<Usuario>()
@@ -19,8 +19,9 @@ class UsuarioDAO: IGenericoDAO<Usuario> {
         usuario.clear()
         var maxId = 0
         archivo.forEachLine { linea ->
-            if (linea.startsWith("id"))
+            if (linea.startsWith("id")) {
                 return@forEachLine
+            }
             val partes = linea.split(",")
             if (partes.size >= 2) {
                 val id = partes[0].toIntOrNull()
@@ -65,8 +66,7 @@ class UsuarioDAO: IGenericoDAO<Usuario> {
             usuario.add(t)
             guardarUsuariosCsv()
             true
-        }
-        else {
+        } else {
             false
         }
     }
@@ -77,8 +77,7 @@ class UsuarioDAO: IGenericoDAO<Usuario> {
             usuario.remove(usuarios)
             guardarUsuariosCsv()
             usuarios
-        }
-        else {
+        } else {
             null
         }
     }

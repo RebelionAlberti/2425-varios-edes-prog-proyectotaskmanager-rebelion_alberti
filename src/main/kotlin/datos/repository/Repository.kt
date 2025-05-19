@@ -1,12 +1,12 @@
 package datos.repository
 
+import datos.dao.EventoDAO
+import datos.dao.TareaDAO
+import datos.dao.UsuarioDAO
 import dominio.Actividad
 import dominio.Evento
 import dominio.Tarea
 import dominio.Usuario
-import datos.dao.EventoDAO
-import datos.dao.TareaDAO
-import datos.dao.UsuarioDAO
 
 class Repository(
     private val tareaDAO: TareaDAO,
@@ -64,7 +64,6 @@ class Repository(
         return null
     }
 
-
     // Métodos específicos - Tarea
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         return tareaDAO.asingarUsuarioATarea(idTarea, usuario)
@@ -79,7 +78,7 @@ class Repository(
     }
 
     // Métodos específicos - Evento
-    override fun recuperarEventos() : List<Evento> {
+    override fun recuperarEventos(): List<Evento> {
         return eventoDAO.read()
     }
 

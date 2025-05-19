@@ -7,19 +7,19 @@ import dominio.Usuario
 
 interface IRepository {
     // Métodos Actividades
-    fun agregarActividad(actividad: Actividad) : Boolean
-    fun recuperarActividadPorID(id: Int) : Actividad?
-    fun recuperarActividades() : List<Actividad>
-    fun actualizarActividad(actividad: Actividad) : Boolean
-    fun eliminarActividad(id: Int) : Actividad?
+    fun agregarActividad(actividad: Actividad): Boolean
+    fun recuperarActividadPorID(id: Int): Actividad?
+    fun recuperarActividades(): List<Actividad>
+    fun actualizarActividad(actividad: Actividad): Boolean
+    fun eliminarActividad(id: Int): Actividad?
 
     // Métodos específicos - Tarea
-    fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?) : Boolean
-    fun recuperarTareasPorUsuario(idUsuario: Int) : List<Tarea>
-    fun recuperarTareas() : List<Tarea>
+    fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean
+    fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea>
+    fun recuperarTareas(): List<Tarea>
 
     // Métodos específicos - Evento
-    fun recuperarEventos() : List<Evento>
+    fun recuperarEventos(): List<Evento>
 
     // Métodos Usuarios
     fun agregarUsuario(usuario: Usuario): Boolean

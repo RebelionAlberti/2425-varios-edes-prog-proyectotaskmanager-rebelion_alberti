@@ -1,7 +1,7 @@
 package datos.dao
 
-import dominio.Tarea
 import dominio.Status
+import dominio.Tarea
 import dominio.Usuario
 import java.io.File
 
@@ -44,8 +44,11 @@ class TareaDAO : IGenericoDAO<Tarea> {
                         else -> Status.ABIERTA
                     }
 
-                    val etiquetas = if (etiquetasStr.isBlank()) emptyList()
-                    else etiquetasStr.split(";").map { it.replace(";", ",") }
+                    val etiquetas = if (etiquetasStr.isBlank()) {
+                        emptyList()
+                    } else {
+                        etiquetasStr.split(";").map { it.replace(";", ",") }
+                    }
 
                     val asignado = if (asignadoStr.isBlank()) null else Usuario.crear(nombre = asignadoStr)
 
@@ -124,7 +127,7 @@ class TareaDAO : IGenericoDAO<Tarea> {
         return tareas.find { it.id == id }
     }
 
-    override fun update(t: Tarea) : Boolean {
+    override fun update(t: Tarea): Boolean {
         val actual = tareas.find { it.id == t.id }
         return if (actual != null) {
             tareas.remove(actual)
@@ -160,7 +163,8 @@ class TareaDAO : IGenericoDAO<Tarea> {
         return false
     }
 
-    fun recuperarTareasUsuario(idUsuario: Int) : List<Tarea> {
+    fun recuperarTareasUsuario(idUsuario: Int): List<Tarea> {
         return tareas
-            .filter { it.asignadoA?.id == idUsuario }    }
+            .filter { it.asignadoA?.id == idUsuario }
+    }
 }

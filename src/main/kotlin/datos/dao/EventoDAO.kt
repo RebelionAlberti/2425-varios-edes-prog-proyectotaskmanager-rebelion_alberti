@@ -34,8 +34,11 @@ class EventoDAO : IGenericoDAO<Evento> {
                 val etiquetasStr = partes[4]
 
                 if (id != null) {
-                    val etiquetas = if (etiquetasStr.isBlank()) emptyList()
-                    else etiquetasStr.split(";").map { it.replace(";", ",") }
+                    val etiquetas = if (etiquetasStr.isBlank()) {
+                        emptyList()
+                    } else {
+                        etiquetasStr.split(";").map { it.replace(";", ",") }
+                    }
 
                     val evento = Evento.crearInstancia(fechaRealizacion, ubicacion, descripcion, etiquetas)
                     eventos.add(evento)
@@ -79,7 +82,7 @@ class EventoDAO : IGenericoDAO<Evento> {
         return eventos.find { it.id == id }
     }
 
-    override fun update(t: Evento) : Boolean {
+    override fun update(t: Evento): Boolean {
         val actual = eventos.find { it.id == t.id }
         return if (actual != null) {
             eventos.remove(actual)

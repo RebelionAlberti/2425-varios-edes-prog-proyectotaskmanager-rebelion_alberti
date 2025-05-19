@@ -18,7 +18,7 @@ interface IActividadService {
 
     fun obtenerEventos(): List<Evento>
 
-    fun actualizarEstadoTarea(id:Int, nuevoEstado: Status) : Boolean
+    fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean
 
     fun actualizarEstadoSubtareas(idSubtarea: Int, nuevoEstado: Status): Boolean
 
@@ -37,5 +37,4 @@ interface IActividadService {
     fun eliminarActividadPorId(id: Int): Actividad?
 
     fun agregarSubtarea(idTareaPrincipal: Int, descripcionSubtarea: String): Boolean
-
 }

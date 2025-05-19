@@ -1,8 +1,13 @@
 package aplicacion
 
-import dominio.*
 import datos.repository.IRepository
 import datos.repository.Repository
+import dominio.Actividad
+import dominio.Evento
+import dominio.RangoFecha
+import dominio.Status
+import dominio.Tarea
+import dominio.Usuario
 import java.text.SimpleDateFormat
 
 class ActividadService(private val repositorio: IRepository) : IActividadService {
@@ -58,7 +63,6 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
         }
         return false
     }
-
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         val exito = repositorio.asignarUsuarioATarea(idTarea, usuario)
@@ -143,5 +147,4 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
 
         return false
     }
-
 }
