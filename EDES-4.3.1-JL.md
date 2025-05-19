@@ -72,6 +72,8 @@ Instala y usa los analizadores de código comentados en clase: **Detekt, Ktlint*
     - Descripción: Importación comodín
     - Solución: Eliminar `import dominio.*` e importar cada cosa individualmente.
 
+## Configuraciones
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9a514be238dab9d8b5740695df8524cb1838e9a4/.editorconfig#L1-L6
 
 ## Commits relevantes
 - Antes: https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/tree/ca8859a57648fb731cea2822557009721332027c
