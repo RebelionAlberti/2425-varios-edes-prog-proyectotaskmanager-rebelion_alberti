@@ -40,7 +40,12 @@ class EventoDAO : IGenericoDAO<Evento> {
                         etiquetasStr.split(";").map { it.replace(";", ",") }
                     }
 
-                    val evento = Evento.crearInstancia(fechaRealizacion, ubicacion, descripcion, etiquetas)
+                    val evento = Evento.crearInstancia(
+                        fechaRealizacion,
+                        ubicacion,
+                        descripcion,
+                        etiquetas
+                    )
                     eventos.add(evento)
                 }
             }

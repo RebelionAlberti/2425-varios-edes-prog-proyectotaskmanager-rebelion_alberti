@@ -16,7 +16,9 @@ class Tarea private constructor(
             if (value == Status.CERRADA) {
                 val haySubtareasAbiertas = subtareas.any { it.estado == Status.ABIERTA }
                 if (haySubtareasAbiertas) {
-                    println("No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas.")
+                    println(
+                        "No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas."
+                    )
                     return
                 }
             }
@@ -62,7 +64,9 @@ class Tarea private constructor(
         val asignado = if (esSubtarea) "" else "Asignado a: ${asignadoA?.nombre ?: "No asignado"}"
         val etiquetasTexto = if (esSubtarea) "" else "Etiquetas: ${etiquetas.joinToString(", ")}"
 
-        val detalles = StringBuilder("ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}")
+        val detalles = StringBuilder(
+            "ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}"
+        )
 
         if (asignado.isNotEmpty()) detalles.append(", $asignado")
         if (etiquetasTexto.isNotEmpty()) detalles.append(", $etiquetasTexto")
@@ -78,6 +82,10 @@ class Tarea private constructor(
 
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"
-        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}, Asignado a: $asignado, Etiquetas: ${etiquetas.joinToString(", ")}]"
+        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, " +
+            "Detalle: $detalle, Estado: ${estado.descripcion}, Asignado a: $asignado, Etiquetas: " +
+            "${etiquetas.joinToString(
+                ", "
+            )}]"
     }
 }

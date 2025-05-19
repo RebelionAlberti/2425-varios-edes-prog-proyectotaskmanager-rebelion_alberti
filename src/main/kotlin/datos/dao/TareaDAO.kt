@@ -18,7 +18,9 @@ class TareaDAO : IGenericoDAO<Tarea> {
 
     fun cargarTareasCsv() {
         if (!archivo.exists()) {
-            archivo.writeText("id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre\n")
+            archivo.writeText(
+                "id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre\n"
+            )
             return
         }
 
@@ -50,7 +52,13 @@ class TareaDAO : IGenericoDAO<Tarea> {
                         etiquetasStr.split(";").map { it.replace(";", ",") }
                     }
 
-                    val asignado = if (asignadoStr.isBlank()) null else Usuario.crear(nombre = asignadoStr)
+                    val asignado = if (asignadoStr.isBlank()) {
+                        null
+                    } else {
+                        Usuario.crear(
+                            nombre = asignadoStr
+                        )
+                    }
 
                     val tarea = Tarea.crearInstancia(descripcion, etiquetas).apply {
                         this.estado = estado
@@ -85,7 +93,9 @@ class TareaDAO : IGenericoDAO<Tarea> {
 
     fun guardarTareasCsv() {
         archivo.printWriter().use { out ->
-            out.println("id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre")
+            out.println(
+                "id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre"
+            )
 
             fun formatearTarea(tarea: Tarea, esSubtarea: Boolean = false, idTareaMadre: Int? = null) {
                 val descripcionFormateada = tarea.descripcion.replace(",", ";")

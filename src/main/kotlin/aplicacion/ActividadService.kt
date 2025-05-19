@@ -16,7 +16,12 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
         repositorio.agregarActividad(tarea)
     }
 
-    override fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String, etiquetas: List<String>) {
+    override fun crearEvento(
+        descripcion: String,
+        fechaRealizacion: String,
+        ubicacion: String,
+        etiquetas: List<String>
+    ) {
         val evento = Evento.crearInstancia(fechaRealizacion, ubicacion, descripcion, etiquetas)
         repositorio.agregarActividad(evento)
     }
