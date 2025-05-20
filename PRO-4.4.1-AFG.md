@@ -18,55 +18,71 @@
 ## Clase Usuario
 
 - Clase usuario
+
 ![Clase usuario](assets/usuario_1.png)
 
 - Método crear
+
 ![Método crear](assets/usuario_2.png)
 
 - Método configurarContador
+
 ![Método configurarContador](assets/usuario_3.png)
 
 - Método toString
+
 ![Método toString](assets/usuario_4.png)
 
 ## Clase UsuarioService
 
 - Clase UsuarioService
+
 ![Clase UsuarioService](assets/usuarioService_1.png)
 
 - Método CrearUsuario
+
 ![Método crearUsuario](assets/usuarioService_2.png)
 
 - Método eliminarUsuario
+
 ![Método eliminarUsuario](assets/usuarioService_5.png)
 
 - Método obtenerUsuario
+
 ![Método obtenerUsuario](assets/usuarioService_3.png)
 
 - Método buscarUsuarioPorId
+
 ![Método buscarUsuarioPorId](assets/usuarioService_4.png)
 
 ## Clase UsuarioRepository
 
 - Clase UsuarioRepository
+
 ![Clase UsuarioRepository](assets/usuarioRepository_1.png)
 
 - Método cargarUsuarios
+
 ![Método CargarUsuario](assets/usuarioRepository_2.png)
 
 - Método guardarUsuario
+
 ![Método guardarUsuario](assets/usuarioRepository_3.png)
 
 - Método agregar
+
 ![Método agregar](assets/usuarioRepository_4.png)
 
 - Método eliminar
+
 ![Método eliminar](assets/usuarioRepository_5.png)
 
 - Método recuperarTodos
+
 ![Método recuperarTodos](assets/usuarioRepository_6.png)
 
 - Método recuperarPorId
+
 ![Método recuperarPorId](assets/usuarioRepository_7.png)
 
 # Instalación de Dokka
@@ -78,11 +94,11 @@
 
 # Generar documentación automática html Dokka
 
-- La documentación será generada en el directorio [*build/doc*](build/doc)
+- La documentación será generada en el directorio [*doc*](doc)
 - Para generar la documentación tendremos que seguir los siguientes pasos:
   - introducir ./gradlew dokkaHtml en la terminal
     ![Generar documentación](assets/generarDocumentacion.png)
-  - Tras esto se creará la documentación html en dentro del directorio build/doc.
+  - Tras esto se creará la documentación html en dentro del directorio /doc.
   - Ahora podremos abrir el index.html generado y veremos toda nuestra documentación KDoc generada en html.
     ![Generar1](assets/generado1.png)
     ![Generar2](assets/generado2.png)
