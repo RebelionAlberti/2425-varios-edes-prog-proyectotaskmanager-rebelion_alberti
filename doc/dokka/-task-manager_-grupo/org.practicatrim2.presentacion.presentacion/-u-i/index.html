@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>UI</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            TaskManager_Grupo
+                    </a>
+            </div>
+            <div class="library-version">
+1.0-SNAPSHOT            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="TaskManager_Grupo::org.practicatrim2.presentacion.presentacion/UI///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">TaskManager_Grupo</a><span class="delimiter">/</span><a href="../index.html">org.practicatrim2.presentacion.presentacion</a><span class="delimiter">/</span><span class="current">UI</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>UI</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">UI</a></div><h1 class="">UI</h1><p class="paragraph">Clase encargada de la interfaz de usuario en consola para interactuar con el sistema TaskManager.</p><p class="paragraph">Proporciona un menú con opciones para ejecutar todas las funciones disponibles.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-375501586%2FConstructors%2F769193423" anchor-label="UI" id="-375501586%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-u-i.html"><span><span>UI</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-375501586%2FConstructors%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1837725665%2FClasslikes%2F769193423" anchor-label="Companion" id="-1837725665%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1837725665%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="900080002%2FFunctions%2F769193423" anchor-label="agregarEtiquetas" id="900080002%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agregar-etiquetas.html"><span>agregar</span><wbr></wbr><span><span>Etiquetas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="900080002%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="agregar-etiquetas.html"><span class="token function">agregarEtiquetas</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Solicita al usuario que ingrese etiquetas para una tarea o evento.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1005108473%2FFunctions%2F769193423" anchor-label="agregarEvento" id="-1005108473%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agregar-evento.html"><span>agregar</span><wbr></wbr><span><span>Evento</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1005108473%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="agregar-evento.html"><span class="token function">agregarEvento</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Solicita datos para crear un evento (descripción, fecha, ubicación y etiquetas) y lo agrega mediante el servicio.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2134819763%2FFunctions%2F769193423" anchor-label="agregarSubtarea" id="2134819763%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agregar-subtarea.html"><span>agregar</span><wbr></wbr><span><span>Subtarea</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2134819763%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="agregar-subtarea.html"><span class="token function">agregarSubtarea</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Permite agregar una subtarea a una tarea principal existente.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="430049771%2FFunctions%2F769193423" anchor-label="agregarTarea" id="430049771%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agregar-tarea.html"><span>agregar</span><wbr></wbr><span><span>Tarea</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="430049771%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="agregar-tarea.html"><span class="token function">agregarTarea</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Solicita al usuario la descripción y etiquetas para crear una nueva tarea, y la agrega mediante el servicio proporcionado.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="255911757%2FFunctions%2F769193423" anchor-label="asignarUsuarioATarea" id="255911757%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="asignar-usuario-a-tarea.html"><span>asignar</span><wbr></wbr><span>Usuario</span><wbr></wbr><span><span>ATarea</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="255911757%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="asignar-usuario-a-tarea.html"><span class="token function">asignarUsuarioATarea</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actividadService<span class="token operator">: </span><a href="../../aplicacion/-i-actividad-service/index.html">IActividadService</a><span class="token punctuation">, </span></span><span class="parameter ">usuarioService<span class="token operator">: </span><a href="../../aplicacion/-i-usuario-service/index.html">IUsuarioService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Asigna o desasigna un usuario a una tarea específica.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-997999235%2FFunctions%2F769193423" anchor-label="cambiarEstadoTarea" id="-997999235%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cambiar-estado-tarea.html"><span>cambiar</span><wbr></wbr><span>Estado</span><wbr></wbr><span><span>Tarea</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-997999235%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="cambiar-estado-tarea.html"><span class="token function">cambiarEstadoTarea</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Permite cambiar el estado de una tarea existente.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1522259734%2FFunctions%2F769193423" anchor-label="crearUsuario" id="-1522259734%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="crear-usuario.html"><span>crear</span><wbr></wbr><span><span>Usuario</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1522259734%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="crear-usuario.html"><span class="token function">crearUsuario</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-i-usuario-service/index.html">IUsuarioService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">##crearUsuario</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1206063567%2FFunctions%2F769193423" anchor-label="eliminarActividad" id="1206063567%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="eliminar-actividad.html"><span>eliminar</span><wbr></wbr><span><span>Actividad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1206063567%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="eliminar-actividad.html"><span class="token function">eliminarActividad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Elimina una actividad existente a partir de su Id.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-353896742%2FFunctions%2F769193423" anchor-label="eliminarUsuario" id="-353896742%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="eliminar-usuario.html"><span>eliminar</span><wbr></wbr><span><span>Usuario</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-353896742%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="eliminar-usuario.html"><span class="token function">eliminarUsuario</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-i-usuario-service/index.html">IUsuarioService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Solicita el nombre de un nuevo usuario y lo elimina a través del servicio correspondiente.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1904121828%2FFunctions%2F769193423" anchor-label="filtrarActividades" id="-1904121828%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="filtrar-actividades.html"><span>filtrar</span><wbr></wbr><span><span>Actividades</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1904121828%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="filtrar-actividades.html"><span class="token function">filtrarActividades</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Permite al usuario filtrar actividades según diferentes criterios.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1582519311%2FFunctions%2F769193423" anchor-label="listarActividades" id="1582519311%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="listar-actividades.html"><span>listar</span><wbr></wbr><span><span>Actividades</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1582519311%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="listar-actividades.html"><span class="token function">listarActividades</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Imprime por consola la lista de actividades principales disponibles en el sistema.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1852520003%2FFunctions%2F769193423" anchor-label="listarUsuarios" id="-1852520003%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="listar-usuarios.html"><span>listar</span><wbr></wbr><span><span>Usuarios</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1852520003%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="listar-usuarios.html"><span class="token function">listarUsuarios</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-i-usuario-service/index.html">IUsuarioService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra en consola la lista de usuarios registrados.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-67777937%2FFunctions%2F769193423" anchor-label="mostrarActividadesFiltradas" id="-67777937%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mostrar-actividades-filtradas.html"><span>mostrar</span><wbr></wbr><span>Actividades</span><wbr></wbr><span><span>Filtradas</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-67777937%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="mostrar-actividades-filtradas.html"><span class="token function">mostrarActividadesFiltradas</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">actividades<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dominio/-actividad/index.html">Actividad</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra una lista de actividades filtradas en la consola.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1386069583%2FFunctions%2F769193423" anchor-label="mostrarMenu" id="1386069583%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mostrar-menu.html"><span>mostrar</span><wbr></wbr><span><span>Menu</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1386069583%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="mostrar-menu.html"><span class="token function">mostrarMenu</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a><span class="token punctuation">, </span></span><span class="parameter ">usuarioService<span class="token operator">: </span><a href="../../aplicacion/-usuario-service/index.html">UsuarioService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra el menú principal y permite al usuario seleccionar diferentes opciones para gestionar tareas, eventos, usuarios y otras funcionalidades.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1391184977%2FFunctions%2F769193423" anchor-label="obtenerFinDeLaSemana" id="1391184977%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obtener-fin-de-la-semana.html"><span>obtener</span><wbr></wbr><span>Fin</span><wbr></wbr><span>De</span><wbr></wbr><span>La</span><wbr></wbr><span><span>Semana</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1391184977%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="obtener-fin-de-la-semana.html"><span class="token function">obtenerFinDeLaSemana</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fecha<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></div><div class="brief "><p class="paragraph">Calcula la fecha correspondiente al final de la semana (domingo) para una fecha dada.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-920681232%2FFunctions%2F769193423" anchor-label="obtenerFinDelMes" id="-920681232%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obtener-fin-del-mes.html"><span>obtener</span><wbr></wbr><span>Fin</span><wbr></wbr><span>Del</span><wbr></wbr><span><span>Mes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-920681232%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="obtener-fin-del-mes.html"><span class="token function">obtenerFinDelMes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fecha<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></div><div class="brief "><p class="paragraph">Calcula la fecha correspondiente al inicio del mes para una fecha dada.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="940585151%2FFunctions%2F769193423" anchor-label="obtenerInicioDeLaSemana" id="940585151%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obtener-inicio-de-la-semana.html"><span>obtener</span><wbr></wbr><span>Inicio</span><wbr></wbr><span>De</span><wbr></wbr><span>La</span><wbr></wbr><span><span>Semana</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="940585151%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="obtener-inicio-de-la-semana.html"><span class="token function">obtenerInicioDeLaSemana</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fecha<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></div><div class="brief "><p class="paragraph">Calcula la fecha correspondiente al inicio de la semana (lunes) para una fecha dada.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1391243170%2FFunctions%2F769193423" anchor-label="obtenerInicioDelMes" id="-1391243170%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obtener-inicio-del-mes.html"><span>obtener</span><wbr></wbr><span>Inicio</span><wbr></wbr><span>Del</span><wbr></wbr><span><span>Mes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1391243170%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="obtener-inicio-del-mes.html"><span class="token function">obtenerInicioDelMes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fecha<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a></div><div class="brief "><p class="paragraph">Calcula la fecha correspondiente al inicio del mes para una fecha dada.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="703990133%2FFunctions%2F769193423" anchor-label="seleccionarRangoDeFecha" id="703990133%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seleccionar-rango-de-fecha.html"><span>seleccionar</span><wbr></wbr><span>Rango</span><wbr></wbr><span>De</span><wbr></wbr><span><span>Fecha</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="703990133%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="seleccionar-rango-de-fecha.html"><span class="token function">seleccionarRangoDeFecha</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dominio/-rango-fecha/index.html">RangoFecha</a></div><div class="brief "><p class="paragraph">Solicita al usuario seleccionar un rango de fechas y devuelve un objeto RangoFecha que representa el intervalo seleccionado.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1783249850%2FFunctions%2F769193423" anchor-label="verDashboard" id="1783249850%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ver-dashboard.html"><span>ver</span><wbr></wbr><span><span>Dashboard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1783249850%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="ver-dashboard.html"><span class="token function">verDashboard</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-actividad-service/index.html">ActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra un resumen general (dashboard) de todas las actividades registradas.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1516653620%2FFunctions%2F769193423" anchor-label="verHistorial" id="1516653620%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ver-historial.html"><span>ver</span><wbr></wbr><span><span>Historial</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1516653620%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="ver-historial.html"><span class="token function">verHistorial</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-i-actividad-service/index.html">IActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra el historial de cambios o eventos asociados a una tarea específica.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1852088058%2FFunctions%2F769193423" anchor-label="verTareasPorUsuario" id="-1852088058%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ver-tareas-por-usuario.html"><span>ver</span><wbr></wbr><span>Tareas</span><wbr></wbr><span>Por</span><wbr></wbr><span><span>Usuario</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1852088058%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="ver-tareas-por-usuario.html"><span class="token function">verTareasPorUsuario</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">servicio<span class="token operator">: </span><a href="../../aplicacion/-i-actividad-service/index.html">IActividadService</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Muestra las tareas asignadas a un usuario específico.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

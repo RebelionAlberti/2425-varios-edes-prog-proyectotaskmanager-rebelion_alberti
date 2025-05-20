@@ -4,8 +4,28 @@ import dominio.Tarea
 import dominio.Status
 import dominio.Actividad
 
+
+/**
+ * # Dashboard
+ *
+ * Clase encargada de generar y mostrar un resumen visual del estado de las tareas.
+ *
+ * Esta clase filtra las actividades para identificar las instancias de `Tarea`, y agrupa las tareas según su estado
+ * (`ABIERTA`, `EN_PROGRESO`, `CERRADA`),mostrando un resumen en consola.
+ */
 class Dashboard {
 
+
+    /**
+     * ## mostrarResumen
+     *
+     * Muestra por consola un resumen de las tareas que forman la lista de actividades.
+     *
+     * Agrupa las tareas según su estado actual y presenta un conteo general,
+     * además de listarlas una a una.
+     *
+     * @param actividades Lista de actividades para filtrar las tareas.
+     */
     fun mostrarResumen(actividades: List<Actividad>) {
         val tareas = actividades.filterIsInstance<Tarea>()
 

@@ -13,8 +13,19 @@ import java.util.Calendar
 import dominio.Tarea
 import org.practicatrim2.presentacion.aplicacion.Dashboard
 
+/**
+ * # UI
+ *
+ * Clase encargada de la interfaz de usuario en consola para interactuar con el sistema TaskManager.
+ *
+ * Proporciona un menú con opciones para ejecutar todas las funciones disponibles.
+ */
 class UI {
     companion object {
+
+        /**
+         * Constantes que representan las opciones del menú para facilitar la selección de acciones.
+         */
         private const val CREAR_TAREA = "1"
         private const val CREAR_EVENTO = "2"
         private const val CREAR_SUBTAREA = "3"
@@ -32,6 +43,16 @@ class UI {
         private const val SALIR = "0"
     }
 
+
+    /**
+     * ## mostrarMenu
+     *
+     * Muestra el menú principal y permite al usuario seleccionar diferentes opciones para
+     * gestionar tareas, eventos, usuarios y otras funcionalidades.
+     *
+     * @param servicio Servicio que administra las actividades (tareas y eventos).
+     * @param usuarioService Servicio que administra los usuarios.
+     */
     fun mostrarMenu(servicio: ActividadService, usuarioService: UsuarioService) {
         var seguir = true
 
@@ -78,6 +99,18 @@ class UI {
         } while (seguir)
     }
 
+
+    /**
+     * ## verHistorial
+     *
+     * Muestra el historial de cambios o eventos asociados a una tarea específica.
+     *
+     * Solicita al usuario el ID de la tarea, valida la entrada y busca la tarea en el servicio proporcionado.
+     * Si la tarea existe, imprime cada entrada del historial con su fecha y descripción.
+     * Si no se encuentra la tarea o el historial está vacío, muestra mensajes informativos según lo ocurrido.
+     *
+     * @param servicio Servicio que provee acceso a las actividades y tareas.
+     */
     private fun verHistorial(servicio: IActividadService) {
         println("\n=== Ver Historial de Tarea ===")
         print("ID de la tarea: ")
@@ -103,6 +136,15 @@ class UI {
         }
     }
 
+
+    /**
+     * ## agregarTarea
+     *
+     * Solicita al usuario la descripción y etiquetas para crear una nueva tarea, y la agrega
+     * mediante el servicio proporcionado.
+     *
+     * @param servicio Servicio encargado de administrar las actividades.
+     */
     private fun agregarTarea(servicio: ActividadService) {
         println("\n=== Agregar Tarea ===")
         print("Descripción: ")
@@ -112,6 +154,15 @@ class UI {
         println("Tarea agregada correctamente.")
     }
 
+
+    /**
+     * ## agregarEvento
+     *
+     * Solicita datos para crear un evento (descripción, fecha, ubicación y etiquetas) y lo agrega
+     * mediante el servicio.
+     *
+     * @param servicio Servicio encargado de administrar las actividades.
+     */
     private fun agregarEvento(servicio: ActividadService) {
         println("\n=== Agregar Evento ===")
         print("Descripción: ")
@@ -127,6 +178,14 @@ class UI {
         println("Evento agregado correctamente.")
     }
 
+
+    /**
+     * ## agregarSubtarea
+     *
+     * Permite agregar una subtarea a una tarea principal existente.
+     *
+     * @param servicio Servicio encargado de administrar las actividades.
+     */
     private fun agregarSubtarea(servicio: ActividadService) {
         println("\n=== Agregar Subtarea ===")
         print("ID de la tarea principal: ")
@@ -149,6 +208,20 @@ class UI {
         }
     }
 
+
+    /**
+     * ## listarActividades
+     *
+     * Imprime por consola la lista de actividades principales disponibles en el sistema.
+     *
+     * Obtiene todas las actividades desde el servicio, y filtra aquellas que no son subtareas para mostrar solo las
+     * actividades principales.
+     * Ordena estas actividades por su ID y las imprime.
+     * Para las tareas, utiliza un formato específico que incluye sus subtareas.
+     * Si no hay actividades, muestra un mensaje indicando que no existen actividades.
+     *
+     * @param servicio Servicio que proporciona acceso a las actividades.
+     */
     private fun listarActividades(servicio: ActividadService) {
         println("\n=== Lista actividades ===")
         val actividades = servicio.obtenerActividades()
@@ -173,6 +246,19 @@ class UI {
         }
     }
 
+
+    /**
+     * ## cambiarEstadoTarea
+     *
+     * Permite cambiar el estado de una tarea existente.
+     *
+     * Solicita al usuario el ID de la tarea que desea actualizar y el nuevo estado deseado.
+     * Los estados disponibles son: ABIERTA, EN PROGRESO y FINALIZADA.
+     * Luego, intenta actualizar el estado de la tarea mediante el servicio proporcionado.
+     * Imprime un mensaje indicando si la actualización se hizo correctamente o si no se encontró dicha tarea.
+     *
+     * @param servicio Servicio utilizado para actualizar el estado de la tarea.
+     */
     private fun cambiarEstadoTarea(servicio: ActividadService) {
         println("\n=== Cambiar Estado de Tarea ===")
         print("Ingrese el ID de la tarea que desea actualizar: ")
@@ -203,6 +289,14 @@ class UI {
         }
     }
 
+
+    /**
+     * ##crearUsuario
+     *
+     * Solicita el nombre de un nuevo usuario y lo crea a través del servicio correspondiente.
+     *
+     * @param servicio Servicio encargado de administrar los usuarios.
+     */
     private fun crearUsuario(servicio: IUsuarioService) {
         println("\n=== Crear Usuario ===")
         print("Nombre del usuario: ")
@@ -214,6 +308,14 @@ class UI {
         }
     }
 
+
+    /**
+     * ## eliminarUsuario
+     *
+     * Solicita el nombre de un nuevo usuario y lo elimina a través del servicio correspondiente.
+     *
+     * @param servicio Servicio encargado de administrar los usuarios.
+     */
     private fun eliminarUsuario(servicio: IUsuarioService) {
         println("\n=== Eliminar Usuario ===")
         print("ID del usuario a eliminar: ")
@@ -230,6 +332,18 @@ class UI {
         }
     }
 
+
+    /**
+     * ## listarUsuarios
+     *
+     * Muestra en consola la lista de usuarios registrados.
+     *
+     * Obtiene la lista de usuarios desde el servicio proporcionado.
+     * Si no hay usuarios registrados, informa al usuario con un mensaje por consola.
+     * De lo contrario, imprime cada usuario por consola.
+     *
+     * @param servicio Servicio para obtener la lista de usuarios.
+     */
     private fun listarUsuarios(servicio: IUsuarioService) {
         println("\n=== Lista de Usuarios ===")
         val usuarios = servicio.obtenerUsuarios()
@@ -240,6 +354,21 @@ class UI {
         }
     }
 
+
+    /**
+     * ## asignarUsuarioATarea
+     *
+     * Asigna o desasigna un usuario a una tarea específica.
+     *
+     * Solicita al usuario Id de la tarea e Id del usuario a asignar.
+     * Si se ingresa `0` como Id de usuario, se desasigna cualquier usuario asignado a la tarea.
+     * Comprueba que los Ids ingresados sean válidos y que el usuario exista (si no es `0`).
+     * Luego, realiza la asignación o desasignación a través del servicio de actividades.
+     * Muestra mensajes informativos según el resultado de la operación.
+     *
+     * @param actividadService Servicio para gestionar las actividades y tareas.
+     * @param usuarioService Servicio para gestionar los usuarios.
+     */
     private fun asignarUsuarioATarea(
         actividadService: IActividadService,
         usuarioService: IUsuarioService
@@ -274,6 +403,17 @@ class UI {
         }
     }
 
+
+    /**
+     * ## agregarEtiquetas
+     *
+     * Solicita al usuario que ingrese etiquetas para una tarea o evento.
+     *
+     * Las etiquetas deben ser ingresadas en una única línea, separadas por punto y coma (`;`).
+     * La función divide la cadena ingresada en una lista de etiquetas individuales.
+     *
+     * @return Lista de etiquetas ingresadas por el usuario.
+     */
     private fun agregarEtiquetas(): List<String>{
 
         println("Ingrese las etiquetas para la tarea o evento (separadas por ; ):   ")
@@ -282,6 +422,19 @@ class UI {
 
     }
 
+
+    /**
+     * ## verTareasPorUsuario
+     *
+     * Muestra las tareas asignadas a un usuario específico.
+     *
+     * Solicita al usuario ingresar Id del usuario para buscar.
+     * Si el Id es inválido, muestra un mensaje de error.
+     * Si el usuario no tiene tareas asignadas, informa que no hay tareas.
+     * De lo contrario, imprime la lista de tareas asignadas a ese usuario.
+     *
+     * @param servicio Servicio que provee acceso a las actividades y tareas.
+     */
     private fun verTareasPorUsuario(servicio: IActividadService) {
         println("\n=== Ver Tareas por Usuario ===")
         print("ID del usuario: ")
@@ -299,6 +452,23 @@ class UI {
         }
     }
 
+
+    /**
+     * ## filtrarActividades
+     *
+     * Permite al usuario filtrar actividades según diferentes criterios.
+     *
+     * Muestra un menú para seleccionar el tipo de filtro:
+     * 1. Filtrar por tipo de actividad (Tarea o Evento).
+     * 2. Filtrar por estado de la actividad (ABIERTA, EN PROGRESO, FINALIZADA).
+     * 3. Filtrar por rango de fecha (Hoy, Esta Semana, Este Mes).
+     * 4. Filtrar por etiquetas (separadas por punto y coma).
+     *
+     * Según la opción elegida, solicita detalles para realizar el filtrado.
+     * Luego, muestra las actividades que cumplen con los criterios seleccionados.
+     *
+     * @param servicio Servicio que provee métodos para obtener y filtrar actividades.
+     */
     private fun filtrarActividades(servicio: ActividadService) {
         println("\n=== Filtrar Actividades ===")
         println("1 | Filtrar por Tipo (Tarea/Evento)")
@@ -363,6 +533,17 @@ class UI {
         }
     }
 
+
+    /**
+     * ## mostrarActividadesFiltradas
+     *
+     * Muestra una lista de actividades filtradas en la consola.
+     *
+     * Si la lista está vacía, informa que no hay actividades que coincidan con los filtros.
+     * En caso contrario, imprime los detalles y la fecha de creación de cada actividad.
+     *
+     * @param actividades Lista de actividades a mostrar.
+     */
     private fun mostrarActividadesFiltradas(actividades: List<Actividad>) {
         if (actividades.isEmpty()) {
             println("No hay actividades que coincidan con los filtros.")
@@ -374,6 +555,22 @@ class UI {
         }
     }
 
+
+    /**
+     * ## seleccionarRangoDeFecha
+     *
+     * Solicita al usuario seleccionar un rango de fechas y devuelve un objeto RangoFecha
+     * que representa el intervalo seleccionado.
+     *
+     * Las opciones disponibles son:
+     * 1. Hoy
+     * 2. Esta Semana
+     * 3. Este Mes
+     *
+     * Si el usuario ingresa una opción inválida, se solicita la selección nuevamente.
+     *
+     * @return Un objeto [RangoFecha] con las fechas de inicio y fin correspondientes al rango seleccionado.
+     */
     private fun seleccionarRangoDeFecha(): RangoFecha {
         println("Selecciona un rango de fechas:")
         println("1 | Hoy")
@@ -407,6 +604,17 @@ class UI {
         }
     }
 
+
+    /**
+     * ## obtenerInicioDeLaSemana
+     *
+     * Calcula la fecha correspondiente al inicio de la semana (lunes) para una fecha dada.
+     *
+     * La hora, minutos, segundos y milisegundos se establecen en cero para representar el inicio del día.
+     *
+     * @param fecha La fecha de referencia para calcular el inicio de la semana.
+     * @return Un objeto Date que representa el lunes (inicio de la semana) de la semana de la fecha proporcionada.
+     */
     private fun obtenerInicioDeLaSemana(fecha: Date): Date {
         val calendar = Calendar.getInstance()
         calendar.time = fecha
@@ -419,6 +627,16 @@ class UI {
     }
 
 
+    /**
+     * ## obtenerFinDeLaSemana
+     *
+     * Calcula la fecha correspondiente al final de la semana (domingo) para una fecha dada.
+     *
+     * La hora se establece a las 23:59:59.999 para representar el final del día.
+     *
+     * @param fecha La fecha de referencia para calcular el final de la semana.
+     * @return Un objeto Date que representa el domingo (fin de la semana) de la semana de la fecha proporcionada.
+     */
     private fun obtenerFinDeLaSemana(fecha: Date): Date {
         val calendar = Calendar.getInstance()
         calendar.time = fecha
@@ -431,6 +649,17 @@ class UI {
     }
 
 
+    /**
+     * ## obtenerInicioDelMes
+     *
+     * Calcula la fecha correspondiente al inicio del mes para una fecha dada.
+     *
+     * La fecha resultante corresponde al primer día del mes con la hora establecida
+     * a las 00:00:00.000 (inicio del día).
+     *
+     * @param fecha La fecha de referencia para calcular el inicio del mes.
+     * @return Un objeto Date que representa el primer día del mes de la fecha proporcionada.
+     */
     private fun obtenerInicioDelMes(fecha: Date): Date {
         val calendar = Calendar.getInstance()
         calendar.time = fecha
@@ -442,6 +671,18 @@ class UI {
         return calendar.time
     }
 
+
+    /**
+     * ## obtenerFinDelMes
+     *
+     * Calcula la fecha correspondiente al inicio del mes para una fecha dada.
+     *
+     * La fecha resultante corresponde al primer día del mes con la hora establecida
+     * a las 00:00:00.000 (inicio del día).
+     *
+     * @param fecha La fecha de referencia para calcular el inicio del mes.
+     * @return Un objeto Date que representa el primer día del mes de la fecha proporcionada.
+     */
     private fun obtenerFinDelMes(fecha: Date): Date {
         val calendar = Calendar.getInstance()
         calendar.time = fecha
@@ -453,6 +694,19 @@ class UI {
         return calendar.time
     }
 
+
+    /**
+     * ## eliminarActividad
+     *
+     * Elimina una actividad existente a partir de su Id.
+     *
+     * Solicita al usuario que introduzca Id de la actividad que desea eliminar.
+     * Comprueba si Id es válido y, en caso afirmativo, intenta eliminar la actividad
+     * utilizando el servicio proporcionado. Muestra un mensaje indicando si la actividad
+     * fue eliminada correctamente o si no se encontró ninguna actividad con Id dado.
+     *
+     * @param servicio Instancia de ActividadService utilizada para eliminar la actividad.
+     */
     private fun eliminarActividad(servicio: ActividadService) {
         println("Introduce el ID de la actividad a eliminar: ")
         val id = readln().toIntOrNull()
@@ -468,6 +722,16 @@ class UI {
         }
     }
 
+
+    /**
+     * ## verDashboard
+     *
+     * Muestra un resumen general (dashboard) de todas las actividades registradas.
+     *
+     * Obtiene la lista de actividades desde el servicio proporcionado y muestra el resumen al objeto `Dashboard`.
+     *
+     * @param servicio Instancia de ActividadService utilizada para obtener las actividades.
+     */
     private fun verDashboard(servicio: ActividadService) {
         println("\n=== Dashboard ===")
         val actividades = servicio.obtenerActividades()

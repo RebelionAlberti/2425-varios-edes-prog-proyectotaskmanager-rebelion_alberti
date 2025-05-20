@@ -1,1 +1,0 @@
-# 2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti
