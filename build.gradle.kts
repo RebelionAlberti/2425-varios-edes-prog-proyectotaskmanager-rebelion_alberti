@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.10"
+    id("org.jetbrains.dokka") version "1.9.10"
 }
 
 group = "org.example"
@@ -23,8 +24,8 @@ dependencies {
     testImplementation("io.kotest:kotest-property:5.8.0")
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
+tasks.dokkaHtml {
+    outputDirectory.set(file("doc"))
 }
 
 tasks.test {
