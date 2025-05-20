@@ -6,8 +6,9 @@ class UsuarioRepository : IUsuarioRepository {
     private val usuarios = mutableListOf<Usuario>()
 
     override fun agregar(usuario: Usuario): Boolean {
-        if (usuarios.any { it.id == usuario.id })
+        if (usuarios.any { it.id == usuario.id }) {
             return false
+        }
 
         usuarios.add(usuario)
         return true

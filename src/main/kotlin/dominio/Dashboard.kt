@@ -1,8 +1,8 @@
 package org.practicatrim2.presentacion.aplicacion
 
-import dominio.Tarea
-import dominio.Status
 import dominio.Actividad
+import dominio.Status
+import dominio.Tarea
 
 class Dashboard {
 
@@ -20,15 +20,14 @@ class Dashboard {
         println("===================================")
 
         println("\n====== TAREAS ABIERTAS ======")
-        abiertas.forEach { println("- ${it}") }
+        abiertas.forEach { println("- $it") }
 
         println("\n====== TAREAS EN PROGRESO ======")
-        en_progreso.forEach { println("- ${it}") }
+        en_progreso.forEach { println("- $it") }
 
         println("\n====== TAREAS CERRADAS ======")
-        cerradas.forEach { println("- ${it}") }
+        cerradas.forEach { println("- $it") }
 
         println("===================================")
     }
 }
-

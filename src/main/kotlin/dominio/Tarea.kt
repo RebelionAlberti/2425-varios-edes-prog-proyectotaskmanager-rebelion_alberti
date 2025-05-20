@@ -11,8 +11,9 @@ class Tarea private constructor(
     estadoInicial: Status = Status.ABIERTA,
     var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
-    override val etiquetas: List<String> = listOf())
-    : Actividad(descripcion){
+    override val etiquetas: List<String> = listOf()
+) :
+    Actividad(descripcion) {
     var asignadoA: Usuario? = null
     val subtareas: MutableList<Tarea> = mutableListOf()
     private val historial: MutableList<RegistroHistorial> = mutableListOf()
@@ -44,11 +45,11 @@ class Tarea private constructor(
     }
 
     fun cerrarPorSubtareasFinalizadas() {
-       if(subTareas.all { it.estado == Status.CERRADA }){
-           this.estado = Status.CERRADA
-           agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
-       }
-   }
+        if (subTareas.all { it.estado == Status.CERRADA }) {
+            this.estado = Status.CERRADA
+            agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
+        }
+    }
 
     fun puedeFinalizar(): Boolean {
         return subTareas.all { it.estado == Status.CERRADA }
@@ -80,8 +81,6 @@ class Tarea private constructor(
 
         return "$tipo=[$detalles]$subtareasTexto"
     }
-
-
 
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"

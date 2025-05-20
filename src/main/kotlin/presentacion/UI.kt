@@ -1,17 +1,17 @@
 package org.practicatrim2.presentacion.presentacion
 
 import aplicacion.ActividadService
-import dominio.Status
 import aplicacion.IActividadService
 import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
-import dominio.RangoFecha
 import dominio.Actividad
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Calendar
+import dominio.RangoFecha
+import dominio.Status
 import dominio.Tarea
 import org.practicatrim2.presentacion.aplicacion.Dashboard
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 class UI {
     companion object {
@@ -274,12 +274,10 @@ class UI {
         }
     }
 
-    private fun agregarEtiquetas(): List<String>{
-
+    private fun agregarEtiquetas(): List<String> {
         println("Ingrese las etiquetas para la tarea o evento (separadas por ; ):   ")
         val etiquetas = readln()
         return etiquetas.split(";")
-
     }
 
     private fun verTareasPorUsuario(servicio: IActividadService) {
@@ -314,7 +312,7 @@ class UI {
                 print("Selecciona una opción: ")
                 val opcionTipo = readln().toIntOrNull()
 
-                val tipo = when(opcionTipo) {
+                val tipo = when (opcionTipo) {
                     1 -> "TAREA"
                     2 -> "EVENTO"
                     else -> {
@@ -418,7 +416,6 @@ class UI {
         return calendar.time
     }
 
-
     private fun obtenerFinDeLaSemana(fecha: Date): Date {
         val calendar = Calendar.getInstance()
         calendar.time = fecha
@@ -429,7 +426,6 @@ class UI {
         calendar.set(Calendar.MILLISECOND, 999)
         return calendar.time
     }
-
 
     private fun obtenerInicioDelMes(fecha: Date): Date {
         val calendar = Calendar.getInstance()
