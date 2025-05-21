@@ -77,6 +77,19 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Después
 
+- Github después del commit con los cambios no registra el salto de línea final asi que te lo dejo por aquí como quedaría
+
+```kotlin
+override fun toString(): String {
+        val asignado = asignadoA?.nombre ?: "No asignado"
+        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, " +
+            "Detalle: $detalle, Estado: ${estado.descripcion}, " +
+            "Asignado a: $asignado, Etiquetas: ${etiquetas.joinToString(", ")}]"
+    }
+}
+
+```
+
 ## 2- No tener salto de línea a los parámetros cuando son muchos
 
 - En este caso en ActividadService en el método crearEvento podemos ver que tenía muchos parámetros y es recomendable cuando hay muchos hacer saltos de líneas entre ellos para mejorar su legibilidad.
@@ -88,7 +101,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Después
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/c9ab5ed6b20087c0a67e5d233d5e69bd9e70f69a/src/main/kotlin/aplicacion/ActividadService.kt#L19-L24
 
 ## 3- No tener ordenado los imports por paquetes y alfabéticamente
 
@@ -101,6 +114,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Después
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/c9ab5ed6b20087c0a67e5d233d5e69bd9e70f69a/src/main/kotlin/aplicacion/ActividadService.kt#L3-L11
 
 ## 4- No usar llaves en expresiones if-else en una sola linea
 
@@ -113,6 +127,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Después
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/c9ab5ed6b20087c0a67e5d233d5e69bd9e70f69a/src/main/kotlin/datos/ActividadRepository.kt#L114-L125
 
 ## 5- En un If seguido de un return no usar llaves
 
@@ -124,3 +139,6 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7437b72bef4d7274964000857e8ace6d461ff5f3/src/main/kotlin/datos/UsuarioRepository.kt#L31-L32
 
 ### Después
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/c9ab5ed6b20087c0a67e5d233d5e69bd9e70f69a/src/main/kotlin/datos/UsuarioRepository.kt#L31-L33
+
