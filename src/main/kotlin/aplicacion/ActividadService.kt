@@ -1,13 +1,13 @@
 package aplicacion
 
-import datos.IActividadRepository
 import datos.ActividadRepository
+import datos.IActividadRepository
 import dominio.Actividad
-import dominio.Tarea
 import dominio.Evento
-import dominio.Status
-import dominio.Usuario
 import dominio.RangoFecha
+import dominio.Status
+import dominio.Tarea
+import dominio.Usuario
 import java.text.SimpleDateFormat
 
 class ActividadService(private val repositorio: IActividadRepository) : IActividadService {
@@ -16,7 +16,12 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         repositorio.agregarActividad(tarea)
     }
 
-    override fun crearEvento(descripcion: String, fechaRealizacion: String, ubicacion: String, etiquetas: List<String>) {
+    override fun crearEvento(
+        descripcion: String,
+        fechaRealizacion: String,
+        ubicacion: String,
+        etiquetas: List<String>
+    ) {
         val evento = Evento.crearInstancia(fechaRealizacion, ubicacion, descripcion, etiquetas)
         repositorio.agregarActividad(evento)
     }
@@ -67,7 +72,9 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
                 tarea.subtareas.forEach { subtarea ->
                     repositorio.asignarUsuarioATarea(subtarea.id, usuario)
-                    subtarea.agregarRegistro("Usuario asignado automáticamente desde tarea madre ID ${tarea.id}")
+                    subtarea.agregarRegistro(
+                        "Usuario asignado automáticamente desde tarea madre ID ${tarea.id}"
+                    )
                     repositorio.actualizarActividad(subtarea)
                 }
 
@@ -76,7 +83,9 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
                         val madreEnRepo = repositorio.recuperarPorId(madre.id)
                         if (madreEnRepo is Tarea) {
                             madreEnRepo.asignadoA = usuario
-                            madreEnRepo.agregarRegistro("Usuario asignado automáticamente desde subtarea ID ${tarea.id}")
+                            madreEnRepo.agregarRegistro(
+                                "Usuario asignado automáticamente desde subtarea ID ${tarea.id}"
+                            )
                             repositorio.actualizarActividad(madreEnRepo)
                         }
                     }
@@ -160,6 +169,4 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
         return false
     }
-
-
 }

@@ -11,8 +11,9 @@ class Tarea private constructor(
     estadoInicial: Status = Status.ABIERTA,
     private var subTareas: MutableList<Tarea> = mutableListOf(),
     var tareaMadre: Tarea? = null,
-    override val etiquetas: List<String> = listOf())
-    : Actividad(descripcion){
+    override val etiquetas: List<String> = listOf()
+) :
+    Actividad(descripcion) {
     var asignadoA: Usuario? = null
     val subtareas: MutableList<Tarea> = mutableListOf()
     private val historial: MutableList<RegistroHistorial> = mutableListOf()
@@ -21,7 +22,9 @@ class Tarea private constructor(
             if (value == Status.CERRADA) {
                 val haySubtareasAbiertas = subtareas.any { it.estado == Status.ABIERTA }
                 if (haySubtareasAbiertas) {
-                    println("No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas.")
+                    println(
+                        "No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas."
+                    )
                     return
                 }
             }
@@ -44,11 +47,11 @@ class Tarea private constructor(
     }
 
     fun cerrarPorSubtareasFinalizadas() {
-       if(subTareas.all { it.estado == Status.CERRADA }){
-           this.estado = Status.CERRADA
-           agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
-       }
-   }
+        if (subTareas.all { it.estado == Status.CERRADA }) {
+            this.estado = Status.CERRADA
+            agregarRegistro("Tarea cerrada automáticamente al completarse todas las subtareas")
+        }
+    }
 
     fun puedeFinalizar(): Boolean {
         return subTareas.all { it.estado == Status.CERRADA }
@@ -67,7 +70,9 @@ class Tarea private constructor(
         val asignado = if (esSubtarea) "" else "Asignado a: ${asignadoA?.nombre ?: "No asignado"}"
         val etiquetasTexto = if (esSubtarea) "" else "Etiquetas: ${etiquetas.joinToString(", ")}"
 
-        val detalles = StringBuilder("ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}")
+        val detalles = StringBuilder(
+            "ID: $id, Descripción: $descripcion, Fecha de creación: $fechaCreacion, Estado: ${estado.descripcion}"
+        )
 
         if (asignado.isNotEmpty()) detalles.append(", $asignado")
         if (etiquetasTexto.isNotEmpty()) detalles.append(", $etiquetasTexto")
@@ -81,10 +86,10 @@ class Tarea private constructor(
         return "$tipo=[$detalles]$subtareasTexto"
     }
 
-
-
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"
-        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}, Asignado a: $asignado, Etiquetas: ${etiquetas.joinToString(", ")}]"
+        return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, " +
+            "Detalle: $detalle, Estado: ${estado.descripcion}, " +
+            "Asignado a: $asignado, Etiquetas: ${etiquetas.joinToString(", ")}]"
     }
 }

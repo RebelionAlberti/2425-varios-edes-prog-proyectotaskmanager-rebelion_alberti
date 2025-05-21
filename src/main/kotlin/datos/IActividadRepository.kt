@@ -1,8 +1,8 @@
 package datos
 
 import dominio.Actividad
-import dominio.Usuario
 import dominio.Tarea
+import dominio.Usuario
 
 interface IActividadRepository {
     fun agregarActividad(actividad: Actividad): Boolean
@@ -11,7 +11,7 @@ interface IActividadRepository {
 
     fun recuperarPorId(id: Int): Actividad?
 
-    fun actualizarActividad(actividad: Actividad) : Boolean
+    fun actualizarActividad(actividad: Actividad): Boolean
 
     fun borrarPorId(id: Int): Actividad?
 

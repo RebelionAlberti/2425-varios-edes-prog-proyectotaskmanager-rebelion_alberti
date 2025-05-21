@@ -28,8 +28,9 @@ class UsuarioRepository : IUsuarioRepository {
         usuarios.clear()
         var maxId = 0
         archivo.forEachLine { linea ->
-            if (linea.startsWith("id"))
+            if (linea.startsWith("id")) {
                 return@forEachLine
+            }
             val partes = linea.split(",")
             if (partes.size >= 2) {
                 val id = partes[0].toIntOrNull()
@@ -66,8 +67,9 @@ class UsuarioRepository : IUsuarioRepository {
      * @return true si el usuario se agregó exitosamente, false si ya existe un usuario con el mismo id creado.
      */
     override fun agregar(usuario: Usuario): Boolean {
-        if (usuarios.any { it.id == usuario.id })
+        if (usuarios.any { it.id == usuario.id }) {
             return false
+        }
         usuarios.add(usuario)
         guardarUsuarios()
         return true

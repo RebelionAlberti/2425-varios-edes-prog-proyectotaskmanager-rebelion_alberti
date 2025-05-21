@@ -13,4 +13,3 @@ data class RangoFecha(val inicio: Date, val fin: Date) {
         return fechaActividad in fechaInicio..fechaFin
     }
 }
-

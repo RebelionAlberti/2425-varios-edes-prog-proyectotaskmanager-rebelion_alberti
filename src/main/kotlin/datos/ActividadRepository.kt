@@ -82,7 +82,9 @@ class ActividadRepository : IActividadRepository {
     private fun cargarActividadesCsv() {
         val archivo = File("tareas.csv")
         if (!archivo.exists()) {
-            archivo.writeText("id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre\n")
+            archivo.writeText(
+                "id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre\n"
+            )
             return
         }
 
@@ -109,10 +111,19 @@ class ActividadRepository : IActividadRepository {
                         else -> Status.ABIERTA
                     }
 
-                    val etiquetas = if (etiquetasStr.isBlank()) emptyList()
-                    else etiquetasStr.split(";").map { it.replace(";", ",") }
+                    val etiquetas = if (etiquetasStr.isBlank()) {
+                        emptyList()
+                    } else {
+                        etiquetasStr.split(";").map { it.replace(";", ",") }
+                    }
 
-                    val asignado = if (asignadoStr.isBlank()) null else Usuario.crear(nombre = asignadoStr)
+                    val asignado = if (asignadoStr.isBlank()) {
+                        null
+                    } else {
+                        Usuario.crear(
+                            nombre = asignadoStr
+                        )
+                    }
 
                     val tarea = Tarea.crearInstancia(descripcion, etiquetas).apply {
                         this.estado = estado
@@ -144,7 +155,6 @@ class ActividadRepository : IActividadRepository {
         }
 
         actividades.addAll(mapaTareas.values.filter { it.tareaMadre == null })
-
     }
 
     fun guardarActividadesCsv(ruta: String = "tareas.csv") {
@@ -180,7 +190,6 @@ class ActividadRepository : IActividadRepository {
             tareasPrincipales.forEach { tarea ->
                 formatearTarea(tarea)
             }
-
         }
     }
 }
