@@ -1,10 +1,10 @@
 ## Identificación de la Actividad
 
-- **ID de la Actividad:** 4.4.1.- Documentación
+- **ID de la Actividad:** 4.3.1. Analizadores de código estático: Linting
 - **Módulo:** EDES
 - **Unidad de Trabajo:** Unidad 4: SCV, refactorización y documentación
-- **Fecha de Creación:** 20-05-2025
-- **Fecha de Entrega:** 20-05-2025
+- **Fecha de Creación:** 21-05-2025
+- **Fecha de Entrega:** 22-05-2025
 - **Alumno(s):**
     - **Nombre y Apellidos:** Adrián Fernández Garrido
     - **Correo electrónico:** afergar613@g.educaand.es
@@ -12,69 +12,30 @@
 
 ## Descripción de la Actividad
 
-Trabajamos en la documentación de 3 clases usando KDoc y generamos documentación automática html.
+La actividad consiste en instalar y usar un analizador de código estático (Detekt o Ktlint) en el proyecto que vienes desarrollando, capturar evidencias gráficas, detectar y clasificar errores, aplicar soluciones y explorar las posibilidades de configuración de la herramienta elegida.
 
 ## Desarrollo de la Actividad
 
 ### Descripción del Desarrollo
 
-- Se Documenta con KDoc las clases Usuario, UsuarioService y UsuarioRepository
-- Se genera documentación automática con Dokka
-- Se genera un informe donde se explica paso a paso como se genera la documentación, se muestra como y que se documento con KDoc y se responden las preguntas.
+- Se instala Ktlint y se usa para detectar al menos 5 errores.
+- Se genera un pequeño informe donde se explica el funcionamiento e instalación.
+- Se muestran los cambios sobre el código.
+- Se explora las opciones de personalización y se hace al menos 1 modificación.
+- Se responden algunas preguntas sobre la actividad y la herramienta.
 
 ### Código Fuente
 
-```
-package dominio
+#### Antes
 
-/**
- * Usuario que cuenta con un, id y un nombre.
- *
- * @property id Identificador del usuario.
- * @property nombre Nombre del usuario.
- */
-class Usuario(val id: Int, val nombre: String) {
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7437b72bef4d7274964000857e8ace6d461ff5f3/src/main/kotlin/datos/ActividadRepository.kt#L112-L115
 
-    companion object {
-        private var contadorId = 1
+#### Después
 
-        /**
-         * Crea un nuevo usuario asignando un id de forma automática.
-         *
-         * @param nombre Nombre del usuario.
-         * @return Instancia de [Usuario] con el id asignado.
-         */
-        fun crear(nombre: String): Usuario {
-            return Usuario(contadorId++, nombre)
-        }
-
-        /**
-         * Configura el número inicial del contador de las id.
-         *
-         * Solo se actualiza el contador si el número de inicio es mayor o igual
-         * al contador actual para evitar id duplicados.
-         *
-         * @param inicio Nuevo número inicial para el contador de id.
-         */
-        fun configurarContador(inicio: Int) {
-            if (inicio >= contadorId) {
-                contadorId = inicio
-            }
-        }
-    }
-
-    /**
-     * Devuelve el usuario en una string.
-     *
-     * @return Cadena que tiene él, id y el nombre del usuario.
-     */
-    override fun toString(): String {
-        return "Usuario=[ID: $id, Nombre: $nombre]"
-    }
-}
-```
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/c9ab5ed6b20087c0a67e5d233d5e69bd9e70f69a/src/main/kotlin/datos/ActividadRepository.kt#L114-L125
 
 ## Conclusiones
 
-- Se aprende a documentar con KDoc de manera correcta.
-- Se aprende a generar documentación automática con Dokka.
+- Se aprende a usar analizadores de código estático para qué sirven y como funcionan.
+- Se aprende de qué manera estas herramientas pueden afectar a nuestro código.
+- Se aprende el funcionamiento en este caso de la herramienta Ktlint y cuáles son sus posibilidades de personalización.
