@@ -2,10 +2,15 @@ package aplicacion
 import datos.*
 import dominio.*
 
-class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioService {
+import org.practicatrim2.presentacion.factory.UsuarioFactory
+
+class UsuarioService(
+    private val repositorio: IUsuarioRepository,
+    private val usuarioFactory: UsuarioFactory
+) : IUsuarioService {
 
     override fun crearUsuario(nombre: String): Boolean {
-        val usuario = Usuario.crear(nombre)
+        val usuario = usuarioFactory.crear(nombre)
         return repositorio.agregar(usuario)
     }
 
@@ -27,4 +32,3 @@ class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioServ
     // método reutilizable
     private fun usuarioExiste(id: Int): Boolean = recuperarUsuario(id) != null
 }
-

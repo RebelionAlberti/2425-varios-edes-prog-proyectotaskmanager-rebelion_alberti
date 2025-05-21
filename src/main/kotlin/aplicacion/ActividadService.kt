@@ -26,7 +26,7 @@ class ActividadService(
 
     // --- Command para cambiar estado ---
     private fun ejecutarCambioEstado(tarea: Tarea, nuevoEstado: Status): Boolean {
-        if (nuevoEstado == Status.CERRADA && tarea.puedeFinalizar()) {
+        if (nuevoEstado == Status.CERRADA && !tarea.puedeFinalizar()) {
             println("No se puede cerrar esta tarea porque tiene subtareas abiertas.")
             return false
         }

@@ -4,14 +4,21 @@ import aplicacion.ActividadService
 import aplicacion.UsuarioService
 import datos.ActividadRepository
 import datos.UsuarioRepository
+import org.practicatrim2.presentacion.factory.UsuarioFactory
 import org.practicatrim2.presentacion.presentacion.UI
+import servicio.ActividadFactory
+import servicio.CambiarEstadoCommandFactory
 
 fun main() {
-    val ui = UI()
-    val repositorio = ActividadRepository()
-    val servicio = ActividadService(repositorio)
-    val usuarioRepositorio = UsuarioRepository()
-    val usuarioService = UsuarioService(usuarioRepositorio)
+    val usuarioRepositorio = UsuarioRepository()               // Repositorio de usuarios
+    val usuarioFactory = UsuarioFactory()                       // Factory para crear usuarios
+    val usuarioService = UsuarioService(usuarioRepositorio, usuarioFactory) // Servicio usuarios
 
-    ui.mostrarMenu(servicio, usuarioService)
+    val actividadRepositorio = ActividadRepository()            // Repositorio de actividades
+    val actividadService = ActividadService(actividadRepositorio) // Servicio actividades
+
+    val ui = UI()
+    ui.mostrarMenu(actividadService, usuarioService)
 }
+
+
