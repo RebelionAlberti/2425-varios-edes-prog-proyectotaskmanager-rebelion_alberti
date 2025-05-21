@@ -81,10 +81,14 @@ class Tarea private constructor(
         return "$tipo=[$detalles]$subtareasTexto"
     }
 
-
-
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"
         return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, Detalle: $detalle, Estado: ${estado.descripcion}, Asignado a: $asignado, Etiquetas: ${etiquetas.joinToString(", ")}]"
     }
+
+    override fun asignarUsuario(usuario: Usuario?): Boolean {
+        this.asignadoA = usuario
+        return true
+    }
+
 }

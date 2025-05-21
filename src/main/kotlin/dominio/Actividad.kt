@@ -24,4 +24,10 @@ abstract class Actividad(val descripcion: String) {
         id = contadorId
         fechaCreacion = formatoFecha.format(fecha)
     }
+
+    open fun asignarUsuario(usuario: Usuario?): Boolean {
+        // Por defecto, una actividad no permite asignación de usuario
+        return false
+    }
+
 }

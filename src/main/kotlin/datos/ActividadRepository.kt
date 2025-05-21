@@ -57,11 +57,7 @@ class ActividadRepository : IActividadRepository {
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
         val actividad = actividades.find { it.id == idTarea }
-        if (actividad is Tarea) {
-            actividad.asignadoA = usuario
-            return true
-        }
-        return false
+        return actividad?.asignarUsuario(usuario) ?: false
     }
 
     override fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea> {
