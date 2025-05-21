@@ -72,7 +72,7 @@ gradle dokkaHTML
 Una vez ejecutado este comando, si todo está bien configurado y bien implementado, se habrá generado la documentación en
 la carpeta build. 
 
-[Enlace a la página con la documentación generada con dokka.](/build/dokka/index.html)
+[Enlace a la página con la documentación generada con dokka.](/doc/dokka/index.html)
 
 ### 3. Abrir la documentación en el navegador
 
