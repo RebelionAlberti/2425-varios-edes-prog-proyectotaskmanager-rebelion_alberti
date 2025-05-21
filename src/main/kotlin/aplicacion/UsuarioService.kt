@@ -1,16 +1,16 @@
 package aplicacion
-
-import datos.IUsuarioRepository
-import dominio.Usuario
+import datos.*
+import dominio.*
 
 class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioService {
+
     override fun crearUsuario(nombre: String): Boolean {
         val usuario = Usuario.crear(nombre)
         return repositorio.agregar(usuario)
     }
 
     override fun eliminarUsuario(id: Int): Boolean {
-        return repositorio.eliminar(id)
+        return if (usuarioExiste(id)) repositorio.eliminar(id) else false
     }
 
     override fun obtenerUsuarios(): List<Usuario> {
@@ -18,6 +18,13 @@ class UsuarioService(private val repositorio: IUsuarioRepository) : IUsuarioServ
     }
 
     override fun buscarUsuarioPorId(id: Int): Usuario? {
-        return repositorio.recuperarPorId(id)
+        return recuperarUsuario(id)
     }
+
+    // método reutilizable
+    private fun recuperarUsuario(id: Int): Usuario? = repositorio.recuperarPorId(id)
+
+    // método reutilizable
+    private fun usuarioExiste(id: Int): Boolean = recuperarUsuario(id) != null
 }
+
