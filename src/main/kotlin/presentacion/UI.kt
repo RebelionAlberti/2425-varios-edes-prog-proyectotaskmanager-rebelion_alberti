@@ -4,6 +4,7 @@ import aplicacion.ActividadService
 import aplicacion.IActividadService
 import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
+import datos.IUsuarioRepository
 import datos.UsuarioRepository
 import dominio.Actividad
 import dominio.Dashboard
@@ -232,9 +233,9 @@ class UI {
         }
     }
 
-    private fun listarUsuarios(repositorio: UsuarioRepository) {
+    private fun listarUsuarios(usuarioRepositorio: IUsuarioRepository) {
         println("\n=== Lista de Usuarios ===")
-        val usuarios = (repositorio as? datos.IUsuarioRepository)?.recuperarTodos() ?: emptyList()
+        val usuarios = usuarioRepositorio.recuperarTodos()
         if (usuarios.isEmpty()) {
             println("No hay usuarios registrados.")
         } else {

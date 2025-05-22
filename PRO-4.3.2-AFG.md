@@ -160,10 +160,15 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 ### Después
 
 - Para solucionar este Code Smell usaremos el patrón de refactorización **Remove Middle Man** que consiste en eliminar los métodos que solo delegan a otro objeto haciendo que los clientes llamen directamente al objeto que realiza el trabajo.
-- Este es el código refactorizado:
 - En este caso se elimina el método obtenerUsuarios en UsuarioService y en la UI se modificará el método listarUsuarios que llamará directamente y se modificará la llamada desde el menú.
 
 
 
 # Prueba Unitaria
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/d2d141524a1a90a3cbc2c127e05b233b14dbfe29/src/test/kotlin/UsuarioServiceTest.kt#L18-L28
+
+# Resultado de loes test
+- Nota: El codeSmell 4 no conseguí hacer el test.
+
+![Test Finales](assets/testFinal.png)
