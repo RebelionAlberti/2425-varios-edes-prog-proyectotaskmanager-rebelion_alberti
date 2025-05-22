@@ -16,34 +16,34 @@
 
 - Dashboard
 
-<img src="assets/mi_documentacion_1.png" width="600" height="400" alt="documentacion" />
+<img src="src/assets/mi_documentacion_1.png" width="600" height="400" alt="documentacion" />
 
 - Evento
 
-<img src="assets/mi_documentacion_2.png" width="600" height="400" alt="documentacion" />
+<img src="src/assets/mi_documentacion_2.png" width="600" height="400" alt="documentacion" />
 
 - RangoFecha
 
-<img src="assets/mi_documentacion_3.png" width="600" height="400" alt="documentacion" />
+<img src="src/assets/mi_documentacion_3.png" width="600" height="400" alt="documentacion" />
 
 ### 2.2 Documentación generada en navegador
 
 - Evento
 
-<img src="assets/Evento_1.png" width="600" height="300" alt="documentacion" />
+<img src="src/assets/Evento_1.png" width="600" height="300" alt="documentacion" />
 
-<img src="assets/Evento_2.png" width="600" height="300" alt="documentacion" />
+<img src="src/assets/Evento_2.png" width="600" height="300" alt="documentacion" />
 
 - RangoFecha
 
-<img src="assets/RangoFecha_1.png" width="600" height="300" alt="documentacion">
+<img src="src/assets/RangoFecha_1.png" width="600" height="300" alt="documentacion">
 
-<img src="assets/RangoFecha_2.png" width="600" height="300" alt="documentacion">
+<img src="src/assets/RangoFecha_2.png" width="600" height="300" alt="documentacion">
 
 ### 2.3 Terminal con comando Dokka sin errores
 
 
-<img src="assets/dokkaHtml.png" width="600" height="300" alt="documentacion" />
+<img src="src/assets/dokkaHtml.png" width="600" height="300" alt="documentacion" />
 
 ---
 
