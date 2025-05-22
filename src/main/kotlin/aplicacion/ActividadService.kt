@@ -85,7 +85,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
                 }
 
                 if (usuario != null) {
-                    (repositorio as? ActividadRepository)?.guardarActividadesCsv()
+                    repositorio.guardarCambios()
                 }
             }
         }

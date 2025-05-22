@@ -1,9 +1,2 @@
 id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre
-11,Tarea para test,Abierta,,,22/05/2025,false,
-12,Tarea ABIERTA,Abierta,,,22/05/2025,false,
-13,Tarea CERRADA,Cerrada,,,22/05/2025,false,
-14,Tarea para test,Abierta,,,22/05/2025,false,
-15,Tarea ABIERTA,Abierta,,,22/05/2025,false,
-16,Tarea CERRADA,Cerrada,,,22/05/2025,false,
-17,Tarea prueba,En progreso,,,22/05/2025,false,
-18,Subtarea prueba,Abierta,,,22/05/2025,true,17
+0,aaa,Abierta,adri,a;a,22/05/2025,false,

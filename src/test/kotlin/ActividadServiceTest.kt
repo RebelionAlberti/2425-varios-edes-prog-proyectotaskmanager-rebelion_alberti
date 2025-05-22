@@ -14,7 +14,7 @@ class ActividadServiceTest {
     private val servicio = ActividadService(repo)
 
     @Test
-    fun filtrarPorEstado_funcionaCorrectamente() {
+    fun filtrarPorEstado() {
         val tarea1 = Tarea.crearInstancia("Tarea ABIERTA", listOf()).apply { estado = Status.ABIERTA }
         val tarea2 = Tarea.crearInstancia("Tarea CERRADA", listOf()).apply { estado = Status.CERRADA }
 
@@ -52,7 +52,7 @@ class ActividadServiceTest {
     }
 
     @Test
-    fun filtrarPorTipo_funcionaCorrectamente() {
+    fun filtrarPorTipo() {
         val tarea = Tarea.crearInstancia("Tarea para test", listOf())
         val evento = Evento.crearInstancia("01/01/2025", "Lugar", "Evento para test", listOf())
 

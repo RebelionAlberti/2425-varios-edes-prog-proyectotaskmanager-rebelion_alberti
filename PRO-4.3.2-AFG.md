@@ -92,15 +92,15 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 - Para solucionar esto aplicaremos el patrón **Extract Method** que consiste en extraer fragmentos de código duplicado a un método privado reutilizable.
 - Esta es la refactorización sobre el código:
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/070d8666510d9254ad897c5e9f78aad6beaea3ad/src/main/kotlin/aplicacion/ActividadService.kt#L34-L56
 
 - Para que funcione hemos tenido que crear un nuevo método reutilizable para buscar una actividad por ID y verifica si es una tarea antes de hacer una acción.
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/070d8666510d9254ad897c5e9f78aad6beaea3ad/src/main/kotlin/aplicacion/ActividadService.kt#L161-L164
 
 # Prueba Unitaria
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/070d8666510d9254ad897c5e9f78aad6beaea3ad/src/test/kotlin/ActividadServiceTest.kt#L34-L52
 
 ## 4 - Couplers: Inappropriate Intimacy
 
@@ -111,7 +111,8 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Antes
 
-- La parte que se refiere dentro del codigo es:
+- El método asignarUsuarioATarea accede directamente a detalles internos del repositorio para llamar a un método específico. Esto crea una dependencia que rompe el principio de encapsulación.
+- La parte que se refiere dentro del código es:
 
 ```kotlin
 if (usuario != null) {
@@ -120,6 +121,21 @@ if (usuario != null) {
 ```
 
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L64-L100
+
+### Después
+
+- Para resolverlo usamos el patrón de refactorización **Hide Delegate** que consiste en abstraer o encapsular el acceso a la funcionalidad concreta detrás de una interfaz o un método propio del repositorio evitando así que se conozcan detalles internos del repositorio.
+- La parte refactorizada del código es:
+
+
+
+- Se implementa una función guardarCambios en IActividadRepository y se implementa también otra función llamada igual en ActividadRepository para guardar los cambios en el CSV.
+
+
+
+# Prueba Unitaria
+
+- Lo intenté y no me funciono correctamente.
 
 ## 5 - Couplers: Middle Man
 

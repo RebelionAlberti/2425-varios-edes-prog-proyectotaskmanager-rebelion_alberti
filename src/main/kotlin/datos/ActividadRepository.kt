@@ -6,7 +6,7 @@ import dominio.Tarea
 import dominio.Usuario
 import java.io.File
 
-class ActividadRepository : IActividadRepository {
+ class ActividadRepository : IActividadRepository {
 
     private val actividades = mutableListOf<Actividad>()
 
@@ -192,4 +192,9 @@ class ActividadRepository : IActividadRepository {
             }
         }
     }
+
+    override fun guardarCambios() {
+        guardarActividadesCsv()
+    }
+
 }

@@ -18,4 +18,6 @@ interface IActividadRepository {
     fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean
 
     fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea>
+
+    fun guardarCambios()
 }
