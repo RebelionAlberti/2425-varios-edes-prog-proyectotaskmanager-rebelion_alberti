@@ -32,34 +32,26 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
     }
 
     override fun actualizarEstadoTarea(id: Int, nuevoEstado: Status): Boolean {
-        val tarea = repositorio.recuperarPorId(id)
-
-        return if (tarea is Tarea) {
+        return conTareaValida(id) { tarea ->
             tarea.estado = nuevoEstado
             tarea.agregarRegistro("Estado cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
             true
-        } else {
-            false
         }
     }
 
     override fun actualizarEstadoSubtareas(idSubtarea: Int, nuevoEstado: Status): Boolean {
-        val tarea = repositorio.recuperarPorId(idSubtarea)
-
-        if (tarea is Tarea) {
+        return conTareaValida(idSubtarea) { tarea ->
             if (nuevoEstado == Status.CERRADA && !tarea.puedeFinalizar()) {
                 println("No se puede cerrar esta tarea porque tiene subtareas abiertas.")
-                return false
+                return@conTareaValida false
             }
             tarea.estado = nuevoEstado
             tarea.agregarRegistro("Estado de subtarea cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
-
             tarea.tareaMadre?.cerrarPorSubtareasFinalizadas()
-            return true
+            true
         }
-        return false
     }
 
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
@@ -164,5 +156,10 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         }
 
         return false
+    }
+
+    private fun conTareaValida(id: Int, accion: (Tarea) -> Boolean): Boolean {
+        val actividad = repositorio.recuperarPorId(id)
+        return if (actividad is Tarea) accion(actividad) else false
     }
 }

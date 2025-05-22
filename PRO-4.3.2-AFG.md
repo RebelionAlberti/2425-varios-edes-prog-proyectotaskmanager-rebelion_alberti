@@ -33,7 +33,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 # Prueba Unitaria
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/test/kotlin/ActividadServiceTest.kt#L34-L51
 
 ## 2 - Object-Orientation Abusers: Switch Statements
 
@@ -54,14 +54,15 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 - Para solucionar este Code Smell con el patrón de refactorización **Replace Conditional with Polymorphism** que consiste en sustituir estructuras condicionales por métodos polimórficos definidos en alguna subclase.
 - Esta es la refactorización realizada sobre el código:
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/main/kotlin/aplicacion/ActividadService.kt#L116-L120
 
 - Para que funcione hemos tenido que crear el método estaEnEstado en la clase Tarea para que de esta forma cada objeto Tarea puede decir si está en el estado dado y de esta forma evitas repetir it.estado == Status.X varias veces.
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/main/kotlin/dominio/Tarea.kt#L89-L91
 
 # Prueba Unitaria
 
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/test/kotlin/ActividadServiceTest.kt#L16-L32
 
 ## 3 - Dispensables: Duplicated Code
 
@@ -72,6 +73,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Antes
 
+- Encontramos código duplicado en los 2 métodos de abajo los cuales recuperan la tarea y validan su tipo antes de ejecutar la lógica esto provoca que el código sea largo y menos mantenible.
 - La parte que se duplica es:
 
 ```kotlin
@@ -84,6 +86,21 @@ if (tarea is Tarea) {
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L33-L44
 
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L46-L62
+
+### Después
+
+- Para solucionar esto aplicaremos el patrón **Extract Method** que consiste en extraer fragmentos de código duplicado a un método privado reutilizable.
+- Esta es la refactorización sobre el código:
+
+
+
+- Para que funcione hemos tenido que crear un nuevo método reutilizable para buscar una actividad por ID y verifica si es una tarea antes de hacer una acción.
+
+
+
+# Prueba Unitaria
+
+
 
 ## 4 - Couplers: Inappropriate Intimacy
 

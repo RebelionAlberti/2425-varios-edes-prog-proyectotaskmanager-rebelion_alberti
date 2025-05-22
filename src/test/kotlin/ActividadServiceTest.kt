@@ -32,6 +32,26 @@ class ActividadServiceTest {
     }
 
     @Test
+    fun actualizarEstadoTareaYSubtarea() {
+        val tarea = Tarea.crearInstancia("Tarea prueba", listOf())
+        val subtarea = Tarea.crearInstancia("Subtarea prueba", listOf())
+
+        subtarea.tareaMadre = tarea
+        tarea.agregarSubtarea(subtarea)
+
+        repo.agregarActividad(tarea)
+        repo.agregarActividad(subtarea)
+
+        val resultadoTarea = servicio.actualizarEstadoTarea(tarea.id, Status.EN_PROGRESO)
+        assertTrue(resultadoTarea)
+        assertEquals(Status.EN_PROGRESO, tarea.estado)
+
+        val resultadoSubtarea = servicio.actualizarEstadoSubtareas(subtarea.id, Status.ABIERTA)
+        assertTrue(resultadoSubtarea)
+        assertEquals(Status.ABIERTA, subtarea.estado)
+    }
+
+    @Test
     fun filtrarPorTipo_funcionaCorrectamente() {
         val tarea = Tarea.crearInstancia("Tarea para test", listOf())
         val evento = Evento.crearInstancia("01/01/2025", "Lugar", "Evento para test", listOf())
