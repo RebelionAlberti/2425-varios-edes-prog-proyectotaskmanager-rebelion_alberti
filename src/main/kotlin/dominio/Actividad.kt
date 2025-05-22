@@ -14,13 +14,8 @@ abstract class Actividad(val descripcion: String) {
     private val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
     private val fecha = Date()
     abstract val etiquetas: List<String>
-    val id: Int
-    val fechaCreacion: String
+    val id: Int = contadorId
+    val fechaCreacion: String = formatoFecha.format(fecha)
     open val detalle: String
         get() = "$id - $descripcion"
-
-    init {
-        id = contadorId
-        fechaCreacion = formatoFecha.format(fecha)
-    }
 }
