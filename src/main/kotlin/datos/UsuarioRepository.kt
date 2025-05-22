@@ -6,8 +6,9 @@ class UsuarioRepository : IUsuarioRepository {
     private val usuarios = mutableListOf<Usuario>()
 
     override fun agregar(usuario: Usuario): Boolean {
-        if (usuarios.any { it.id == usuario.id })
+        if (usuarios.any { it.id == usuario.id }) {
             return false
+        }
 
         usuarios.add(usuario)
         return true
@@ -15,19 +16,14 @@ class UsuarioRepository : IUsuarioRepository {
 
     override fun eliminar(id: Int): Boolean {
         val usuario = usuarios.find { it.id == id }
-        var eliminado = false
-        if (usuario != null) {
+        return if (usuario != null) {
             usuarios.remove(usuario)
-            eliminado = true
+        } else {
+            false
         }
-        return eliminado
     }
 
-    override fun recuperarTodos(): List<Usuario> {
-        return usuarios.toList()
-    }
+    override fun recuperarTodos(): List<Usuario> = usuarios.toList()
 
-    override fun recuperarPorId(id: Int): Usuario? {
-        return usuarios.find { it.id == id }
-    }
+    override fun recuperarPorId(id: Int): Usuario? = usuarios.find { it.id == id }
 }

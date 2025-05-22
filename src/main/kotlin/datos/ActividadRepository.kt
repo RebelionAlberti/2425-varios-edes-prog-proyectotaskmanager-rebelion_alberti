@@ -5,37 +5,27 @@ import dominio.Tarea
 import dominio.Usuario
 
 class ActividadRepository : IActividadRepository {
-
     private val actividades = mutableListOf<Actividad>()
 
     override fun agregarActividad(actividad: Actividad): Boolean {
         var guardado = false
-        if (actividades.find { it.id == actividad.id } == null) {
+        if (buscarPorId(actividad.id) == null) {
             actividades.add(actividad)
             guardado = true
         }
         return guardado
     }
 
-    override fun recuperarTodas(): List<Actividad> {
-        return actividades.toList()
-    }
+    override fun recuperarTodas(): List<Actividad> = actividades.toList()
 
-    override fun recuperarPorId(id: Int): Actividad? {
-        var actividad: Actividad? = null
-        val actividadesId = actividades.filter { it.id == id }
-        if (actividadesId.isNotEmpty()) {
-            actividad = actividadesId[0]
-        }
-        return actividad
-    }
+    override fun recuperarPorId(id: Int): Actividad? = buscarPorId(id)
 
     override fun recuperarTareas(): List<Actividad> {
         TODO("Not yet implemented")
     }
 
     override fun actualizarActividad(actividad: Actividad): Boolean {
-        val actual = actividades.find { it.id == actividad.id }
+        val actual = buscarPorId(actividad.id)
         return if (actual != null) {
             actividades.remove(actual)
             actividades.add(actividad)
@@ -46,7 +36,7 @@ class ActividadRepository : IActividadRepository {
     }
 
     override fun borrarPorId(id: Int): Actividad? {
-        val actividad = actividades.find { it.id == id }
+        val actividad = buscarPorId(id)
         return if (actividad != null) {
             actividades.remove(actividad)
             actividad
@@ -55,8 +45,11 @@ class ActividadRepository : IActividadRepository {
         }
     }
 
-    override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
-        val actividad = actividades.find { it.id == idTarea }
+    override fun asignarUsuarioATarea(
+        idTarea: Int,
+        usuario: Usuario?,
+    ): Boolean {
+        val actividad = buscarPorId(idTarea)
         if (actividad is Tarea) {
             actividad.asignadoA = usuario
             return true
@@ -64,9 +57,10 @@ class ActividadRepository : IActividadRepository {
         return false
     }
 
-    override fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea> {
-        return actividades
+    override fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea> =
+        actividades
             .filterIsInstance<Tarea>()
             .filter { it.asignadoA?.id == idUsuario }
-    }
+
+    private fun buscarPorId(id: Int): Actividad? = actividades.find { it.id == id }
 }
