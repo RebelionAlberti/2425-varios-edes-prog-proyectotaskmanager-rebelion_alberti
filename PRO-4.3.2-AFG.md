@@ -178,3 +178,50 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 - Nota: El codeSmell 4 no conseguí hacer el test.
 
 ![Test Finales](assets/testFinal.png)
+
+# Preguntas
+
+[1]
+
+### **1.a ¿Qué code smell y patrones de refactorización has aplicado?**
+
+- Los Code Smells y patrones usados para solucionarlos son:
+  - Code Smell Bloater: Primitive Obsession --> Patron de refactorización Replace Data Value With Object
+  - Code Smell Object-Orientation Abusers: Switch Statements --> Patron de refactorización Replace Conditional with Polymorphism
+  - Code Smell Dispensables: Duplicated Code --> Patron de refactorización Extract Method
+  - Code Smell Couplers: Inappropriate Intimacy --> Patron de refactorización Hide Delegate
+  - Code Smell Middle Man --> Patron de refactorización Remove Middle Man
+
+### **1.b Teniendo en cuenta aquella funcionalidad que tiene pruebas unitarias, selecciona un patrón de refactorización de los que has aplicado y que están cubiertos por los test unitarios. ¿Por qué mejora o no mejora tu código? Asegúrate de poner enlaces a tu código**
+
+- Voy a mostrar Replace Conditional With Polymorphism:
+
+- Código sin refactorizar
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L116-L124
+
+- Código refactorizado
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/main/kotlin/aplicacion/ActividadService.kt#L116-L120
+
+- Es una mejora porque hace prácticamente lo mismo, pero es más corto y se lee con muchisma más facilidad.
+
+- Aquí está su prueba unitaria
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/test/kotlin/ActividadServiceTest.kt#L17-L32
+
+
+[2]
+
+### **2.a Describe el proceso que sigues para asegurarte que la refactorización no afecta a código que ya tenías desarrollado.**
+
+- Para hacer una refactorización segura es importante hacer uso de las pruebas unitarias que es lo que nos garantizara que el código siga funcionando igual
+- Para ello es importante hacer el test antes de la refactorización y comprobar con el test después de la refactorización para que se vea que siga funcionando exactamente igual
+
+[3]
+
+### **3.a ¿Qué funcionalidad del IDE has usado para aplicar la refactorización seleccionada? Si es necesario, añade capturas de pantalla para identificar la funcionalidad.**
+
+- Para esta actividad he usado algunas funciones del IDE como Extract Function que viene incorporado dentro de Intellij IDEA podemos acceder a estas opciones a traves de click derecho sobre el código que queremos modificar y podremos acceder a una ventana llamada refactor la cual contiene muchos métodos de refactorización.
+
+![Ventana Refactor](assets/VentanaRefactor.png)
