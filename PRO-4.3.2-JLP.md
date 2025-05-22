@@ -8,6 +8,7 @@
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/0bf353c10e17e71618def32c13502b172f9da7f8/src/main/kotlin/datos/dao/TareaDAO.kt#L19-L81
 
 **Después**:
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/datos/dao/TareaDAO.kt#L19-L65
 
 ## CS2 - Renombrar
 **Descripción:** En este caso, el método `asingarUsuarioATarea()` estaba mal escrito y quizás la descripción por el nombre no era la más correcta. Para eso he utilizado la herramienta de `Rename`, que lo refactoriza y lo cambia en todo el documento
@@ -18,6 +19,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/0bf353c10e17e71618def32c13502b172f9da7f8/src/main/kotlin/datos/dao/TareaDAO.kt#L154-L161
 
 **Después**:
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/datos/dao/TareaDAO.kt#L159-L166
 
 ## CS3 - Mover Método
 
@@ -31,6 +33,9 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/0bf353c10e17e71618def32c13502b172f9da7f8/src/main/kotlin/datos/repository/Repository.kt#L23-L29
 
 **Después**:
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/aplicacion/ActividadService.kt#L128-L138
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/datos/repository/Repository.kt#L23-L39
 
 ## CS4 - Intimidad inapropiada
 
@@ -48,6 +53,9 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/0bf353c10e17e71618def32c13502b172f9da7f8/src/main/kotlin/aplicacion/ActividadService.kt#L90-L98
 
 **Después**:
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/dominio/Tarea.kt#L13
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/aplicacion/ActividadService.kt#L89-L93
 
 ## CS5 - Control de bucle excesivo
 **Descripción:**  
@@ -60,7 +68,7 @@ El patrón utilizado ha sido **Simplify Loop Control** que sirve para eliminar c
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/0bf353c10e17e71618def32c13502b172f9da7f8/src/main/kotlin/presentacion/UI.kt#L53-L77
 
 **Después**:
-
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/83352289cd9f9148a652015e7a5a011ad7daf2d1/src/main/kotlin/presentacion/UI.kt#L53-L74
 
 ## Test Unitarios
 He realizado únicamente 2 test unitarios, aunque he intentado hacer más pero algunos errores inesperados me lo han impedido, y eso junto al tiempo demasiado justo me han llevado a solo poder realizar 2 de ellos.    
