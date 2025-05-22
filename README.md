@@ -1,7 +1,7 @@
 # 2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti
 ## Preguntas - Planning con Scrum
 ### 1.
-- 1.a ¿Cuáles son fases de desarrollo de una aplicación?
+ 1.a ¿Cuáles son fases de desarrollo de una aplicación?
   1. Planificación
   2. Análisis del problema
   3. Diseño de una solución
@@ -9,6 +9,7 @@
   5. Pruebas
   6. Despliegue
   7. Mantenimiento
+     
 1.b Después de realizar la práctica, ¿Qué fases puedes identificar tras la realización de varios sprint haciendo uso del marco scrum?
   1. Planificación ✅
   2. Análisis del problema ✅
