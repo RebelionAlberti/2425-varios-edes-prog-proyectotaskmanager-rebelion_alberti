@@ -69,10 +69,6 @@ class UI {
                 OPCION_0 -> volver = true
                 else -> println("Opción no válida, prueba de nuevo")
             }
-
-            if (!volver) {
-                volver = true
-            }
         }
     }
 
@@ -97,10 +93,6 @@ class UI {
                 OPCION_0 -> volver = true
                 else -> println("Opción no válida, prueba de nuevo")
             }
-
-            if (!volver) {
-                volver = true
-            }
         }
     }
 
@@ -118,10 +110,6 @@ class UI {
                 OPCION_2 -> eliminarUsuario(usuarioService)
                 OPCION_0 -> volver = true
                 else -> println("Opción no válida, prueba de nuevo")
-            }
-
-            if (!volver) {
-                volver = true
             }
         }
     }
@@ -146,10 +134,6 @@ class UI {
                 OPCION_5 -> verHistorial(servicio)
                 OPCION_0 -> volver = true
                 else -> println("Opción no válida, prueba de nuevo")
-            }
-
-            if (!volver) {
-                volver = true
             }
         }
     }

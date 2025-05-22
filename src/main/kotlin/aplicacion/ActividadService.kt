@@ -2,7 +2,6 @@ package aplicacion
 
 import dominio.*
 import datos.repository.IRepository
-import datos.repository.Repository
 import java.text.SimpleDateFormat
 
 class ActividadService(private val repositorio: IRepository) : IActividadService {
@@ -32,7 +31,7 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
         val tarea = repositorio.recuperarActividadPorID(id)
 
         return if (tarea is Tarea) {
-            tarea.estado = nuevoEstado
+            tarea.cambiarEstado(nuevoEstado)
             tarea.agregarRegistro("Estado cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
             true
@@ -49,7 +48,7 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
                 println("No se puede cerrar esta tarea porque tiene subtareas abiertas.")
                 return false
             }
-            tarea.estado = nuevoEstado
+            tarea.cambiarEstado(nuevoEstado)
             tarea.agregarRegistro("Estado de subtarea cambiado a $nuevoEstado")
             repositorio.actualizarActividad(tarea)
 
@@ -89,11 +88,7 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
 
     override fun filtrarPorEstado(estado: Status): List<Actividad> {
         return repositorio.recuperarActividades().filter {
-            when (estado) {
-                Status.ABIERTA -> it is Tarea && it.estado == Status.ABIERTA
-                Status.EN_PROGRESO -> it is Tarea && it.estado == Status.EN_PROGRESO
-                Status.CERRADA -> it is Tarea && it.estado == Status.CERRADA
-            }
+            it is Tarea && it.obtenerEstado() == estado
         }
     }
 
@@ -133,10 +128,11 @@ class ActividadService(private val repositorio: IRepository) : IActividadService
             if (fueGuardada && tareaPrincipal.agregarSubtarea(subtarea)) {
                 val exito = repositorio.actualizarActividad(tareaPrincipal)
 
+                /*
                 if (repositorio is Repository) {
                     repositorio.guardarCsv("tarea")
                 }
-
+                */
                 return exito
             }
         }

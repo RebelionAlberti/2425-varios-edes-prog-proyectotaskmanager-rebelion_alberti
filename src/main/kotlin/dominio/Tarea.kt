@@ -10,7 +10,7 @@ class Tarea private constructor(
     var asignadoA: Usuario? = null
     val subtareas: MutableList<Tarea> = mutableListOf()
     private val historial: MutableList<RegistroHistorial> = mutableListOf()
-    var estado: Status = estadoInicial
+    private var estado: Status = estadoInicial
         set(value) {
             if (value == Status.CERRADA) {
                 val haySubtareasAbiertas = subtareas.any { it.estado == Status.ABIERTA }
@@ -75,7 +75,20 @@ class Tarea private constructor(
         return "$tipo=[$detalles]$subtareasTexto"
     }
 
+    fun cambiarEstado(nuevoEstado: Status): Boolean {
+        if (nuevoEstado == Status.CERRADA) {
+            val haySubtareasAbiertas = subtareas.any { it.estado == Status.ABIERTA }
+            if (haySubtareasAbiertas) {
+                println("No se puede cerrar la tarea principal hasta que todas las subtareas estén cerradas.")
+                return false
+            }
+        }
+        estado = nuevoEstado
+        agregarRegistro("Estado cambiado a $nuevoEstado")
+        return true
+    }
 
+    fun obtenerEstado(): Status = estado
 
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"

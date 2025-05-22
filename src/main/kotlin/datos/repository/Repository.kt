@@ -21,11 +21,21 @@ class Repository(
 
     // Métodos Actividades
     override fun agregarActividad(actividad: Actividad): Boolean {
-        return when (actividad) {
-            is Tarea -> tareaDAO.create(actividad).let { true }
-            is Evento -> eventoDAO.create(actividad).let { true }
+        val exito = when (actividad) {
+            is Tarea -> {
+                tareaDAO.create(actividad)
+                true
+            }
+            is Evento -> {
+                eventoDAO.create(actividad)
+                true
+            }
             else -> false
         }
+        if (exito && actividad is Tarea) {
+            guardarCsv("tarea")
+        }
+        return exito
     }
 
     override fun recuperarActividadPorID(id: Int): Actividad? {
@@ -37,17 +47,15 @@ class Repository(
     }
 
     override fun actualizarActividad(actividad: Actividad): Boolean {
-        return when (actividad) {
-            is Tarea -> {
-                tareaDAO.update(actividad)
-                true
-            }
-            is Evento -> {
-                eventoDAO.update(actividad)
-                true
-            }
+        val exito = when (actividad) {
+            is Tarea -> tareaDAO.update(actividad)
+            is Evento -> eventoDAO.update(actividad)
             else -> false
         }
+        if (exito && actividad is Tarea) {
+            guardarCsv("tarea")
+        }
+        return exito
     }
 
     override fun eliminarActividad(id: Int): Actividad? {
@@ -67,7 +75,7 @@ class Repository(
 
     // Métodos específicos - Tarea
     override fun asignarUsuarioATarea(idTarea: Int, usuario: Usuario?): Boolean {
-        return tareaDAO.asingarUsuarioATarea(idTarea, usuario)
+        return tareaDAO.asignarTareaAUsuarios(idTarea, usuario)
     }
 
     override fun recuperarTareasPorUsuario(idUsuario: Int): List<Tarea> {

@@ -5,9 +5,9 @@ class Dashboard {
     fun mostrarResumen(actividades: List<Actividad>) {
         val tareas = actividades.filterIsInstance<Tarea>()
 
-        val abiertas = tareas.filter { it.estado == Status.ABIERTA }
-        val enProgreso = tareas.filter { it.estado == Status.EN_PROGRESO }
-        val cerradas = tareas.filter { it.estado == Status.CERRADA }
+        val abiertas = tareas.filter { it.obtenerEstado() == Status.ABIERTA }
+        val enProgreso = tareas.filter { it.obtenerEstado() == Status.EN_PROGRESO }
+        val cerradas = tareas.filter { it.obtenerEstado() == Status.CERRADA }
 
         println("===== DASHBOARD DEL PROYECTO =====")
         println("Total de tareas principales: ${tareas.size}")

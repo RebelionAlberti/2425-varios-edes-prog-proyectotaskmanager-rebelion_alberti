@@ -23,52 +23,58 @@ class TareaDAO : IGenericoDAO<Tarea> {
         }
 
         tareas.clear()
+        val lineas = archivo.readLines().drop(1)
 
-        val mapaTareas = mutableMapOf<Int, Tarea>()
+        val mapaTareas = parsearTareas(lineas)
+        asignarSubtareas(lineas, mapaTareas)
 
-        val lineas = archivo.readLines()
-        lineas.drop(1).forEach { linea ->
+        tareas.addAll(mapaTareas.values.filter { it.tareaMadre == null })
+    }
+
+    private fun parsearTareas(lineas: List<String>): MutableMap<Int, Tarea> {
+        val mapa = mutableMapOf<Int, Tarea>()
+        for (linea in lineas) {
             val partes = linea.split(",")
             if (partes.size >= 8) {
-                val id = partes[0].toIntOrNull()
+                val id = partes[0].toIntOrNull() ?: continue
                 val descripcion = partes[1].replace(";", ",")
                 val estadoStr = partes[2]
                 val asignadoStr = partes[3]
                 val etiquetasStr = partes[4]
 
-                if (id != null) {
-                    val estado = when (estadoStr) {
-                        "Abierta" -> Status.ABIERTA
-                        "En progreso" -> Status.EN_PROGRESO
-                        "Cerrada" -> Status.CERRADA
-                        else -> Status.ABIERTA
-                    }
-
-                    val etiquetas = if (etiquetasStr.isBlank()) emptyList()
-                    else etiquetasStr.split(";").map { it.replace(";", ",") }
-
-                    val asignado = if (asignadoStr.isBlank()) null else Usuario.crear(nombre = asignadoStr)
-
-                    val tarea = Tarea.crearInstancia(descripcion, etiquetas).apply {
-                        this.estado = estado
-                        this.asignadoA = asignado
-                    }
-
-                    mapaTareas[id] = tarea
+                val estado = when (estadoStr) {
+                    "Abierta" -> Status.ABIERTA
+                    "En progreso" -> Status.EN_PROGRESO
+                    "Cerrada" -> Status.CERRADA
+                    else -> Status.ABIERTA
                 }
+
+                val etiquetas = if (etiquetasStr.isBlank()) emptyList()
+                else etiquetasStr.split(";").map { it.replace(";", ",") }
+
+                val asignado = if (asignadoStr.isBlank()) null else Usuario.crear(nombre = asignadoStr)
+
+                val tarea = Tarea.crearInstancia(descripcion, etiquetas).apply {
+                    cambiarEstado(estado)
+                    this.asignadoA = asignado
+                }
+                mapa[id] = tarea
             }
         }
+        return mapa
+    }
 
-        lineas.drop(1).forEach { linea ->
+    private fun asignarSubtareas(lineas: List<String>, mapa: MutableMap<Int, Tarea>) {
+        for (linea in lineas) {
             val partes = linea.split(",")
             if (partes.size >= 8) {
-                val id = partes[0].toIntOrNull()
+                val id = partes[0].toIntOrNull() ?: continue
                 val esSubtarea = partes[6].toBoolean()
                 val idTareaMadre = partes[7].takeIf { it.isNotBlank() }?.toInt()
 
-                if (id != null && esSubtarea && idTareaMadre != null) {
-                    val subtarea = mapaTareas[id]
-                    val madre = mapaTareas[idTareaMadre]
+                if (esSubtarea && idTareaMadre != null) {
+                    val subtarea = mapa[id]
+                    val madre = mapa[idTareaMadre]
                     if (subtarea != null && madre != null) {
                         madre.agregarSubtarea(subtarea)
                         subtarea.tareaMadre = madre
@@ -76,9 +82,8 @@ class TareaDAO : IGenericoDAO<Tarea> {
                 }
             }
         }
-
-        tareas.addAll(mapaTareas.values.filter { it.tareaMadre == null })
     }
+
 
     fun guardarTareasCsv() {
         archivo.printWriter().use { out ->
@@ -91,7 +96,7 @@ class TareaDAO : IGenericoDAO<Tarea> {
                 val linea = listOf(
                     tarea.id.toString(),
                     descripcionFormateada,
-                    tarea.estado.descripcion,
+                    tarea.obtenerEstado(),
                     asignado,
                     etiquetas,
                     tarea.fechaCreacion,
@@ -151,7 +156,7 @@ class TareaDAO : IGenericoDAO<Tarea> {
         }
     }
 
-    fun asingarUsuarioATarea(id: Int, usuario: Usuario?): Boolean {
+    fun asignarTareaAUsuarios(id: Int, usuario: Usuario?): Boolean {
         val tarea = tareas.find { it.id == id }
         if (tarea is Tarea) {
             tarea.asignadoA = usuario
