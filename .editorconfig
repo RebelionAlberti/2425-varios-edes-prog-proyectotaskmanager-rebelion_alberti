@@ -1,0 +1,10 @@
+# .editorconfig para Ktlint en Kotlin
+
+root = true
+
+[*.{kt,kts}]
+indent_style = space
+max_line_length = 300
+insert_final_newline = true
+charset = utf-8
+end_of_line = lf
