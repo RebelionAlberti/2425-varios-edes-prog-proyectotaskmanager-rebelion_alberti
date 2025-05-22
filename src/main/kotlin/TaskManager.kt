@@ -13,5 +13,5 @@ fun main() {
     val usuarioService = UsuarioService(usuarioRepo)
 
     val ui = UI()
-    ui.mostrarMenu(actividadService, usuarioService)
+    ui.mostrarMenu(servicio = actividadService, usuarioService = usuarioService, usuarioRepository = usuarioRepo)
 }

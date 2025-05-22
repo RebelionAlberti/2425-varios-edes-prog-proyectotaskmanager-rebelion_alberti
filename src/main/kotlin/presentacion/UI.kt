@@ -4,6 +4,7 @@ import aplicacion.ActividadService
 import aplicacion.IActividadService
 import aplicacion.IUsuarioService
 import aplicacion.UsuarioService
+import datos.UsuarioRepository
 import dominio.Actividad
 import dominio.Dashboard
 import dominio.RangoFecha
@@ -33,7 +34,7 @@ class UI {
         private const val SALIR = "0"
     }
 
-    fun mostrarMenu(servicio: ActividadService, usuarioService: UsuarioService) {
+    fun mostrarMenu(servicio: ActividadService, usuarioService: UsuarioService, usuarioRepository: UsuarioRepository) {
         var seguir = true
 
         do {
@@ -62,7 +63,7 @@ class UI {
                 CREAR_USUARIO -> crearUsuario(usuarioService)
                 ASIGNAR_USUARIO_A_TAREA -> asignarUsuarioATarea(servicio, usuarioService)
                 LISTAR_ACTIVIDADES -> listarActividades(servicio)
-                LISTAR_USUARIOS -> listarUsuarios(usuarioService)
+                LISTAR_USUARIOS -> listarUsuarios(usuarioRepository)
                 VER_TAREAS_POR_USUARIO -> verTareasPorUsuario(servicio)
                 VER_DASHBOARD -> verDashboard(servicio)
                 CAMBIAR_ESTADO_TAREA -> cambiarEstadoTarea(servicio)
@@ -231,9 +232,9 @@ class UI {
         }
     }
 
-    private fun listarUsuarios(servicio: IUsuarioService) {
+    private fun listarUsuarios(repositorio: UsuarioRepository) {
         println("\n=== Lista de Usuarios ===")
-        val usuarios = servicio.obtenerUsuarios()
+        val usuarios = (repositorio as? datos.IUsuarioRepository)?.recuperarTodos() ?: emptyList()
         if (usuarios.isEmpty()) {
             println("No hay usuarios registrados.")
         } else {

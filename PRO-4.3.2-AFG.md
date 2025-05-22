@@ -33,7 +33,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 # Prueba Unitaria
 
-https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/test/kotlin/ActividadServiceTest.kt#L34-L51
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/test/kotlin/ActividadServiceTest.kt#L54-L70
 
 ## 2 - Object-Orientation Abusers: Switch Statements
 
@@ -62,7 +62,7 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 # Prueba Unitaria
 
-https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/7d7f2bc3d9905392901ffaa70172f4960fffa569/src/test/kotlin/ActividadServiceTest.kt#L16-L32
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/test/kotlin/ActividadServiceTest.kt#L17-L32
 
 ## 3 - Dispensables: Duplicated Code
 
@@ -127,11 +127,19 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 - Para resolverlo usamos el patrón de refactorización **Hide Delegate** que consiste en abstraer o encapsular el acceso a la funcionalidad concreta detrás de una interfaz o un método propio del repositorio evitando así que se conozcan detalles internos del repositorio.
 - La parte refactorizada del código es:
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/main/kotlin/aplicacion/ActividadService.kt#L57-L93
 
+- solo se cambia esta línea:
 
-- Se implementa una función guardarCambios en IActividadRepository y se implementa también otra función llamada igual en ActividadRepository para guardar los cambios en el CSV.
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/main/kotlin/aplicacion/ActividadService.kt#L88
 
+- Se implementa una función guardarCambios en IActividadRepository
 
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/main/kotlin/datos/IActividadRepository.kt#L22
+
+- Se implementa también otra función llamada igual en ActividadRepository para guardar los cambios en el CSV.
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/877b05b0000d3e2347b8c8a28a858a5bbf022303/src/main/kotlin/datos/ActividadRepository.kt#L196-L198
 
 # Prueba Unitaria
 
@@ -145,4 +153,17 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Antes
 
+- El método obtenerUsuarios delega la llamada al repositorio sin añadir ninguna lógica adicional esto causa que haya un paso más y complique el código.
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/UsuarioService.kt#L53-L55
+
+### Después
+
+- Para solucionar este Code Smell usaremos el patrón de refactorización **Remove Middle Man** que consiste en eliminar los métodos que solo delegan a otro objeto haciendo que los clientes llamen directamente al objeto que realiza el trabajo.
+- Este es el código refactorizado:
+- En este caso se elimina el método obtenerUsuarios en UsuarioService y en la UI se modificará el método listarUsuarios que llamará directamente y se modificará la llamada desde el menú.
+
+
+
+# Prueba Unitaria
+
