@@ -9,6 +9,7 @@ import dominio.Dashboard
 import dominio.RangoFecha
 import dominio.Status
 import dominio.Tarea
+import org.practicatrim2.presentacion.aplicacion.TipoActividad
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -313,8 +314,8 @@ class UI {
                 val opcionTipo = readln().toIntOrNull()
 
                 val tipo = when (opcionTipo) {
-                    1 -> "TAREA"
-                    2 -> "EVENTO"
+                    1 -> TipoActividad.TAREA
+                    2 -> TipoActividad.EVENTO
                     else -> {
                         println("Opción no válida.")
                         return

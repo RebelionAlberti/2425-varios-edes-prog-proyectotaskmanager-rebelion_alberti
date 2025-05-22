@@ -5,6 +5,7 @@ import dominio.RangoFecha
 import dominio.Status
 import dominio.Tarea
 import dominio.Usuario
+import org.practicatrim2.presentacion.aplicacion.TipoActividad
 
 interface IActividadService {
     fun crearTarea(descripcion: String, etiquetas: List<String>)
@@ -21,7 +22,7 @@ interface IActividadService {
 
     fun obtenerTareasPorUsuario(idUsuario: Int): List<Tarea>
 
-    fun filtrarPorTipo(tipo: String): List<Actividad>
+    fun filtrarPorTipo(tipo: TipoActividad): List<Actividad>
 
     fun filtrarPorEstado(estado: Status): List<Actividad>
 

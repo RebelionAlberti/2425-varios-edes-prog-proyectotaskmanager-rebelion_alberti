@@ -8,6 +8,7 @@ import dominio.RangoFecha
 import dominio.Status
 import dominio.Tarea
 import dominio.Usuario
+import org.practicatrim2.presentacion.aplicacion.TipoActividad
 import java.text.SimpleDateFormat
 
 class ActividadService(private val repositorio: IActividadRepository) : IActividadService {
@@ -103,12 +104,11 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
         return repositorio.recuperarTareasPorUsuario(idUsuario)
     }
 
-    override fun filtrarPorTipo(tipo: String): List<Actividad> {
+    override fun filtrarPorTipo(tipo: TipoActividad): List<Actividad> {
         return repositorio.recuperarTodas().filter {
             when (tipo) {
-                "TAREA" -> it is Tarea
-                "EVENTO" -> it is Evento
-                else -> false
+                TipoActividad.TAREA -> it is Tarea
+                TipoActividad.EVENTO -> it is Evento
             }
         }
     }

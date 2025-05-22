@@ -15,6 +15,7 @@ var mockKVersion = "1.13.9"
 
 dependencies {
     testImplementation("io.mockk:mockk:$mockKVersion")
+    testImplementation ("org.junit.jupiter:junit-jupiter:5.7.0")
 }
 
 dependencies {

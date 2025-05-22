@@ -1,0 +1,5 @@
+id,descripcion,estado,asignado,etiquetas,fechaCreacion,esSubtarea,idTareaMadre
+0,Tarea para test único,Abierta,,,22/05/2025,false,
+1,Tarea para test único,Abierta,,,22/05/2025,false,
+2,Tarea para test,Abierta,,,22/05/2025,false,
+3,Tarea para test,Abierta,,,22/05/2025,false,
