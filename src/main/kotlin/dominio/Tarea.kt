@@ -86,6 +86,10 @@ class Tarea private constructor(
         return "$tipo=[$detalles]$subtareasTexto"
     }
 
+    fun estaEnEstado(estadoBuscado: Status): Boolean {
+        return this.estado == estadoBuscado
+    }
+
     override fun toString(): String {
         val asignado = asignadoA?.nombre ?: "No asignado"
         return "Tarea=[ID: $id, Descripcion: $descripcion, Fecha de creación: $fechaCreacion, " +

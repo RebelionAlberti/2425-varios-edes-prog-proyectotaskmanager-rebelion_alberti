@@ -115,11 +115,7 @@ class ActividadService(private val repositorio: IActividadRepository) : IActivid
 
     override fun filtrarPorEstado(estado: Status): List<Actividad> {
         return repositorio.recuperarTodas().filter {
-            when (estado) {
-                Status.ABIERTA -> it is Tarea && it.estado == Status.ABIERTA
-                Status.EN_PROGRESO -> it is Tarea && it.estado == Status.EN_PROGRESO
-                Status.CERRADA -> it is Tarea && it.estado == Status.CERRADA
-            }
+            it is Tarea && it.estaEnEstado(estado)
         }
     }
 

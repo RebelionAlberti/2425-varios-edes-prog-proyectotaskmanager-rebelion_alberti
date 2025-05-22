@@ -12,12 +12,28 @@
 
 ### Antes
 
+- En el parámetro recibe un String el cual está mal visto porque es un tipo primitivo para representar un tipo importante como es el tipo de Actividad.
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L106-L114
 
-### Despues
+### Después
 
 - Para solucionar este error usaremos el patron de refactorización **Replace Data Value with Object** que consiste en remplazar un parámetro primitivo (en nuestro caso una String) por un objeto en este caso creamos un enum class con las opciones de las actividades posibles el cual usaremos como parámetro en el método.
-- Aquí se puede ver las modificaciones realizadas en el código:
+- Esta es la refactorización realizada sobre el método.
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/b5e80c4746f70d728e53e96ad5aaaea86a9ddaa6/src/main/kotlin/aplicacion/ActividadService.kt#L107-L114
+
+- Para ello hemos tenido que crear una enum class con los tipos de actividades y también un par de modificaciones en la UI y en la Interfaz IActividadService, ya que recibían una String y hemos tenido que realizar la modificación para que reciban el enum class.
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/b5e80c4746f70d728e53e96ad5aaaea86a9ddaa6/src/main/kotlin/aplicacion/TipoActividad.kt#L3-L5
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/b5e80c4746f70d728e53e96ad5aaaea86a9ddaa6/src/main/kotlin/aplicacion/IActividadService.kt#L25
+
+https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/b5e80c4746f70d728e53e96ad5aaaea86a9ddaa6/src/main/kotlin/presentacion/UI.kt#L316-L325
+
+# Prueba Unitaria
+
+
 
 ## 2 - Object-Orientation Abusers: Switch Statements
 
@@ -29,7 +45,23 @@ https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-reb
 
 ### Antes
 
+- Se usa un when que evalúa el estado de cada actividad desde fuera de la clase Tarea rompiendo el principio de encapsulamiento en lugar de delegar esa lógica a la propia clase que maneja los estados de Tarea.
+
 https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/e4494c88ca23f905dabd7bed396934d7434b979a/src/main/kotlin/aplicacion/ActividadService.kt#L116-L124
+
+### Después
+
+- Para solucionar este Code Smell con el patrón de refactorización **Replace Conditional with Polymorphism** que consiste en sustituir estructuras condicionales por métodos polimórficos definidos en alguna subclase.
+- Esta es la refactorización realizada sobre el código:
+
+
+- Para que funcione hemos tenido que crear el método estaEnEstado en la clase Tarea para que de esta forma cada objeto Tarea puede decir si está en el estado dado y de esta forma evitas repetir it.estado == Status.X varias veces.
+
+
+
+# Prueba Unitaria
+
+
 
 ## 3 - Dispensables: Duplicated Code
 
