@@ -12,7 +12,7 @@
 
 - [Sin refactorizar](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9b6f395aa997ad13775c8f2278d077c23f30d385/src/main/kotlin/datos/ActividadRepository.kt#L25-L30)
 
-- [Refactorizado]()
+- [Refactorizado](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1006926f7d1fb7b68cbc8b1eb9808353ed0623a3/src/main/kotlin/datos/ActividadRepository.kt#L21)
 
 ### 2 Uso innecesario de variable temporal en método eliminar
 
@@ -24,7 +24,7 @@
 
 - [Sin refactorizar](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9b6f395aa997ad13775c8f2278d077c23f30d385/src/main/kotlin/datos/UsuarioRepository.kt#L17-L23)
 
-- [Refactorizado]()
+- [Refactorizado](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1006926f7d1fb7b68cbc8b1eb9808353ed0623a3/src/main/kotlin/datos/UsuarioRepository.kt#L17-L24)
 
 ### 3. Uso incorrecto del getter para incrementar contadorId
 
@@ -36,7 +36,7 @@
 - [Sin refactorizar](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9b6f395aa997ad13775c8f2278d077c23f30d385/src/main/kotlin/dominio/Actividad.kt#L8-L11)
 
 
-- [Refactorizado]()
+- [Refactorizado](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1006926f7d1fb7b68cbc8b1eb9808353ed0623a3/src/main/kotlin/dominio/Actividad.kt#L10-L14)
 
 ### 4. Duplicación en filtrado de tareas por estado
 
@@ -48,7 +48,7 @@
 - [Sin refactorizar](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9b6f395aa997ad13775c8f2278d077c23f30d385/src/main/kotlin/dominio/Dashboard.kt#L12-L14)
 
 
-- [Refactorizado]()
+- [Refactorizado](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1006926f7d1fb7b68cbc8b1eb9808353ed0623a3/src/main/kotlin/dominio/Dashboard.kt#L18-L32)
 
 ### 5. Uso inconsistente de constructor privado y factory method en clase Evento
 
@@ -63,7 +63,30 @@
 - [Sin refactorizar](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/9b6f395aa997ad13775c8f2278d077c23f30d385/src/main/kotlin/dominio/Evento.kt#L3-L22)
 
 
-- [Refactorizado]()
+- [Refactorizado](https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/blob/1006926f7d1fb7b68cbc8b1eb9808353ed0623a3/src/main/kotlin/dominio/Evento.kt#L3-L19)
 
 ## Preguntas
 
+### 1.a ¿Qué code smell y patrones de refactorización has aplicado?
+
+**Code Smells aplicados:**
+
+- Duplicate Code, Temporary Variable, Shotgun Surgery / Duplicate Code (filtrado repetido, Misuse of Accessors (getter con efectos secundarios), Inconsistent Abstraction / Duplicated Code (constructor privado y método factory)
+
+**Patrones de refactorización aplicados:**
+
+- Extract Method, Simplify Conditional Expression, Replace Conditional with Polymorphism / Extract Method, Replace Getter with Method, Replace Constructor with Factory Method
+
+### 1.b Teniendo en cuenta aquella funcionalidad que tiene pruebas unitarias, selecciona un patrón de refactorización de los que has aplicado y que están cubierto por los test unitarios. ¿Por qué mejora o no mejora tu código?
+
+- He sacado la búsqueda repetida en un solo método para que el código sea más limpio y fácil de mantener. 
+
+- Aunque no tengo pruebas unitarias, la refactorización se hizo para asegurar que el comportamiento sigue igual.
+
+### 2.a Describe el proceso que sigues para asegurarte que la refactorización no afecta a código que ya tenías desarrollado.
+
+- Como no tengo tests, voy haciendo los cambios poco a poco y comprobando que todo sigue funcionando igual. También uso git para ver qué cambio hice y poder volver atrás si hace falta.
+
+### 3.a ¿Qué funcionalidad del IDE has usado para aplicar la refactorización seleccionada? Si es necesario, añade capturas de pantalla para identificar la funcionalidad.
+
+Para hacer la refactorización usé la opción Extract Method que trae IntelliJ IDEA. Me permitió seleccionar el bloque de código repetido y crear un método nuevo de forma automática, lo que facilitó que el cambio fuera rápido y sin errores.
