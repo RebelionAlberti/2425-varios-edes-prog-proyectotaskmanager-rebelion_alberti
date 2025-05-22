@@ -115,9 +115,9 @@ Debido a que a la hora de desarrollar el código no se separó bien el código y
 
 ### 3.c Pon un ejemplo de como ha impactado en tu código, enlazando al código anterior al cambio, y al posterior al cambio
 
-- Enlace del commit anterior al cambio (  )
+- Enlace del commit anterior al cambio ( https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti )
 
-- Enlace del commit posterior al cambio (  )
+- Enlace del commit posterior al cambio ( https://github.com/RebelionAlberti/2425-varios-edes-prog-proyectotaskmanager-rebelion_alberti/tree/Linting_%C3%93scar_Garc%C3%ADa_Ja%C3%A9n )
 
 ### 4 ¿Qué conclusiones sacas después del uso de estas herramientas?
 
